@@ -4,11 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<
+
 <div class="bg-light py-3">
     <div class="container">
         <div class="row">
             <div class="col-md-12 mb-0">
-                <a href="index.html">Trang chủ</a> <span class="mx-2 mb-0">/</span> <a href="các thuốc.html">Dược mỹ phẩm</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Ibuprofen Tablets, 200mg</strong>
+                <a href="index.html">Trang chủ</a> <span class="mx-2 mb-0">/</span>
+                <strong class="text-black">Giỏ hàng</strong>
             </div>
         </div>
     </div>
@@ -16,113 +19,137 @@
 
 <div class="site-section">
     <div class="container">
+        <div class="row mb-5">
+            <form class="col-md-12" method="post">
+                <div class="site-blocks-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="product-thumbnail">Hình ảnh</th>
+                                <th class="product-name">Sản phẩm</th>
+                                <th class="product-price">Giá</th>
+                                <th class="product-quantity">Số lượng</th>
+                                <th class="product-total">Tổng</th>
+                                <th class="product-remove">Trả lại</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="product-thumbnail">
+                                    <img src="~/Assets/images/product_02.png" alt="Image" class="img-fluid">
+                                </td>
+                                <td class="product-name">
+                                    <h2 class="h5 text-black">Ibuprofen</h2>
+                                </td>
+                                <td>55.000đ</td>
+                                <td>
+                                    <div class="input-group mb-3" style="max-width: 120px;">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                        </div>
+                                        <input type="text" class="form-control text-center" value="1" placeholder=""
+                                               aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td>49.000đ</td>
+                                <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
+                            </tr>
+
+                            <tr>
+                                <td class="product-thumbnail">
+                                    <img src="~/Assets/images/product_01.png" alt="Image" class="img-fluid">
+                                </td>
+                                <td class="product-name">
+                                    <h2 class="h5 text-black">Bioderma</h2>
+                                </td>
+                                <td>49.000đ</td>
+                                <td>
+                                    <div class="input-group mb-3" style="max-width: 120px;">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                        </div>
+                                        <input type="text" class="form-control text-center" value="1" placeholder=""
+                                               aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td>49.000đ</td>
+                                <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+
         <div class="row">
-            <div class="col-md-5 mr-auto">
-                <div class="border text-center">
-                    <img src="~/Assets/images/product_07_large.png" alt="Image" class="img-fluid p-5">
+            <div class="col-md-6">
+                <div class="row mb-5">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <button class="btn btn-primary btn-md btn-block">UPDATE GIỎ HÀNG</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-outline-primary btn-md btn-block">TIẾP TỤC MUA THUỐC</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="text-black h4" for="coupon">Mã giảm giá</label>
+                        <p>Nhập mã giảm giá nếu bạn có mã giảm giá</p>
+                    </div>
+                    <div class="col-md-8 mb-3 mb-md-0">
+                        <input type="text" class="form-control py-3" id="coupon" placeholder="Nhập mã giảm giá...">
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-primary btn-md px-4">Sử dụng</button>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <h2 class="text-black">Ibuprofen Tablets, 200mg</h2>
-                <p>
-                    Thông tin về thuốc
-                </p>
-
-
-                <p><del>95.000đ</del>  <strong class="text-primary h4">55.000đ</strong></p>
-
-
-
-                <div class="mb-5">
-                    <div class="input-group mb-3" style="max-width: 220px;">
-                        <div class="input-group-prepend">
-                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+            <div class="col-md-6 pl-5">
+                <div class="row justify-content-end">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-12 text-right border-bottom mb-5">
+                                <h3 class="text-black h4 text-uppercase">Tổng cộng</h3>
+                            </div>
                         </div>
-                        <input type="text" class="form-control text-center" value="1" placeholder=""
-                               aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <span class="text-black">Tổng</span>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <strong class="text-black">230.000đ</strong>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-6">
+                                <span class="text-black">Thanh toán</span>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <strong class="text-black">230.000đ</strong>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary btn-lg btn-block" onclick="window.location='thanh toán.html'">
+                                    THANH
+                                    TOÁN
+                                </button>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-                <p><a href="#giỏ hàng.html" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">THÊM VÀO GIỎ HÀNG</a></p>
-
-                <div class="mt-5">
-                    <ul class="nav nav-pills mb-3 custom-pill" id="pills-tab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                               aria-controls="pills-home" aria-selected="true">Thông tin đặt hàng</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                               aria-controls="pills-profile" aria-selected="false">Thông tin chi tiết</a>
-                        </li>
-
-                    </ul>
-                    <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                            <table class="table custom-table">
-                                <thead>
-                                <th>Mã</th>
-                                <th>Thành phần</th>
-                                <th>Đ/Vị</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">OTC022401</th>
-                                        <td>Giảm đau: Acetaminophen PM Extra-Strength Caplets, 500 mg, 100/Bottle</td>
-                                        <td>1 BT</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">OTC022401</th>
-                                        <td>Giảm đau: Acetaminophen PM Extra-Strength Caplets, 500 mg, 100/Bottle</td>
-                                        <td>144/CS</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">OTC022401</th>
-                                        <td>Giảm đau: Acetaminophen PM Extra-Strength Caplets, 500 mg, 100/Bottle</td>
-                                        <td>1 EA</td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-
-                            <table class="table custom-table">
-
-                                <tbody>
-                                    <tr>
-                                        <td>MÃ</td>
-                                        <td class="bg-light">999_200_40_0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>CHỈ SỬ DỤNG ĐỂ CẢI THIỆN SỨC KHỎE</td>
-                                        <td class="bg-light">No</td>
-                                    </tr>
-                                    <tr>
-                                        <td>KHÔNG CHỨA LATEX</td>
-                                        <td class="bg-light">Yes, No</td>
-                                    </tr>
-                                    <tr>
-                                        <td>CÁCH SỬ DỤNG</td>
-                                        <td class="bg-light">Topical</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-
-                    </div>
-                </div>
-
-
             </div>
         </div>
     </div>
 </div>
+
 @Html.Partial("~/Views/Home/PartialView/Comments.cshtml");
-
-
-
