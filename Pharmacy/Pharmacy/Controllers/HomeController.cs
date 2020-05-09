@@ -1,9 +1,11 @@
-﻿using System.Web.Mvc;
-
+﻿using System.Linq;
+using System.Web.Mvc;
+using Pharmacy.Models;
 namespace Pharmacy.Controllers
 {
     public class HomeController : Controller
     {
+        public MyDBContext db = new MyDBContext();
         public ActionResult Index()
         {
             return View();
@@ -20,7 +22,7 @@ namespace Pharmacy.Controllers
         }
 
         public ActionResult Register()
-        {           
+        {
             return View();
         }
 
@@ -51,7 +53,9 @@ namespace Pharmacy.Controllers
 
         public ActionResult Shop()
         {
-            return View();
+
+            var item = db.THUOCs.Where(x=>x.MaLoaiThuoc.Equals("TTY")).ToList();
+            return View(item);
         }
 
         public ActionResult Question()
