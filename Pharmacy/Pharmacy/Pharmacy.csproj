@@ -140,6 +140,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CHITIETPHIEUXUAT.cs" />
+    <Compile Include="Models\DAO\ProductDAO.cs" />
     <Compile Include="Models\HANGSANXUAT.cs" />
     <Compile Include="Models\KHACHHANG.cs" />
     <Compile Include="Models\LOAITHUOC.cs" />

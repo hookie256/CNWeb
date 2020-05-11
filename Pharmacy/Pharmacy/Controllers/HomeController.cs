@@ -2,6 +2,8 @@
 using System.Web.Mvc;
 using PagedList;
 using Pharmacy.Models;
+using Pharmacy.Models.DAO;
+
 namespace Pharmacy.Controllers
 {
     public class HomeController : Controller
@@ -9,6 +11,9 @@ namespace Pharmacy.Controllers
         public MyDBContext db = new MyDBContext();
         public ActionResult Index()
         {
+            var productDAO = new ProductDAO();
+            ViewBag.TopProducts = productDAO.SanPhamBanChay(6);
+            ViewBag.NewProducts = productDAO.SanPhamMoi();
             return View();
         }
 
@@ -66,7 +71,11 @@ namespace Pharmacy.Controllers
             }
             return View(item.ToPagedList(pageNumber,pageSize));
         }
-
+        //public  SanPhamBanChay()
+        //{
+        //    var top_item = db.THUOCs.SqlQuery("SELECT TOP 6 * FROM THUOC ORDER BY SoLuongTon ").ToList();
+        //    return (top_item);
+        //}
         public ActionResult Question()
         {
             return View();
