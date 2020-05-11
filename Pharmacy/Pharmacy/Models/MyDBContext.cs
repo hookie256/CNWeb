@@ -8,7 +8,7 @@ namespace Pharmacy.Models
     public partial class MyDBContext : DbContext
     {
         public MyDBContext()
-            : base("name=MyDBContext1")
+            : base("name=MyDBContext")
         {
         }
 
@@ -98,6 +98,11 @@ namespace Pharmacy.Models
 
             modelBuilder.Entity<THUOC>()
                 .Property(e => e.MaNhaCungCap)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<THUOC>()
+                .Property(e => e.UrlImage)
                 .IsFixedLength()
                 .IsUnicode(false);
 

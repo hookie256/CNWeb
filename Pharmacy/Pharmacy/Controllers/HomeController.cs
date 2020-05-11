@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using PagedList;
 using Pharmacy.Models;
 namespace Pharmacy.Controllers
 {
@@ -51,11 +52,19 @@ namespace Pharmacy.Controllers
             return View();
         }
 
-        public ActionResult Shop()
+        public ActionResult Shop(int? page)
         {
-
-            var item = db.THUOCs.Where(x=>x.MaLoaiThuoc.Equals("TTY")).ToList();
-            return View(item);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            var item = db.THUOCs.Where(x=>x.MaLoaiThuoc=="TPCN").ToList();
+            foreach (THUOC it in item)
+            {
+                if (it.TenThuoc.Length >30)
+                {
+                    it.TenThuoc = it.TenThuoc.Substring(0, 29) + "...";
+                }
+            }
+            return View(item.ToPagedList(pageNumber,pageSize));
         }
 
         public ActionResult Question()

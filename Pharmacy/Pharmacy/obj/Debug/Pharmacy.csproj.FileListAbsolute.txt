@@ -239,3 +239,7 @@ D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\obj\
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.csproj.CopyComplete
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.dll
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.pdb
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\PagedList.dll
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\PagedList.Mvc.dll
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\PagedList.xml
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\PagedList.Mvc.xml

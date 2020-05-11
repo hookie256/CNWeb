@@ -38,13 +38,16 @@ namespace Pharmacy.Models
         [StringLength(15)]
         public string MaLoaiThuoc { get; set; }
 
-        public int? DonGia { get; set; }
+        public int DonGia { get; set; }
 
         [StringLength(15)]
         public string MaHangSX { get; set; }
 
         [StringLength(15)]
         public string MaNhaCungCap { get; set; }
+
+        [StringLength(50)]
+        public string UrlImage { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETPHIEUXUAT> CHITIETPHIEUXUATs { get; set; }

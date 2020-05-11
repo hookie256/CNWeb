@@ -1,69 +1,246 @@
 ﻿@using Pharmacy.Models;
-@model List<THUOC>
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<THUOC>
 @{
     ViewBag.Title = "Shop";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
-<div class="bg-light py-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 mb-0"><a href="Index">Trang chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Dược mỹ phẩm</strong></div>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/Assets/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Assets/css/aos.css">
+    <link rel="stylesheet" href="~/Assets/css/a.css">
+    <link rel="stylesheet" href="~/Assets/css/style.css">
+    
+</head>
+
+<body>
+
+    <div class="site-wrap">
+
+
+        <div class="site-navbar py-2">
+            <div class="search-wrap">
+                <div class="container">
+                    <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+                    <form action="#" method="post">
+                        <input type="text" class="form-control" placeholder="Tìm thuốc, dược phẩm,...">
+                    </form>
+                </div>
+            </div>
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="logo">
+                        <div class="site-logo">
+                            <a href="index.html" class="js-logo-clone">PHARMACY</a>
+                        </div>
+                    </div>
+                    <div class="main-nav d-none d-lg-block">
+                        <nav class="site-navigation text-right text-md-center" role="navigation">
+                            <ul class="site-menu js-clone-nav d-none d-lg-block">
+                                <li><a href="index.html">TRANG CHỦ</a></li>
+                                <li><a href="các thuốc.html">DƯỢC MỸ PHẨM</a></li>
+                                <li class="has-children">
+                                    <a href="các thuốc.html">THỰC PHẨM CHỨC NĂNG</a>
+                                    <ul class="dropdown">
+                                        <li><a href="các thuốc.html">MẸ VÀ BÉ</a></li>
+                                        <li class="has-children">
+                                            <a href="các thuốc.html">SINH LÝ - NỘI TIẾT</a>
+                                            <ul class="dropdown">
+                                                <li><a href="các thuốc.html">NAM</a></li>
+                                                <li><a href="các thuốc.html">NỮ</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="các thuốc.html">VITAMINS</a></li>
+                                        <li><a href="các thuốc.html">TRỊ BỆNH</a></li>
+
+                                    </ul>
+                                </li>
+                                <li><a href="các thuốc.html">THUỐC ĐÔNG Y</a></li>
+                                <li><a href="các thuốc.html">THUỐC TÂY Y</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="icons">
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Tìm kiếm" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Giỏ hàng" class="icons-btn d-inline-block bag">
+                            <span class="icon-shopping-bag"></span>
+                            <span class="number">0</span>
+                        </a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Đăng nhập" class="icons-btn d-inline-block bag">
+                            <span class="icon-user-circle-o"></span>
+                        </a>
+                        <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none">
+                            <span class="icon-menu"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="bg-light py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-0"><a href="index.html">Trang chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Dược mỹ phẩm</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="site-section">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3 class="mb-3 h6 text-uppercase text-black d-block">Bộ lọc theo giá tiền</h3>
+                        <div id="slider-range" class="border-primary"></div>
+                        <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="mb-3 h6 text-uppercase text-black d-block">Bộ lọc theo yêu cầu</h3>
+                        <button type="button" class="btn btn-secondary btn-md dropdown-toggle px-4" id="dropdownMenuReference"
+                                data-toggle="dropdown">
+                            Yêu cầu
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                            <a class="dropdown-item" href="#">Độ liên quan</a>
+                            <a class="dropdown-item" href="#">Tên, A đến Z</a>
+                            <a class="dropdown-item" href="#">Tên, Z đến A</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Giá tiền, thấp tới cao</a>
+                            <a class="dropdown-item" href="#">Giá tiền, cao tới thấp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    @foreach (THUOC it in Model)
+                    {
+                        <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                            <a href="1 thuốc.html"> <img src="~/Assets/images/@it.UrlImage" alt="Image"></a>
+                            <h3 class="text-dark">
+                                <a href="#">
+                                    @it.TenThuoc
+                                </a>
+                            </h3>
+                            <p class="price">
+                                <script>
+                                    function format_curency(number) {
+                                            var n = number.split('').reverse().join("");
+                                            var n2 = n.replace(/\d\d\d(?!$)/g, "$&.");
+                                            return  n2.split('').reverse().join('') + ' ₫';
+                                        }
+                                </script>
+
+                                <script>
+                                    document.write(format_curency(String(@it.DonGia)));
+                                </script> 
+                            </p>
+                        </div> 
+                    }
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-md-12 text-center">
+                        <div class="site-block-27">
+                            <ul>
+                                <li>@Html.PagedListPager(Model, page => Url.Action("Shop", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @Html.Partial("~/Views/Home/PartialView/Comments.cshtml");
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+
+                        <div class="block-7">
+                            <h3 class="footer-heading mb-4">Dịch vụ</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                                <li><a href="#">Hình thức thanh toán</a></li>
+                                <li><a href="chính sách đổi trả.html">Chính sách đổi trả</a></li>
+                                <li><a href="chính sách giao hàng.html">Chính sách giao hàng</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+                        <h3 class="footer-heading mb-4">Hỗ trợ khách hàng</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="Câu hỏi thường gặp.html">Câu hỏi thường gặp</a></li>
+                            <li><a href="chính sách bảo mật.html">Chính sách bảo mật</a></li>
+                            <li><a href="về chúng tôi.html">Về chúng tôi</a></li>
+                            <li><a href="liên hệ.html">Liên hệ</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="block-5 mb-5">
+                            <h3 class="footer-heading mb-4">Thông tin liên hệ</h3>
+                            <ul class="list-unstyled">
+                                <li class="address">236 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội</li>
+                                <li class="phone"><a href="tel://0359999574">035.9999.574</a></li>
+                                <li class="email">pharmacy.hn@gmail.com</li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="row pt-5 mt-5 text-center">
+                    <div class="col-md-12">
+                        <p>
+                            <b>
+                                Nhà thuốc Online designed by Phan Thanh Tùng and Hoàng Văn Việt
+                            </b>
+                        </p>
+                    </div>
+                    <div class="col-md-12">
+                        <p>
+                            <b>Địa chỉ: số 54, ngõ 200, đường Hoàng Sâm, phường Nghĩa Đô, quận Cầu Giấy, thành phố Hà Nội</b>
+                        </p>
+                    </div>
+                    <div class="col-md-12">
+                        <p>
+                            <script>document.write(new Date().getHours());</script> giờ
+                            <script>document.write(new Date().getMinutes());</script> phút
+                            <script>document.write(new Date().getSeconds());</script> giây, ngày
+                            <script>document.write(new Date().getDate());</script> tháng
+                            <script>document.write(new Date().getMonth());</script> năm
+                            <script>document.write(new Date().getFullYear());</script>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
-</div>
+    <script src="~/Assets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assets/js/jquery-ui.js"></script>
+    <script src="~/Assets/js/popper.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <script src="~/Assets/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Assets/js/aos.js"></script>
+    <script src="~/Assets/js/DonViTien.js"></script>
+    <script src="~/Assets/js/main.js"></script>
 
-<div class="site-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Bộ lọc theo giá tiền</h3>
-                <div id="slider-range" class="border-primary"></div>
-                <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
-            </div>
-            <div class="col-lg-6">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Bộ lọc theo yêu cầu</h3>
-                <button type="button" class="btn btn-secondary btn-md dropdown-toggle px-4" id="dropdownMenuReference"
-                        data-toggle="dropdown">
-                    Yêu cầu
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                    <a class="dropdown-item" href="#">Độ liên quan</a>
-                    <a class="dropdown-item" href="#">Tên, A đến Z</a>
-                    <a class="dropdown-item" href="#">Tên, Z đến A</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Giá tiền, thấp tới cao</a>
-                    <a class="dropdown-item" href="#">Giá tiền, cao tới thấp</a>
-                </div>
-            </div>
-        </div>
+</body>
 
-        <div class="row">
-            @foreach (THUOC it in Model)
-            {
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    @*<span class="tag">Giảm giá</span>*@
-                    <a href="1 thuốc.html"> <img src="~/Assets/images/product_01.png" alt="Image"></a>
-                    <h3 class="text-dark"><a href="#">@it.TenThuoc</a></h3>
-                    <p class="price"><del>@it.DonGia đ</del> &mdash; <font color="red"><b>55.000₫</b></font></p>
-                </div>
-            }
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-12 text-center">
-                <div class="site-block-27">
-                    <ul>
-                        <li><a href="Shop">&lt;</a></li>
-                        <li class="active"><span>1</span></li>
-                        <li><a href="Shop">2</a></li>
-                        <li><a href="Shop">3</a></li>
-                        <li><a href="Shop">4</a></li>
-                        <li><a href="Shop">5</a></li>
-                        <li><a href="Shop">&gt;</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+</html>
 
-@Html.Partial("~/Views/Home/PartialView/Comments.cshtml");
