@@ -128,7 +128,6 @@ C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\roslyn\VBCSCompiler.exe.confi
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\Antlr3.Runtime.dll
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\Model.dll
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\Newtonsoft.Json.dll
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\System.Web.Helpers.dll
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\System.Web.Mvc.dll
@@ -138,7 +137,6 @@ C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\System.Web.WebPages.Deploymen
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\System.Web.WebPages.dll
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\System.Web.WebPages.Razor.dll
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\WebGrease.dll
-C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\Model.pdb
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\System.Web.Helpers.xml
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\System.Web.Mvc.xml
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\System.Web.Optimization.xml
@@ -156,7 +154,6 @@ C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.dll
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.pdb
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\EntityFramework.dll
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\EntityFramework.SqlServer.dll
-C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\Model.dll.config
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\EntityFramework.xml
 C:\Users\vietm\Desktop\CNWeb\Pharmacy\Pharmacy\bin\EntityFramework.SqlServer.xml
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\Pharmacy.dll.config

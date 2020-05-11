@@ -133,6 +133,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CHITIETPHIEUXUAT.cs" />
+    <Compile Include="Models\HANGSANXUAT.cs" />
+    <Compile Include="Models\KHACHHANG.cs" />
+    <Compile Include="Models\LOAITHUOC.cs" />
+    <Compile Include="Models\MyDBContext.cs" />
+    <Compile Include="Models\NHACUNGCAP.cs" />
+    <Compile Include="Models\PHIEUXUAT.cs" />
+    <Compile Include="Models\THUOC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2078,7 +2086,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2092,12 +2099,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{3fc53c75-cc1b-47b0-b452-6ac52f1a00bb}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
