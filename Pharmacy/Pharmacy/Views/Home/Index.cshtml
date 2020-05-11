@@ -1,8 +1,8 @@
 ﻿
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var listTopProducts = (List<Pharmacy.Models.THUOC>)ViewBag.TopProducts;
-    var listNewProducts = (List<Pharmacy.Models.THUOC>)ViewBag.NewProducts;
+    var listTopProducts = (List<Pharmacy.Models.EF.THUOC>)ViewBag.TopProducts;
+    var listNewProducts = (List<Pharmacy.Models.EF.THUOC>)ViewBag.NewProducts;
 }
 @section headlink
 {
@@ -93,24 +93,16 @@
         <div class="row">
             @foreach (var pr in listTopProducts)
             {
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                <a href="1 thuốc.html"> <img src="~/Assets/images/@pr.UrlImage" alt="Image"></a>
-                <h3 class="text-dark"><a href="#">@pr.TenThuoc</a></h3>
-                <p class="price"><b>
-                <script>
-                    function format_curency(number) {
-                        var n = number.split('').reverse().join("");
-                        var n2 = n.replace(/\d\d\d(?!$)/g, "$&.");
-                        return n2.split('').reverse().join('') + ' ₫';
-                    }
-                </script>
-
-                <script>
-                        document.write(format_curency(String(@pr.DonGia)));
-                </script>
-</b></p>
-            </div>
-             }
+                <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                    <a href="1 thuốc.html"> <img src="~/Assets/images/@pr.UrlImage" alt="Image"></a>
+                    <h3 class="text-dark"><a href="#">@pr.TenThuoc</a></h3>
+                    <p class="price">
+                        <b>
+                            @pr.Tien₫
+                        </b>
+                    </p>
+                </div>
+            }
         </div>
         <div class="row mt-5">
             <div class="col-12 text-center">
@@ -131,73 +123,16 @@
         <div class="row">
             <div class="col-md-12 block-3 products-wrap">
                 <div class="nonloop-block-3 owl-carousel">
-                    @foreach (var it in listNewProducts)
-                    { 
-                    <div class="text-center item mb-4">
-                        <a href="1 thuốc.html"> <img src="~/Assets/images/@it.UrlImage" alt="Image"></a>
-                        <h3 class="text-dark"><a href="#">@it.TenThuoc</a></h3>
-                        <p class="price">@it.DonGia₫</p>
-                    </div>
-                     }
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="site-section">
-    <div class="container">
-        <div class="row">
-            <div class="title-section text-center col-12">
-                <h2 class="text-uppercase">Nhận xét & Đánh giá</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 block-3 products-wrap">
-                <div class="nonloop-block-3 no-direction owl-carousel">
-
-                    <div class="testimony">
-                        <blockquote>
-                            <img src="~/Assets/images/person_1.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                            <p>&ldquo;Tôi rất hài lòng về dịch vụ và nhà thuốc giao hàng rất nhanh, đúng mẫu mã.&rdquo;</p>
-                        </blockquote>
-
-                        <p>&mdash; Kelly Holmes</p>
-                    </div>
-
-                    <div class="testimony">
-                        <blockquote>
-                            <img src="~/Assets/images/person_2.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                            <p>
-                                &ldquo;Tôi rất hài lòng về dịch vụ và nhà thuốc giao hàng rất nhanh, đúng mẫu mã.&rdquo;
+                    @foreach (var i in listNewProducts)
+                    {
+                        <div class="text-center item mb-4">
+                            <a href="1 thuốc.html"> <img src="~/Assets/images/@i.UrlImage" alt="Image"></a>
+                            <h3 class="text-dark"><a href="#">@i.TenThuoc</a></h3>
+                            <p class="price">
+                                <b>@i.Tien₫</b> 
                             </p>
-                        </blockquote>
-
-                        <p>&mdash; Rebecca Morando</p>
-                    </div>
-
-                    <div class="testimony">
-                        <blockquote>
-                            <img src="~/Assets/images/person_3.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                            <p>
-                                &ldquo;Tôi rất hài lòng về dịch vụ và nhà thuốc giao hàng rất nhanh, đúng mẫu mã.&rdquo;
-                            </p>
-                        </blockquote>
-
-                        <p>&mdash; Lucas Gallone</p>
-                    </div>
-
-                    <div class="testimony">
-                        <blockquote>
-                            <img src="~/Assets/images/person_4.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                            <p>
-                                &ldquo;Tôi rất hài lòng về dịch vụ và nhà thuốc giao hàng rất nhanh, đúng mẫu mã.&rdquo;
-                            </p>
-                        </blockquote>
-
-                        <p>&mdash; Andrew Neel</p>
-                    </div>
-
+                        </div>
+                    }
                 </div>
             </div>
         </div>

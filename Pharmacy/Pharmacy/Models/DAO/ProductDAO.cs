@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using Pharmacy.Models.EF;
 namespace Pharmacy.Models.DAO
 {
 
@@ -13,13 +13,13 @@ namespace Pharmacy.Models.DAO
         {
             db = new MyDBContext();
         }
-        public List<THUOC> SanPhamBanChay(int top)
+        public List<THUOC> SanPhamBanChay()
         {
-            return db.THUOCs.OrderByDescending(x => x.SoLuongTon).Take(top).ToList();
+            return db.THUOCs.SqlQuery("SELECT TOP 6 * FROM THUOC ORDER BY SoLuongTon ASC").ToList();
         }
         public List<THUOC> SanPhamMoi()
         {
-            return db.THUOCs.SqlQuery("SELECT TOP 4 * FROM THUOC ORDER BY SoLuongTon DESC").ToList();
+            return db.THUOCs.SqlQuery("SELECT TOP 8 * FROM THUOC ORDER BY SoLuongTon DESC").ToList();
         }
     }
 }

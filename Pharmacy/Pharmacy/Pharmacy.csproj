@@ -139,15 +139,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CHITIETPHIEUXUAT.cs" />
     <Compile Include="Models\DAO\ProductDAO.cs" />
-    <Compile Include="Models\HANGSANXUAT.cs" />
-    <Compile Include="Models\KHACHHANG.cs" />
-    <Compile Include="Models\LOAITHUOC.cs" />
-    <Compile Include="Models\MyDBContext.cs" />
-    <Compile Include="Models\NHACUNGCAP.cs" />
-    <Compile Include="Models\PHIEUXUAT.cs" />
-    <Compile Include="Models\THUOC.cs" />
+    <Compile Include="Models\EF\CHITIETPHIEUXUAT.cs" />
+    <Compile Include="Models\EF\HANGSANXUAT.cs" />
+    <Compile Include="Models\EF\KHACHHANG.cs" />
+    <Compile Include="Models\EF\LOAITHUOC.cs" />
+    <Compile Include="Models\EF\MyDBContext.cs" />
+    <Compile Include="Models\EF\NHACUNGCAP.cs" />
+    <Compile Include="Models\EF\PHIEUXUAT.cs" />
+    <Compile Include="Models\EF\THUOC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

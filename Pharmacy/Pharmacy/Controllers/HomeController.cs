@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using PagedList;
-using Pharmacy.Models;
+using Pharmacy.Models.EF;
 using Pharmacy.Models.DAO;
 
 namespace Pharmacy.Controllers
@@ -12,7 +12,7 @@ namespace Pharmacy.Controllers
         public ActionResult Index()
         {
             var productDAO = new ProductDAO();
-            ViewBag.TopProducts = productDAO.SanPhamBanChay(6);
+            ViewBag.TopProducts = productDAO.SanPhamBanChay();
             ViewBag.NewProducts = productDAO.SanPhamMoi();
             return View();
         }

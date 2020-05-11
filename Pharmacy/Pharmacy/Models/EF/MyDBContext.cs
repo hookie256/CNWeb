@@ -1,4 +1,4 @@
-namespace Model.EF
+namespace Pharmacy.Models.EF
 {
     using System;
     using System.Data.Entity;
@@ -99,6 +99,15 @@ namespace Model.EF
             modelBuilder.Entity<THUOC>()
                 .Property(e => e.MaNhaCungCap)
                 .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<THUOC>()
+                .Property(e => e.UrlImage)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<THUOC>()
+                .Property(e => e.Tien)
                 .IsUnicode(false);
 
             modelBuilder.Entity<THUOC>()

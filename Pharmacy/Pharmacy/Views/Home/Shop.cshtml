@@ -1,7 +1,7 @@
 ﻿@using Pharmacy.Models;
 @using PagedList;
 @using PagedList.Mvc;
-@model PagedList.IPagedList<THUOC>
+@model PagedList.IPagedList<Pharmacy.Models.EF.THUOC>
 @{
     ViewBag.Title = "Shop";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -57,7 +57,7 @@
         </div>
 
         <div class="row">
-            @foreach (THUOC it in Model)
+            @foreach (Pharmacy.Models.EF.THUOC it in Model)
             {
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
                     <a href="1 thuốc.html"> <img src="~/Assets/images/@it.UrlImage" alt="Image"></a>
@@ -67,17 +67,7 @@
                         </a>
                     </h3>
                     <p class="price">
-                        <script>
-                            function format_curency(number) {
-                                var n = number.split('').reverse().join("");
-                                var n2 = n.replace(/\d\d\d(?!$)/g, "$&.");
-                                return n2.split('').reverse().join('') + ' ₫';
-                            }
-                        </script>
-
-                        <script>
-                            document.write(format_curency(String(@it.DonGia)));
-                        </script>
+                        <b>@it.Tien₫</b>
                     </p>
                 </div>
             }
