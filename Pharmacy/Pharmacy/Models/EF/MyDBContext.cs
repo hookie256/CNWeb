@@ -111,6 +111,10 @@ namespace Pharmacy.Models.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<THUOC>()
+                .Property(e => e.TimKiem)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<THUOC>()
                 .HasMany(e => e.CHITIETPHIEUXUATs)
                 .WithRequired(e => e.THUOC)
                 .WillCascadeOnDelete(false);

@@ -16,7 +16,14 @@ namespace Pharmacy.Controllers
             ViewBag.NewProducts = productDAO.SanPhamMoi();
             return View();
         }
-
+        [HttpPost]
+        public ActionResult TimKiem(string searchstr,int? page)
+        {
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            var model = db.THUOCs.Where(x => x.TimKiem.Contains(searchstr)).ToList();
+            return View("Shop", model.ToPagedList(pageNumber, pageSize));
+        }
         public ActionResult Cart()
         {
             return View();
@@ -71,11 +78,6 @@ namespace Pharmacy.Controllers
             }
             return View(item.ToPagedList(pageNumber,pageSize));
         }
-        //public  SanPhamBanChay()
-        //{
-        //    var top_item = db.THUOCs.SqlQuery("SELECT TOP 6 * FROM THUOC ORDER BY SoLuongTon ").ToList();
-        //    return (top_item);
-        //}
         public ActionResult Question()
         {
             return View();
