@@ -21,8 +21,27 @@ namespace Pharmacy.Controllers
         {
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            var model = db.THUOCs.Where(x => x.TimKiem.Contains(searchstr)).ToList();
+            var model = db.THUOCs.Where(x => x.TimKiem.Contains(searchstr)).ToList();           
             return View("Shop", model.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult DanhMuc(string id,int? page)
+        {
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            var item = db.THUOCs.Where(x => x.MaLoaiThuoc.Trim() == id.Trim()).ToList();           
+            return View("Shop",item.ToPagedList(pageNumber, pageSize));
+        }
+        [HttpPost]
+        public ActionResult ChiTietSanPham(string id)
+        {
+            var model = db.THUOCs.Where(x => x.MaThuoc.Trim() == id.Trim()).FirstOrDefault();
+            return View("ShopSingle", model);
+        }
+        [ChildActionOnly]
+        public ActionResult Menu()
+        {
+            var model = db.LOAITHUOCs.ToList();
+            return PartialView(model);
         }
         public ActionResult Cart()
         {
@@ -59,16 +78,17 @@ namespace Pharmacy.Controllers
             return View();
         }
 
-        public ActionResult ShopSingle()
+        public ActionResult ShopSingle(string id)
         {
-            return View();
+            var model = db.THUOCs.Where(x => x.MaThuoc.Trim() == id.Trim()).FirstOrDefault();
+            return View(model);
         }
 
         public ActionResult Shop(int? page)
         {
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            var item = db.THUOCs.Where(x=>x.MaLoaiThuoc=="TPCN").ToList();
+            var item = db.THUOCs.ToList();
             foreach (THUOC it in item)
             {
                 if (it.TenThuoc.Length >30)

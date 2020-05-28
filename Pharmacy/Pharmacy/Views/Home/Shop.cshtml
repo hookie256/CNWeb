@@ -1,5 +1,7 @@
 ﻿@using PagedList.Mvc;
-@model PagedList.IPagedList<Pharmacy.Models.EF.THUOC>
+@using Pharmacy.Models.EF;
+@model PagedList.IPagedList<THUOC>
+
 @{
     ViewBag.Title = "Shop";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -23,7 +25,11 @@
 <div class="bg-light py-3">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mb-0"><a href="index.html">Trang chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Dược mỹ phẩm</strong></div>
+            @foreach (THUOC i in Model)
+            {
+                <div class="col-md-12 mb-0"><a href="Index">Trang chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">@i.LOAITHUOC.TenLoaiThuoc</strong></div>
+                break;
+            }
         </div>
     </div>
 </div>
@@ -55,12 +61,12 @@
         </div>
 
         <div class="row">
-            @foreach (Pharmacy.Models.EF.THUOC it in Model)
+            @foreach (THUOC it in Model)
             {
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="1 thuốc.html"> <img src="~/Assets/images/@it.UrlImage" alt="Image"></a>
+                    <a href="/Home/ShopSingle/@it.MaThuoc"> <img src="~/Assets/images/@it.UrlImage" alt="Image"></a>
                     <h3 class="text-dark">
-                        <a href="#">
+                        <a href="/Home/ShopSingle/@it.MaThuoc">
                             @it.TenThuoc
                         </a>
                     </h3>

@@ -139,6 +139,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DAO\Cart.cs" />
     <Compile Include="Models\DAO\ProductDAO.cs" />
     <Compile Include="Models\EF\CHITIETPHIEUXUAT.cs" />
     <Compile Include="Models\EF\HANGSANXUAT.cs" />
@@ -2094,6 +2095,7 @@
     <Content Include="Views\Home\Shipping.cshtml" />
     <Content Include="Views\Home\Question.cshtml" />
     <Content Include="Views\Home\Exchange.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
