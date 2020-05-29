@@ -21,7 +21,7 @@ namespace Pharmacy.Controllers
         {
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            var model = db.THUOCs.Where(x => x.TimKiem.Contains(searchstr)).ToList();           
+            var model = db.THUOCs.SqlQuery("SELECT * FROM THUOC WHERE TenThuoc LIKE '%"+searchstr+"%' OR TimKiem LIKE '%"+searchstr+"%'").ToList();           
             return View("Shop", model.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult DanhMuc(string id,int? page)
