@@ -1,9 +1,8 @@
 ﻿@using PagedList.Mvc;
 @using Pharmacy.Models.EF;
 @model PagedList.IPagedList<THUOC>
-
 @{
-    ViewBag.Title = "Shop";
+    ViewBag.Title = "Xemtatca";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -81,7 +80,7 @@
             <div class="col-md-12 text-center">
                 <div class="site-block-27">
                     <ul>
-                        <li>@Html.PagedListPager(Model, page => Url.Action("DanhMuc", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)</li>
+                        <li>@Html.PagedListPager(Model, page => Url.Action("Xemtatca", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)</li>
                     </ul>
                 </div>
             </div>
@@ -89,4 +88,6 @@
 
     </div>
 </div>
+
+
 

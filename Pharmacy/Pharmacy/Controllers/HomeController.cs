@@ -25,10 +25,18 @@ namespace Pharmacy.Controllers
             return View("Shop", model.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult DanhMuc(string id,int? page)
-        {
+        {          
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            var item = db.THUOCs.Where(x => x.MaLoaiThuoc.Trim() == id.Trim()).ToList();           
+            var item = db.THUOCs.Where(x => x.MaLoaiThuoc.Trim() == id.Trim()).ToList();
+            foreach (THUOC it in item)
+            {
+                if (it.TenThuoc.Length > 30)
+                {
+                    it.TenThuoc = it.TenThuoc.Substring(0, 29) + "...";
+                }
+            }
+
             return View("Shop",item.ToPagedList(pageNumber, pageSize));
         }
         [HttpPost]
@@ -42,6 +50,20 @@ namespace Pharmacy.Controllers
         {
             var model = db.LOAITHUOCs.ToList();
             return PartialView(model);
+        }
+        public ActionResult Xemtatca(int? page)
+        {
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            var item = db.THUOCs.SqlQuery("SELECT * FROM THUOC ORDER BY SoLuongTon ASC").ToList();
+            foreach (THUOC it in item)
+            {
+                if (it.TenThuoc.Length > 30)
+                {
+                    it.TenThuoc = it.TenThuoc.Substring(0, 29) + "...";
+                }
+            }
+            return View(item.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult Cart()
         {
@@ -91,12 +113,12 @@ namespace Pharmacy.Controllers
             var item = db.THUOCs.ToList();
             foreach (THUOC it in item)
             {
-                if (it.TenThuoc.Length >30)
+                if (it.TenThuoc.Length > 30)
                 {
                     it.TenThuoc = it.TenThuoc.Substring(0, 29) + "...";
                 }
             }
-            return View(item.ToPagedList(pageNumber,pageSize));
+            return View(item.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult Question()
         {
