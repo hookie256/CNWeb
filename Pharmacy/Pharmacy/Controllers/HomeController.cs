@@ -21,7 +21,7 @@ namespace Pharmacy.Controllers
         {
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            var model = db.THUOCs.SqlQuery("SELECT * FROM THUOC WHERE TenThuoc LIKE '%"+searchstr+"%' OR TimKiem LIKE '%"+searchstr+"%'").ToList();           
+            var model = db.THUOCs.SqlQuery("SELECT * FROM THUOC WHERE TenThuoc LIKE '%"+searchstr+"%' OR TimKiem LIKE '%"+searchstr+"%'").ToList();
             return View("Shop", model.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult DanhMuc(string id,int? page)
@@ -70,27 +70,12 @@ namespace Pharmacy.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            return View();
-        }
-
         public ActionResult Register()
         {
             return View();
         }
 
         public ActionResult Login()
-        {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            return View();
-        }
-
-        public ActionResult ThankYou()
         {
             return View();
         }
@@ -119,25 +104,6 @@ namespace Pharmacy.Controllers
                 }
             }
             return View(item.ToPagedList(pageNumber, pageSize));
-        }
-        public ActionResult Question()
-        {
-            return View();
-        }
-
-        public ActionResult Security()
-        {
-            return View();
-        }
-
-        public ActionResult Exchange()
-        {
-            return View();
-        }
-
-        public ActionResult Shipping()
-        {
-            return View();
         }
     }
 }
