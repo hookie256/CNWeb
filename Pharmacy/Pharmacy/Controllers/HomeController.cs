@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using PagedList;
 using Pharmacy.Models.EF;
 using Pharmacy.Models.DAO;
-
+using System;
 namespace Pharmacy.Controllers
 {
     public class HomeController : Controller
@@ -17,12 +17,10 @@ namespace Pharmacy.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult TimKiem(string searchstr,int? page)
+        public ActionResult TimKiem(string searchstr)
         {
-            int pageSize = 6;
-            int pageNumber = (page ?? 1);
-            var model = db.THUOCs.SqlQuery("SELECT * FROM THUOC WHERE TenThuoc LIKE '%"+searchstr+"%' OR TimKiem LIKE '%"+searchstr+"%'").ToList();
-            return View("Shop", model.ToPagedList(pageNumber, pageSize));
+            var model = db.THUOCs.SqlQuery("SELECT * FROM THUOC WHERE TenThuoc LIKE '%" + searchstr + "%' OR TimKiem LIKE '%" + searchstr + "%'").ToList();           
+            return View(model);
         }
         public ActionResult DanhMuc(string id,int? page)
         {          
@@ -65,9 +63,61 @@ namespace Pharmacy.Controllers
             }
             return View(item.ToPagedList(pageNumber, pageSize));
         }
+
+        //PHẦN LÀM CART
         public ActionResult Cart()
         {
-            return View();
+            var gioHang = (Cart)Session["GioHangTam"];
+            if (gioHang==null)
+            {
+                gioHang = new Cart();
+            }
+            return View(gioHang);
+        }
+        //Thêm sản phẩm
+        public ActionResult ThemSP(string id,string soluong,string returnURL)
+        {
+            var sp = db.THUOCs.Find(id);
+            if (sp.TenThuoc.Length > 30)
+            {
+                sp.TenThuoc = sp.TenThuoc.Substring(0, 25) + "...";
+            }
+            var gioHang = (Cart)Session["GioHangTam"];
+            if (gioHang !=null)
+            {
+                gioHang.themSP(sp, Convert.ToInt32(soluong));
+                Session["GioHangTam"] = gioHang;
+            }
+            else
+            {
+                gioHang = new Cart();
+                gioHang.themSP(sp, Convert.ToInt32(soluong));
+                Session["GioHangTam"] = gioHang;
+            }
+            if (string.IsNullOrEmpty(returnURL))
+            {
+                return RedirectToAction("Cart");
+            }
+            return Redirect(returnURL);
+        }
+        //Cập nhật giỏ hàng
+        public ActionResult UpdateCart(string[] masp, int[] sl)
+        {
+            var gioHang = (Cart)Session["GioHangTam"];
+
+            if (gioHang != null)
+            {
+                for (int i = 0; i < masp.Count(); i++)
+                {
+                    var sp = db.THUOCs.Find(masp[i]);
+                    gioHang.capnhatSP(sp, sl[i]);
+                }
+
+                Session["CartSession"] = gioHang;
+            }
+
+            return RedirectToAction("Cart");
+
         }
 
         public ActionResult Register()

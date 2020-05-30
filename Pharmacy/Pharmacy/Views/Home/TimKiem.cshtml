@@ -1,8 +1,7 @@
-﻿@using PagedList.Mvc;
-@using Pharmacy.Models.EF;
-@model PagedList.IPagedList<THUOC>
+﻿@using Pharmacy.Models.EF;
+@model List<THUOC>
 @{
-    ViewBag.Title = "Xemtatca";
+    ViewBag.Title = "TimKiem";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -24,11 +23,7 @@
 <div class="bg-light py-3">
     <div class="container">
         <div class="row">
-            @foreach (THUOC i in Model)
-            {
-                <div class="col-md-12 mb-0"><a href="/Home/Index">Trang chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Tất cả thuốc</strong></div>
-                break;
-            }
+                <div class="col-md-12 mb-0"><a href="/Home/Index">Trang chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Tìm kiếm thuốc</strong></div>
         </div>
     </div>
 </div>
@@ -75,18 +70,9 @@
                 </div>
             }
         </div>
-
-        <div class="row mt-5">
-            <div class="col-md-12 text-center">
-                <div class="site-block-27">
-                    <ul>
-                        <li>@Html.PagedListPager(Model, page => Url.Action("Xemtatca", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
+
 
 
 

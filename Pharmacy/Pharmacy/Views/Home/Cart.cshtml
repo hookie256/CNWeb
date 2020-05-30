@@ -1,9 +1,9 @@
-﻿
+﻿@using Pharmacy.Models.DAO;
 @{
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model Cart
 @section headlink
 {
     <meta charset="utf-8">
@@ -30,11 +30,12 @@
         </div>
     </div>
 </div>
-
+@if (Model.dongSP.Count() > 0)
+{
 <div class="site-section">
-    <div class="container">
+    <form class="container" method="post" action="/Home/UpdateCart">
         <div class="row mb-5">
-            <form class="col-md-12" method="post">
+            <div class="col-md-12" >
                 <div class="site-blocks-table">
                     <table class="table table-bordered">
                         <thead>
@@ -48,66 +49,48 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="product-thumbnail">
-                                    <img src="~/Assets/images/product_02.png" alt="Image" class="img-fluid">
-                                </td>
-                                <td class="product-name">
-                                    <h2 class="h5 text-black">Ibuprofen</h2>
-                                </td>
-                                <td>55.000đ</td>
-                                <td>
-                                    <div class="input-group mb-3" style="max-width: 120px;">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                            @{ int i = 0;}
+                            @foreach (CartItem it in Model.dongSP)
+                            {
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <img src="~/Assets/images/@it.SanPham.UrlImage" alt="Image" class="img-fluid">
+                                    </td>
+                                    <td class="product-name">
+                                        <h1 class="h5 text-black">@it.SanPham.TenThuoc</h1>
+                                    </td>
+                                    <td>@it.SanPham.Tien₫</td>
+                                    <td>
+                                        <div class="input-group mb-3" style="max-width: 120px;">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                            </div>
+                                            <input type="hidden" name="masp[@i]" value="@it.SanPham.MaThuoc" />
+                                            <input type="text" name="sl[@i]" class="form-control text-center" value=@it.SoLuong placeholder=""
+                                                   aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                            </div>
                                         </div>
-                                        <input type="text" class="form-control text-center" value="1" placeholder=""
-                                               aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                                        </div>
-                                    </div>
 
-                                </td>
-                                <td>49.000đ</td>
-                                <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
-                            </tr>
+                                    </td>
+                                    <td>@((it.SanPham.DonGia * it.SoLuong).ToString())</td>
+                                    <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
 
-                            <tr>
-                                <td class="product-thumbnail">
-                                    <img src="~/Assets/images/product_01.png" alt="Image" class="img-fluid">
-                                </td>
-                                <td class="product-name">
-                                    <h2 class="h5 text-black">Bioderma</h2>
-                                </td>
-                                <td>49.000đ</td>
-                                <td>
-                                    <div class="input-group mb-3" style="max-width: 120px;">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                                        </div>
-                                        <input type="text" class="form-control text-center" value="1" placeholder=""
-                                               aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                                        </div>
-                                    </div>
-
-                                </td>
-                                <td>49.000đ</td>
-                                <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
-                            </tr>
+                                </tr>
+                                i += 1;
+                            }
                         </tbody>
                     </table>
                 </div>
-            </form>
+            </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
                 <div class="row mb-5">
                     <div class="col-md-6 mb-3 mb-md-0">
-                        <button class="btn btn-primary btn-md btn-block">UPDATE GIỎ HÀNG</button>
+                        <button type="submit" class="btn btn-primary btn-md btn-block">UPDATE GIỎ HÀNG</button>
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-primary btn-md btn-block">TIẾP TỤC MUA THUỐC</button>
@@ -139,7 +122,7 @@
                                 <span class="text-black">Tổng</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">230.000đ</strong>
+                                <strong class="text-black">@Model.TongTien().ToString()đ</strong>
                             </div>
                         </div>
                         <div class="row mb-5">
@@ -147,7 +130,7 @@
                                 <span class="text-black">Thanh toán</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">230.000đ</strong>
+                                <strong class="text-black">@Model.TongTien().ToString()đ</strong>
                             </div>
                         </div>
 
@@ -163,7 +146,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
-
-@Html.Partial("~/Views/Home/PartialView/Comments.cshtml");
+}
