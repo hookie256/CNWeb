@@ -101,7 +101,7 @@ namespace Pharmacy.Controllers
             return Redirect(returnURL);
         }
         //Cập nhật giỏ hàng
-        public ActionResult UpdateCart(string[] masp, int[] sl)
+        public ActionResult CapNhatGH(string[] masp, int[] sl)
         {
             var gioHang = (Cart)Session["GioHangTam"];
 

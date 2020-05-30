@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using Pharmacy.Models.EF;
@@ -65,11 +66,17 @@ namespace Pharmacy.Models.DAO
             gioHang.RemoveAll(l => l.SanPham.MaThuoc == sp.MaThuoc);
         }
 
-        public int? TongTien()
+        public string TongTien()
         {
-            return gioHang.Sum(e => e.SanPham.DonGia * e.SoLuong);
+            int? value = gioHang.Sum(e => e.SanPham.DonGia * e.SoLuong);
+            return string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", value);
         }
 
+        public string ThanhTien(int? a, int b)
+        {
+            int value = Convert.ToInt32(a) * b;
+            return string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", value);
+        }
         public int? TongSL()
         {
             return gioHang.Sum(e => e.SoLuong);

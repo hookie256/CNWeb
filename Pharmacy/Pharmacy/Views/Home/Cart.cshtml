@@ -33,7 +33,7 @@
 @if (Model.dongSP.Count() > 0)
 {
 <div class="site-section">
-    <form class="container" method="post" action="/Home/UpdateCart">
+    <form class="container" method="post" action="/Home/CapNhatGH">
         <div class="row mb-5">
             <div class="col-md-12" >
                 <div class="site-blocks-table">
@@ -49,7 +49,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @{ int i = 0;}
+                            @{ int i = 0; string mlt="";}
                             @foreach (CartItem it in Model.dongSP)
                             {
                                 <tr>
@@ -74,11 +74,12 @@
                                         </div>
 
                                     </td>
-                                    <td>@((it.SanPham.DonGia * it.SoLuong).ToString())</td>
+                                    <td>@Model.ThanhTien(it.SanPham.DonGia, it.SoLuong)₫</td>
                                     <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
 
                                 </tr>
                                 i += 1;
+                                mlt = it.SanPham.MaLoaiThuoc;
                             }
                         </tbody>
                     </table>
@@ -92,8 +93,8 @@
                     <div class="col-md-6 mb-3 mb-md-0">
                         <button type="submit" class="btn btn-primary btn-md btn-block">UPDATE GIỎ HÀNG</button>
                     </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-outline-primary btn-md btn-block">TIẾP TỤC MUA THUỐC</button>
+                    <div class="col-md-6">                       
+                        <a href="/Home/DanhMuc/@mlt" class="btn btn-outline-primary btn-md btn-block">TIẾP TỤC MUA THUỐC</a>
                     </div>
                 </div>
                 <div class="row">
@@ -122,7 +123,7 @@
                                 <span class="text-black">Tổng</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">@Model.TongTien().ToString()đ</strong>
+                                <strong class="text-black">@Model.TongTien()₫</strong>
                             </div>
                         </div>
                         <div class="row mb-5">
@@ -130,7 +131,7 @@
                                 <span class="text-black">Thanh toán</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">@Model.TongTien().ToString()đ</strong>
+                                <strong class="text-black">@Model.TongTien()₫</strong>
                             </div>
                         </div>
 
