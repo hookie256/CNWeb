@@ -1,4 +1,4 @@
-namespace Model.EF
+namespace Pharmacy.Models.EF
 {
     using System;
     using System.Collections.Generic;
@@ -45,6 +45,14 @@ namespace Model.EF
 
         [StringLength(15)]
         public string MaNhaCungCap { get; set; }
+
+        [StringLength(50)]
+        public string UrlImage { get; set; }
+
+        [StringLength(9)]
+        public string Tien { get; set; }
+
+        public string TimKiem { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETPHIEUXUAT> CHITIETPHIEUXUATs { get; set; }

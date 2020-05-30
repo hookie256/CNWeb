@@ -1,4 +1,4 @@
-namespace Model.EF
+namespace Pharmacy.Models.EF
 {
     using System;
     using System.Collections.Generic;

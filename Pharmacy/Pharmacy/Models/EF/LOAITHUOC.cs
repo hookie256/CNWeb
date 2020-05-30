@@ -1,4 +1,4 @@
-namespace Model.EF
+namespace Pharmacy.Models.EF
 {
     using System;
     using System.Collections.Generic;
@@ -21,6 +21,8 @@ namespace Model.EF
 
         [StringLength(30)]
         public string TenLoaiThuoc { get; set; }
+
+        public string ParentID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<THUOC> THUOCs { get; set; }

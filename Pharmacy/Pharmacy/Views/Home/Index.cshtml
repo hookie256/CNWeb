@@ -1,13 +1,28 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var listTopProducts = (List<Pharmacy.Models.EF.THUOC>)ViewBag.TopProducts;
+    var listNewProducts = (List<Pharmacy.Models.EF.THUOC>)ViewBag.NewProducts;
+}
+@section headlink
+{
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/Assets/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Assets/css/aos.css">
+    <link rel="stylesheet" href="~/Assets/css/a.css">
+    <link rel="stylesheet" href="~/Assets/css/style.css">
 }
 <div id="slider">
     <figure>
-        <a href="Shop"><img src="~/Assets/images/1.png" alt="Image"></a>
-        <a href="Shop"><img src="~/Assets/images/2.png" alt="Image"></a>
-        <a href="Shop"><img src="~/Assets/images/3.png" alt="Image"></a>
-        <a href="Shop"><img src="~/Assets/images/4.png" alt="Image"></a>
+        <a href="/Home/Xemtatca"><img src="~/Assets/images/1.png" alt="Image"></a>
+        <a href="/Home/Xemtatca"><img src="~/Assets/images/2.png" alt="Image"></a>
+        <a href="/Home/Xemtatca"><img src="~/Assets/images/3.png" alt="Image"></a>
+        <a href="/Home/Xemtatca"><img src="~/Assets/images/4.png" alt="Image"></a>
     </figure>
 </div>
 <div class="site-blocks-cover" style="background-image: url('../../Assets/images/hero_1.jpg');">
@@ -18,7 +33,7 @@
                     <h4 class="sub-title size1of2"><i>Mang lại những giá trị và trải nghiệm vượt trội cho sức khoẻ khách hàng qua hệ thống mua sắm online của nhà thuốc Pharmacy</i></h4>
                     <h1>Chào mừng đến với nhà thuốc Pharmacy</h1>
                     <p>
-                        <a href="Shop" class="btn btn-primary px-5 py-3"><b>Mua ngay</b></a>
+                        <a href="/Home/Xemtatca" class="btn btn-primary px-5 py-3"><b>Mua ngay</b></a>
                     </p>
                 </div>
             </div>
@@ -75,44 +90,22 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                <span class="tag">Sale</span>
-                <a href="1 thuốc.html"> <img src="~/Assets/images/product_01.png" alt="Image"></a>
-                <h3 class="text-dark"><a href="#">Bioderma</a></h3>
-                <p class="price"><del>95.000₫</del> &mdash; <font color="red"><b>50.000₫</b></font></p>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                <a href="1 thuốc.html"> <img src="~/Assets/images/product_02.png" alt="Image"></a>
-                <h3 class="text-dark"><a href="#">Chanca Piedra</a></h3>
-                <p class="price">70.000₫</p>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                <a href="1 thuốc.html"> <img src="~/Assets/images/product_03.png" alt="Image"></a>
-                <h3 class="text-dark"><a href="#">Umcka Cold Care</a></h3>
-                <p class="price">120.000₫</p>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-
-                <a href="1 thuốc.html"> <img src="~/Assets/images/product_04.png" alt="Image"></a>
-                <h3 class="text-dark"><a href="#">Cetyl Pure</a></h3>
-                <p class="price"><del>45.000₫</del> &mdash; <font color="red"><b>20.000₫</b></font></p>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                <a href="1 thuốc.html"> <img src="~/Assets/images/product_05.png" alt="Image"></a>
-                <h3 class="text-dark"><a href="#">CLA Core</a></h3>
-                <p class="price">38.000₫</p>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                <span class="tag">Sale</span>
-                <a href="1 thuốc.html"> <img src="~/Assets/images/product_06.png" alt="Image"></a>
-                <h3 class="text-dark"><a href="#">Poo Pourri</a></h3>
-                <p class="price"><del>89.000₫</del> &mdash; <font color="red"><b>38.000₫</b></font></p>
-            </div>
+            @foreach (var pr in listTopProducts)
+            {
+                <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                    <a href="/Home/ShopSingle/@pr.MaThuoc"> <img src="~/Assets/images/@pr.UrlImage" alt="Image"></a>
+                    <h3 class="text-dark"><a href="/Home/ShopSingle/@pr.MaThuoc">@pr.TenThuoc</a></h3>
+                    <p class="price">
+                        <b>
+                            @pr.Tien₫
+                        </b>
+                    </p>
+                </div>
+            }
         </div>
         <div class="row mt-5">
             <div class="col-12 text-center">
-                <a href="#" class="btn btn-primary px-4 py-3">Xem tất cả</a>
+                <a href="/Home/Xemtatca" class="btn btn-primary px-4 py-3">Xem tất cả</a>
             </div>
         </div>
     </div>
@@ -129,90 +122,16 @@
         <div class="row">
             <div class="col-md-12 block-3 products-wrap">
                 <div class="nonloop-block-3 owl-carousel">
-
-                    <div class="text-center item mb-4">
-                        <a href="1 thuốc.html"> <img src="~/Assets/images/product_03.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="#">Umcka Cold Care</a></h3>
-                        <p class="price">120.000₫</p>
-                    </div>
-
-                    <div class="text-center item mb-4">
-                        <a href="1 thuốc.html"> <img src="~/Assets/images/product_01.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="#">Umcka Cold Care</a></h3>
-                        <p class="price">120.000₫</p>
-                    </div>
-
-                    <div class="text-center item mb-4">
-                        <a href="1 thuốc.html"> <img src="~/Assets/images/product_02.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="#">Umcka Cold Care</a></h3>
-                        <p class="price">120.000₫</p>
-                    </div>
-
-                    <div class="text-center item mb-4">
-                        <a href="1 thuốc.html"> <img src="~/Assets/images/product_04.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="#">Umcka Cold Care</a></h3>
-                        <p class="price">120.000₫</p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="site-section">
-    <div class="container">
-        <div class="row">
-            <div class="title-section text-center col-12">
-                <h2 class="text-uppercase">Nhận xét & Đánh giá</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 block-3 products-wrap">
-                <div class="nonloop-block-3 no-direction owl-carousel">
-
-                    <div class="testimony">
-                        <blockquote>
-                            <img src="~/Assets/images/person_1.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                            <p>&ldquo;Tôi rất hài lòng về dịch vụ và nhà thuốc giao hàng rất nhanh, đúng mẫu mã.&rdquo;</p>
-                        </blockquote>
-
-                        <p>&mdash; Kelly Holmes</p>
-                    </div>
-
-                    <div class="testimony">
-                        <blockquote>
-                            <img src="~/Assets/images/person_2.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                            <p>
-                                &ldquo;Tôi rất hài lòng về dịch vụ và nhà thuốc giao hàng rất nhanh, đúng mẫu mã.&rdquo;
+                    @foreach (var i in listNewProducts)
+                    {
+                        <div class="text-center item mb-4">
+                            <a href="/Home/ShopSingle/@i.MaThuoc"> <img src="~/Assets/images/@i.UrlImage" alt="Image"></a>
+                            <h3 class="text-dark"><a href="/Home/ShopSingle/@i.MaThuoc">@i.TenThuoc</a></h3>
+                            <p class="price">
+                                <b>@i.Tien₫</b> 
                             </p>
-                        </blockquote>
-
-                        <p>&mdash; Rebecca Morando</p>
-                    </div>
-
-                    <div class="testimony">
-                        <blockquote>
-                            <img src="~/Assets/images/person_3.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                            <p>
-                                &ldquo;Tôi rất hài lòng về dịch vụ và nhà thuốc giao hàng rất nhanh, đúng mẫu mã.&rdquo;
-                            </p>
-                        </blockquote>
-
-                        <p>&mdash; Lucas Gallone</p>
-                    </div>
-
-                    <div class="testimony">
-                        <blockquote>
-                            <img src="~/Assets/images/person_4.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                            <p>
-                                &ldquo;Tôi rất hài lòng về dịch vụ và nhà thuốc giao hàng rất nhanh, đúng mẫu mã.&rdquo;
-                            </p>
-                        </blockquote>
-
-                        <p>&mdash; Andrew Neel</p>
-                    </div>
-
+                        </div>
+                    }
                 </div>
             </div>
         </div>
