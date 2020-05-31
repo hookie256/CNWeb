@@ -4,6 +4,8 @@ using PagedList;
 using Pharmacy.Models.EF;
 using Pharmacy.Models.DAO;
 using System;
+using System.Runtime.Remoting.Messaging;
+
 namespace Pharmacy.Controllers
 {
     public class HomeController : Controller
@@ -74,7 +76,8 @@ namespace Pharmacy.Controllers
             }
             return View(gioHang);
         }
-        //Thêm sản phẩm
+
+        //Thêm sản phẩm vào giỏ hàng
         public ActionResult ThemSP(string id,string soluong,string returnURL)
         {
             var sp = db.THUOCs.Find(id);
@@ -100,6 +103,7 @@ namespace Pharmacy.Controllers
             }
             return Redirect(returnURL);
         }
+
         //Cập nhật giỏ hàng
         public ActionResult CapNhatGH(string[] masp, int[] sl)
         {
@@ -118,6 +122,22 @@ namespace Pharmacy.Controllers
 
             return RedirectToAction("Cart");
 
+        }
+
+        // Xóa SP khỏi giỏ hàng
+        public ActionResult XoaSP(string id)
+        {
+            var sp = db.THUOCs.Find(id);
+            var gioHang = (Cart)Session["GioHangTam"];
+
+            if (gioHang != null)
+            {
+                gioHang.XoaSP(sp);
+                //Gán sp vào Session
+                Session["CartSession"] = gioHang;
+            }
+
+            return RedirectToAction("Cart");
         }
 
         public ActionResult Register()

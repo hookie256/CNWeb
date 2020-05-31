@@ -61,7 +61,7 @@ namespace Pharmacy.Models.DAO
             }
         }
 
-        public void xoaSP(THUOC sp)
+        public void XoaSP(THUOC sp)
         {
             gioHang.RemoveAll(l => l.SanPham.MaThuoc == sp.MaThuoc);
         }
