@@ -6,25 +6,27 @@ namespace Pharmacy.Models.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("CHITIETPHIEUXUAT")]
-    public partial class CHITIETPHIEUXUAT
+    [Table("CHITIETHOADON")]
+    public partial class CHITIETHOADON
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(20)]
-        public string MaPhieuXuat { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int MaHoaDon { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [StringLength(20)]
         public string MaThuoc { get; set; }
 
-        public int? SoLuong { get; set; }
-
         public int? DonGia { get; set; }
 
-        public virtual PHIEUXUAT PHIEUXUAT { get; set; }
+        public int? SoLuong { get; set; }
+
+        public virtual HOADON HOADON { get; set; }
 
         public virtual THUOC THUOC { get; set; }
+
+        public virtual THUOC THUOC1 { get; set; }
     }
 }

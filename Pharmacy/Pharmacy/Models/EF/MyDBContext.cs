@@ -12,22 +12,17 @@ namespace Pharmacy.Models.EF
         {
         }
 
-        public virtual DbSet<CHITIETPHIEUXUAT> CHITIETPHIEUXUATs { get; set; }
+        public virtual DbSet<CHITIETHOADON> CHITIETHOADONs { get; set; }
         public virtual DbSet<HANGSANXUAT> HANGSANXUATs { get; set; }
+        public virtual DbSet<HOADON> HOADONs { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
         public virtual DbSet<LOAITHUOC> LOAITHUOCs { get; set; }
         public virtual DbSet<NHACUNGCAP> NHACUNGCAPs { get; set; }
-        public virtual DbSet<PHIEUXUAT> PHIEUXUATs { get; set; }
         public virtual DbSet<THUOC> THUOCs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CHITIETPHIEUXUAT>()
-                .Property(e => e.MaPhieuXuat)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CHITIETPHIEUXUAT>()
+            modelBuilder.Entity<CHITIETHOADON>()
                 .Property(e => e.MaThuoc)
                 .IsFixedLength()
                 .IsUnicode(false);
@@ -36,6 +31,19 @@ namespace Pharmacy.Models.EF
                 .Property(e => e.MaHangSX)
                 .IsFixedLength()
                 .IsUnicode(false);
+
+            modelBuilder.Entity<HOADON>()
+                .Property(e => e.SoDienThoai)
+                .IsFixedLength();
+
+            modelBuilder.Entity<HOADON>()
+                .Property(e => e.Email)
+                .IsFixedLength();
+
+            modelBuilder.Entity<HOADON>()
+                .HasMany(e => e.CHITIETHOADONs)
+                .WithRequired(e => e.HOADON)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<KHACHHANG>()
                 .Property(e => e.MaKhachHang)
@@ -57,6 +65,11 @@ namespace Pharmacy.Models.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<LOAITHUOC>()
+                .Property(e => e.ParentID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<LOAITHUOC>()
                 .HasMany(e => e.THUOCs)
                 .WithRequired(e => e.LOAITHUOC)
                 .WillCascadeOnDelete(false);
@@ -65,21 +78,6 @@ namespace Pharmacy.Models.EF
                 .Property(e => e.MaNhaCungCap)
                 .IsFixedLength()
                 .IsUnicode(false);
-
-            modelBuilder.Entity<PHIEUXUAT>()
-                .Property(e => e.MaPhieuXuat)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<PHIEUXUAT>()
-                .Property(e => e.MaKhachHang)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<PHIEUXUAT>()
-                .HasMany(e => e.CHITIETPHIEUXUATs)
-                .WithRequired(e => e.PHIEUXUAT)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<THUOC>()
                 .Property(e => e.MaThuoc)
@@ -115,8 +113,15 @@ namespace Pharmacy.Models.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<THUOC>()
-                .HasMany(e => e.CHITIETPHIEUXUATs)
+                .HasMany(e => e.CHITIETHOADONs)
                 .WithRequired(e => e.THUOC)
+                .HasForeignKey(e => e.MaThuoc)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<THUOC>()
+                .HasMany(e => e.CHITIETHOADONs1)
+                .WithRequired(e => e.THUOC1)
+                .HasForeignKey(e => e.MaThuoc)
                 .WillCascadeOnDelete(false);
         }
     }

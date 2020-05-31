@@ -6,26 +6,32 @@ namespace Pharmacy.Models.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("LOAITHUOC")]
-    public partial class LOAITHUOC
+    [Table("HOADON")]
+    public partial class HOADON
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LOAITHUOC()
+        public HOADON()
         {
-            THUOCs = new HashSet<THUOC>();
+            CHITIETHOADONs = new HashSet<CHITIETHOADON>();
         }
 
         [Key]
+        public int MaHoaDon { get; set; }
+
+        [StringLength(50)]
+        public string TenKhachHang { get; set; }
+
+        public string DiaChi { get; set; }
+
         [StringLength(15)]
-        public string MaLoaiThuoc { get; set; }
+        public string SoDienThoai { get; set; }
 
-        [StringLength(30)]
-        public string TenLoaiThuoc { get; set; }
+        [StringLength(50)]
+        public string Email { get; set; }
 
-        [StringLength(10)]
-        public string ParentID { get; set; }
+        public string GhiChu { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<THUOC> THUOCs { get; set; }
+        public virtual ICollection<CHITIETHOADON> CHITIETHOADONs { get; set; }
     }
 }

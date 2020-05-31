@@ -1,4 +1,5 @@
-﻿
+﻿@using Pharmacy.Models.DAO;
+@model Cart
 @{
     ViewBag.Title = "ThanhToan";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -33,44 +34,22 @@
         <div class="row mb-5">
             <div class="col-md-12">
                 <div class="bg-light rounded p-3">
-                    <p class="mb-0">Bạn chưa đăng nhập? <a href="#" class="d-inline-block">Nhấn vào đây <href ="đăng nhập.html"></href></a> để đăng nhập vào tài khoản của bạn.</p>
+                    <p class="mb-0">Bạn chưa đăng nhập? <a href="/Home/Login" class="d-inline-block">Nhấn vào đây</a> để đăng nhập vào tài khoản của bạn.</p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 mb-5 mb-md-0">
                 <h2 class="h3 mb-3 text-black">Chi tiết thanh toán</h2>
-                <div class="p-3 p-lg-5 border">
-                    <div class="form-group">
-                        <label for="c_country" class="text-black">Đất nước: <span class="text-danger">*</span></label>
-                        <select id="c_country" class="form-control">
-                            <option value="1">Lựa chọn đất nước..</option>
-                            <option value="2">Bangladesh</option>
-                            <option value="3">Algeria</option>
-                            <option value="4">Afghanistan</option>
-                            <option value="5">Ghana</option>
-                            <option value="6">Albania</option>
-                            <option value="7">Bahrain</option>
-                            <option value="8">Colombia</option>
-                            <option value="9">Dominican Republic</option>
-                            <option value="10">Khác</option>
-                        </select>
-                    </div>
+                <div class="p-3 p-lg-5 border">                   
                     <div class="form-group row">
-                        <div class="col-md-6">
-                            <label for="c_fname" class="text-black">Tên: <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="c_fname" name="c_fname">
-                        </div>
                         <div class="col-md-6">
                             <label for="c_lname" class="text-black">Họ: <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="c_lname" name="c_lname">
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <label for="c_companyname" class="text-black">Tên công ty: </label>
-                            <input type="text" class="form-control" id="c_companyname" name="c_companyname">
+                        <div class="col-md-6">
+                            <label for="c_fname" class="text-black">Tên: <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="c_fname" name="c_fname">
                         </div>
                     </div>
 
@@ -83,18 +62,7 @@
 
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Số nhà, tòa,... (tùy chọn)">
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <label for="c_state_country" class="text-black">Bang/Nước: <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="c_state_country" name="c_state_country">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="c_postal_zip" class="text-black">Mã vùng: <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
-                        </div>
-                    </div>
+                    </div>                 
 
                     <div class="form-group row mb-5">
                         <div class="col-md-6">
@@ -102,8 +70,8 @@
                             <input type="text" class="form-control" id="c_email_address" name="c_email_address">
                         </div>
                         <div class="col-md-6">
-                            <label for="c_phone" class="text-black">SĐT: <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Số điện thoại..">
+                            <label for="c_phone" class="text-black">Số điện thoại: <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="">
                         </div>
                     </div>
 
@@ -135,80 +103,36 @@
                         </label>
                         <div class="collapse" id="ship_different_address">
                             <div class="py-2">
-
-                                <div class="form-group">
-                                    <label for="c_diff_country" class="text-black">Đất nước: <span class="text-danger">*</span></label>
-                                    <select id="c_diff_country" class="form-control">
-                                        <option value="1">Lựa chọn đất nước..</option>
-                                        <option value="2">Bangladesh</option>
-                                        <option value="3">Algeria</option>
-                                        <option value="4">Afghanistan</option>
-                                        <option value="5">Ghana</option>
-                                        <option value="6">Albania</option>
-                                        <option value="7">Bahrain</option>
-                                        <option value="8">Colombia</option>
-                                        <option value="9">Dominican Republic</option>
-                                        <option value="10">Khác</option>
-                                    </select>
-                                </div>
-
-
                                 <div class="form-group row">
                                     <div class="col-md-6">
-                                        <label for="c_diff_fname" class="text-black">Tên: <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="c_diff_fname" name="c_diff_fname">
+                                        <label for="c_lname" class="text-black">Họ: <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="c_lname" name="c_lname">
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="c_diff_lname" class="text-black">Họ: <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="c_diff_lname" name="c_diff_lname">
+                                        <label for="c_fname" class="text-black">Tên: <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="c_fname" name="c_fname">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-md-12">
-                                        <label for="c_diff_companyname" class="text-black">Tên công ty: </label>
-                                        <input type="text" class="form-control" id="c_diff_companyname" name="c_diff_companyname">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <label for="c_diff_address" class="text-black">Địa chỉ: <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="c_diff_address" name="c_diff_address"
-                                               placeholder="Địa chỉ đường">
+                                        <label for="c_address" class="text-black">Địa chỉ giao hàng: <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="c_address" name="c_address" placeholder="Địa chỉ đường">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Nhà, tòa, ... (tùy chọn)">
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-6">
-                                        <label for="c_diff_state_country" class="text-black">
-                                            Bang/Nước: <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="text" class="form-control" id="c_diff_state_country" name="c_diff_state_country">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="c_diff_postal_zip" class="text-black">
-                                            Mã vùng: <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="text" class="form-control" id="c_diff_postal_zip" name="c_diff_postal_zip">
-                                    </div>
+                                    <input type="text" class="form-control" placeholder="Số nhà, tòa,... (tùy chọn)">
                                 </div>
 
                                 <div class="form-group row mb-5">
                                     <div class="col-md-6">
-                                        <label for="c_diff_email_address" class="text-black">
-                                            Địa chỉ Email: <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="text" class="form-control" id="c_diff_email_address" name="c_diff_email_address">
+                                        <label for="c_email_address" class="text-black">Địa chỉ Email: <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="c_email_address" name="c_email_address">
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="c_diff_phone" class="text-black">SĐT: <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="c_diff_phone" name="c_diff_phone"
-                                               placeholder="Số điện thoại">
+                                        <label for="c_phone" class="text-black">Số điện thoại: <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="">
                                     </div>
                                 </div>
 
@@ -255,18 +179,22 @@
                                     <th>Giá tiền</th>
                                 </thread>
                                 <tbody>
-                                    <tr>
-                                        <td>sp1 <strong class="mx-2">x</strong> 1</td>
-                                        <td>55.000đ</td>
-                                    </tr>
+                                    @foreach (CartItem it in Model.dongSP)
+                                    {
+                                        <tr>
+                                            <td>@it.SanPham.TenThuoc <strong class="mx-2">x</strong>@it.SoLuong</td>
+                                            <td>@it.SanPham.Tien₫</td>
+                                        </tr>
+                                    }
                                     <tr>
                                         <td class="text-black font-weight-bold">Giảm giá<strong></strong></td>
                                         <td class="text-black">0đ</td>
                                     </tr>
                                     <tr>
                                         <td class="text-black font-weight-bold"><strong>Thành tiền</strong></td>
-                                        <td class="text-black font-weight-bold"><strong>55.000đ</strong></td>
+                                        <td class="text-black font-weight-bold"><strong>@Model.TongTien()</strong></td>
                                     </tr>
+
                                 </tbody>
                             </table>
 
@@ -278,8 +206,7 @@
 
                                 <div class="collapse" id="collapsebank">
                                     <div class="py-2 px-4">
-                                        <p class="mb-0">
-                                            Chuyển tiền vào TK ngân hàng của chúng tôi. Hãy ghi rõ Mã đơn hàng trong phần Lời nhắn.
+                                        <p class="mb-0">                                          
                                             Đơn hàng của bạn sẽ không được giao nếu như chưa thanh toán.
                                         </p>
                                     </div>
@@ -289,34 +216,17 @@
                             <div class="border mb-3">
                                 <h3 class="h6 mb-0">
                                     <a class="d-block" data-toggle="collapse" href="#collapsecheque" role="button"
-                                       aria-expanded="false" aria-controls="collapsecheque">Trả bằng chi phiếu</a>
+                                       aria-expanded="false" aria-controls="collapsecheque">Trả bằng tiền mặt</a>
                                 </h3>
 
                                 <div class="collapse" id="collapsecheque">
                                     <div class="py-2 px-4">
                                         <p class="mb-0">
-                                            Chuyển tiền vào TK ngân hàng của chúng tôi. Hãy ghi rõ Mã đơn hàng trong phần Lời nhắn.
                                             Đơn hàng của bạn sẽ không được giao nếu như chưa thanh toán.
                                         </p>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="border mb-5">
-                                <h3 class="h6 mb-0">
-                                    <a class="d-block" data-toggle="collapse" href="#collapsepaypal" role="button"
-                                       aria-expanded="false" aria-controls="collapsepaypal">Trả bằng TK PAYPAL</a>
-                                </h3>
-
-                                <div class="collapse" id="collapsepaypal">
-                                    <div class="py-2 px-4">
-                                        <p class="mb-0">
-                                            Chuyển tiền vào TK ngân hàng của chúng tôi. Hãy ghi rõ Mã đơn hàng trong phần Lời nhắn.
-                                            Đơn hàng của bạn sẽ không được giao nếu như chưa thanh toán.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            </div>                     
 
                             <div class="form-group">
                                 <button class="btn btn-primary btn-lg btn-block" onclick="window.location='lời cảm ơn.html'">Xác nhận đặt hàng</button>

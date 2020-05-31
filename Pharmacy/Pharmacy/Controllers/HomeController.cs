@@ -117,7 +117,7 @@ namespace Pharmacy.Controllers
                     gioHang.capnhatSP(sp, sl[i]);
                 }
 
-                Session["CartSession"] = gioHang;
+                Session["GioHangTam"] = gioHang;
             }
 
             return RedirectToAction("Cart");
@@ -134,10 +134,45 @@ namespace Pharmacy.Controllers
             {
                 gioHang.XoaSP(sp);
                 //Gán sp vào Session
-                Session["CartSession"] = gioHang;
+                Session["GioHangTam"] = gioHang;
             }
 
             return RedirectToAction("Cart");
+        }
+
+
+        //Thanh Toán
+        [HttpGet]
+        public ActionResult ThanhToan()
+        {
+            var gioHang = (Cart)Session["GioHangTam"];
+            if (gioHang == null)
+            {
+                gioHang = new Cart();
+            }
+            return View(gioHang);
+        }
+
+        [HttpPost]
+        public ActionResult ThanhToan(HOADON model)
+        {
+            db.HOADONs.Add(model);
+            db.SaveChanges();
+            var gioHang = (Cart)Session["GioHangTam"];
+            foreach (var item in gioHang.dongSP)
+            {
+                CHITIETHOADON obj = new CHITIETHOADON();
+                obj.MaHoaDon = model.MaHoaDon;
+                obj.MaThuoc = item.SanPham.MaThuoc;
+                obj.DonGia = item.SanPham.DonGia;
+                obj.SoLuong = item.SoLuong;
+
+                db.CHITIETHOADONs.Add(obj);
+                db.SaveChanges();
+            }
+            gioHang.XoaToanBo();
+            Session["GioHangTam"] = gioHang;
+            return View("ThankYou");
         }
 
         public ActionResult Register()
@@ -150,10 +185,7 @@ namespace Pharmacy.Controllers
             return View();
         }
 
-        public ActionResult ThanhToan()
-        {
-            return View();
-        }
+       
 
         public ActionResult ShopSingle(string id)
         {
