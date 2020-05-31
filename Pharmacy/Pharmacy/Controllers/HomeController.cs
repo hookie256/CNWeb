@@ -152,7 +152,6 @@ namespace Pharmacy.Controllers
             }
             return View(gioHang);
         }
-
         [HttpPost]
         public ActionResult ThanhToan(HOADON model)
         {
@@ -185,7 +184,10 @@ namespace Pharmacy.Controllers
             return View();
         }
 
-       
+        public ActionResult ThankYou()
+        {
+            return View();
+        }
 
         public ActionResult ShopSingle(string id)
         {

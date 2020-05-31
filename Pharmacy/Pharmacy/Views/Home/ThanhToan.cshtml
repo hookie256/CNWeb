@@ -168,74 +168,74 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="row mb-5">
-                    <div class="col-md-12">
-                        <h2 class="h3 mb-3 text-black">Giỏ hàng của bạn</h2>
-                        <div class="p-3 p-lg-5 border">
-                            <table class="table site-block-order-table mb-5">
-                                <thread>
-                                    <th>Sản phẩm</th>
-                                    <th>Giá tiền</th>
-                                </thread>
-                                <tbody>
-                                    @foreach (CartItem it in Model.dongSP)
-                                    {
+                <form method="post">
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            <h2 class="h3 mb-3 text-black">Giỏ hàng của bạn</h2>
+                            <div class="p-3 p-lg-5 border">
+                                <table class="table site-block-order-table mb-5">
+                                    <thread>
+                                        <th>Sản phẩm</th>
+                                        <th>Giá tiền</th>
+                                    </thread>
+                                    <tbody>
+                                        @foreach (CartItem it in Model.dongSP)
+                                        {
+                                            <tr>
+                                                <td>@it.SanPham.TenThuoc <strong class="mx-2">x</strong>@it.SoLuong</td>
+                                                <td>@it.SanPham.Tien₫</td>
+                                            </tr>
+                                        }
                                         <tr>
-                                            <td>@it.SanPham.TenThuoc <strong class="mx-2">x</strong>@it.SoLuong</td>
-                                            <td>@it.SanPham.Tien₫</td>
+                                            <td class="text-black font-weight-bold">Giảm giá<strong></strong></td>
+                                            <td class="text-black">0đ</td>
                                         </tr>
-                                    }
-                                    <tr>
-                                        <td class="text-black font-weight-bold">Giảm giá<strong></strong></td>
-                                        <td class="text-black">0đ</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-black font-weight-bold"><strong>Thành tiền</strong></td>
-                                        <td class="text-black font-weight-bold"><strong>@Model.TongTien()</strong></td>
-                                    </tr>
+                                        <tr>
+                                            <td class="text-black font-weight-bold"><strong>Thành tiền</strong></td>
+                                            <td class="text-black font-weight-bold"><strong>@Model.TongTien()</strong></td>
+                                        </tr>
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
 
-                            <div class="border mb-3">
-                                <h3 class="h6 mb-0">
-                                    <a class="d-block" data-toggle="collapse" href="#collapsebank" role="button"
-                                       aria-expanded="false" aria-controls="collapsebank">Trả bằng TK ngân hàng</a>
-                                </h3>
+                                <div class="border mb-3">
+                                    <h3 class="h6 mb-0">
+                                        <a class="d-block" data-toggle="collapse" href="#collapsebank" role="button"
+                                           aria-expanded="false" aria-controls="collapsebank">Trả bằng TK ngân hàng</a>
+                                    </h3>
 
-                                <div class="collapse" id="collapsebank">
-                                    <div class="py-2 px-4">
-                                        <p class="mb-0">                                          
-                                            Đơn hàng của bạn sẽ không được giao nếu như chưa thanh toán.
-                                        </p>
+                                    <div class="collapse" id="collapsebank">
+                                        <div class="py-2 px-4">
+                                            <p class="mb-0">
+                                                Đơn hàng của bạn sẽ không được giao nếu như chưa thanh toán.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="border mb-3">
-                                <h3 class="h6 mb-0">
-                                    <a class="d-block" data-toggle="collapse" href="#collapsecheque" role="button"
-                                       aria-expanded="false" aria-controls="collapsecheque">Trả bằng tiền mặt</a>
-                                </h3>
+                                <div class="border mb-3">
+                                    <h3 class="h6 mb-0">
+                                        <a class="d-block" data-toggle="collapse" href="#collapsecheque" role="button"
+                                           aria-expanded="false" aria-controls="collapsecheque">Trả bằng tiền mặt</a>
+                                    </h3>
 
-                                <div class="collapse" id="collapsecheque">
-                                    <div class="py-2 px-4">
-                                        <p class="mb-0">
-                                            Đơn hàng của bạn sẽ không được giao nếu như chưa thanh toán.
-                                        </p>
+                                    <div class="collapse" id="collapsecheque">
+                                        <div class="py-2 px-4">
+                                            <p class="mb-0">
+                                                Đơn hàng của bạn sẽ không được giao nếu như chưa thanh toán.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>                     
 
-                            <div class="form-group">
-                                <button class="btn btn-primary btn-lg btn-block" onclick="window.location='lời cảm ơn.html'">Xác nhận đặt hàng</button>
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-lg btn-block" onclick="window.location='ThankYou'">Xác nhận đặt hàng</button>
+                                </div>
+
                             </div>
-
                         </div>
                     </div>
-                </div>
-
+                </form>
             </div>
         </div>
     </div>
