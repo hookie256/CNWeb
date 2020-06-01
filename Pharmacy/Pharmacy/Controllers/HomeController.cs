@@ -5,6 +5,8 @@ using Pharmacy.Models.EF;
 using Pharmacy.Models.DAO;
 using System;
 using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Pharmacy.Controllers
 {
@@ -178,14 +180,44 @@ namespace Pharmacy.Controllers
             Session["GioHangTam"] = gioHang;
             return View("ThankYou");
         }
-
+        [HttpGet]
         public ActionResult Register()
         {
             return View();
         }
+        public string MaHoaMD5(string str)
+        {
+            MD5 mh = MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(str);
+            byte[] hash = mh.ComputeHash(inputBytes);
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("x2"));
+            }
+            return sb.ToString();
+        }
+        [HttpPost]
+        public ActionResult Register(string ho, string ten, string email, string pas1, string pas2)
+        {
+            KHACHHANG kh = new KHACHHANG();
+            kh.TenKhachHang = ho + " " + ten;
+            kh.MaKhachHang = MaHoaMD5(kh.TenKhachHang);
+            kh.Email = email;
+            if (pas1 == pas2)
+            {
+                kh.MatKhau = MaHoaMD5(pas1);
+            }
+            db.KHACHHANGs.Add(kh);
+            db.SaveChanges();
+            return View("Login");
+        }
 
         public ActionResult Login()
         {
+            //phần đăng nhập ý cái mật khẩu sử dụng hàm MaHoaMD5 rồi hãng so sánh nhé, vì t mã hóa mật khẩu rồi!
+
             return View();
         }
 

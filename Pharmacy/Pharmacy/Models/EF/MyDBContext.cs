@@ -51,12 +51,12 @@ namespace Pharmacy.Models.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<KHACHHANG>()
-                .Property(e => e.SoDienThoai)
+                .Property(e => e.Email)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<KHACHHANG>()
-                .Property(e => e.CMND_TCCCD)
+                .Property(e => e.MatKhau)
                 .IsFixedLength();
 
             modelBuilder.Entity<LOAITHUOC>()
