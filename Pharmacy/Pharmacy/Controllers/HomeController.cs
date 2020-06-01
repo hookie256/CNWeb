@@ -223,7 +223,7 @@ namespace Pharmacy.Controllers
         {
 
             var user = db.KHACHHANGs.SqlQuery("SELECT * FROM KHACHHANG WHERE Email = '" + email + "' AND MatKhau='" + MaHoaMD5(password) + "'").ToList();
-            if (user != null)
+            if (user.Count()!=0)
             {
                 return RedirectToAction("Index");
             }
