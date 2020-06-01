@@ -216,9 +216,21 @@ namespace Pharmacy.Controllers
 
         public ActionResult Login()
         {
-            //phần đăng nhập ý cái mật khẩu sử dụng hàm MaHoaMD5 rồi hãng so sánh nhé, vì t mã hóa mật khẩu rồi!
-            //mở web là vào đăng nhập trước nhá!
             return View();
+        }
+        [HttpPost]
+        public ActionResult LoginControl(string email, string password)
+        {
+
+            var user = db.KHACHHANGs.SqlQuery("SELECT * FROM KHACHHANG WHERE Email = '" + email + "' AND MatKhau='" + MaHoaMD5(password) + "'").ToList();
+            if (user != null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Login");
+            }
         }
 
         public ActionResult ThankYou()
