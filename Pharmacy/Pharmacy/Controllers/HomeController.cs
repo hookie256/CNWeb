@@ -153,8 +153,13 @@ namespace Pharmacy.Controllers
             return View(gioHang);
         }
         [HttpPost]
-        public ActionResult ThanhToan(HOADON model)
+        public ActionResult ThanhToan(HOADON model,string ho, string ten, string diachiduong,string sonha,string email, string sdt,string ghichu)
         {
+            model.TenKhachHang = ho + " " + ten;
+            model.DiaChi = sonha + " " + diachiduong;
+            model.Email = email;
+            model.SoDienThoai = sdt;
+            model.GhiChu = ghichu;
             db.HOADONs.Add(model);
             db.SaveChanges();
             var gioHang = (Cart)Session["GioHangTam"];
