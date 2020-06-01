@@ -17,7 +17,6 @@ namespace Pharmacy.Models.DAO
     public class Cart
     {
         private List<CartItem> gioHang = new List<CartItem>();
-
         public void themSP(THUOC sp, int sl)
         {
             CartItem dongSP = gioHang
