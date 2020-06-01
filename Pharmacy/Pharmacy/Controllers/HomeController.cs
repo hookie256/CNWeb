@@ -217,7 +217,7 @@ namespace Pharmacy.Controllers
         public ActionResult Login()
         {
             //phần đăng nhập ý cái mật khẩu sử dụng hàm MaHoaMD5 rồi hãng so sánh nhé, vì t mã hóa mật khẩu rồi!
-
+            //mở web là vào đăng nhập trước nhá!
             return View();
         }
 
