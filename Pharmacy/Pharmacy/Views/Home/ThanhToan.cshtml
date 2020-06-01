@@ -47,23 +47,23 @@
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="c_lname" class="text-black">Họ: <span class="text-danger" >*</span></label>
-                                <input type="text" class="form-control" id="c_lname" name="ho" required>
+                                <input type="text" class="form-control" id="c_lname" name="ho" required oninvalid="setCustomValidity('Mời nhập đầy đủ thông tin!')">
                             </div>
                             <div class="col-md-6">
                                 <label for="c_fname" class="text-black">Tên: <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_fname" name="ten" required>
+                                <input type="text" class="form-control" id="c_fname" name="ten" required oninvalid="setCustomValidity('Mời nhập đầy đủ thông tin!')">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <label for="c_address" class="text-black">Địa chỉ giao hàng: <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_address" name="diachiduong" placeholder="Địa chỉ đường" required>
+                                <input type="text" class="form-control" id="c_address" name="diachiduong" placeholder="Địa chỉ đường" required oninvalid="setCustomValidity('Mời nhập đầy đủ thông tin!')">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" name="sonha" placeholder="Số nhà, tòa,... (tùy chọn)" required>
+                            <input type="text" class="form-control" name="sonha" placeholder="Số nhà, tòa,... (tùy chọn)" required oninvalid="setCustomValidity('Mời nhập đầy đủ thông tin!')">
                         </div>
 
                         <div class="form-group row mb-5">
@@ -73,7 +73,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="c_phone" class="text-black">Số điện thoại: <span class="text-danger">*</span></label>
-                                <input type="text" pattern="(\+84|0)\d{9,10}" class="form-control" id="c_phone" name="sdt" placeholder="" required>
+                                <input type="text" pattern="(\+84|0)\d{9,10}" class="form-control" id="c_phone" name="sdt" placeholder="" required oninvalid="setCustomValidity('Mời nhập đầy đủ thông tin!')">
                             </div>
                         </div>
                         
@@ -94,54 +94,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="c_ship_different_address" class="text-black" data-toggle="collapse"
-                                   href="#ship_different_address" role="button" aria-expanded="false"
-                                   aria-controls="ship_different_address">
-                                <input type="checkbox" value="1" id="c_ship_different_address">
-                                Bạn muốn giao hàng tới địa chỉ khác?
-                            </label>
-                            <div class="collapse" id="ship_different_address">
-                                <div class="py-2">
-                                    <div class="form-group row">
-                                        <div class="col-md-6">
-                                            <label for="c_lname" class="text-black">Họ: <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="_ho" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="c_fname" class="text-black">Tên: <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="_ten" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <div class="col-md-12">
-                                            <label for="c_address" class="text-black">Địa chỉ giao hàng: <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="_diachiduong" placeholder="Địa chỉ đường" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="_sonha" placeholder="Số nhà, tòa,... (tùy chọn)" required>
-                                    </div>
-
-                                    <div class="form-group row mb-5">
-                                        <div class="col-md-6">
-                                            <label for="c_email_address" class="text-black">Địa chỉ Email: <span class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" name="_email" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="c_phone" class="text-black">Số điện thoại: <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="_sdt" placeholder="" required>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
                         <div class="form-group">
                             <label for="c_order_notes" class="text-black">Lưu ý cho đơn hàng:</label>
                             <textarea name="ghichu" id="c_order_notes" cols="30" rows="5" class="form-control"
