@@ -12,7 +12,8 @@ namespace Pharmacy.Models.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public THUOC()
         {
-            CHITIETPHIEUXUATs = new HashSet<CHITIETPHIEUXUAT>();
+            CHITIETHOADONs = new HashSet<CHITIETHOADON>();
+            CHITIETHOADONs1 = new HashSet<CHITIETHOADON>();
         }
 
         [Key]
@@ -55,7 +56,10 @@ namespace Pharmacy.Models.EF
         public string TimKiem { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHITIETPHIEUXUAT> CHITIETPHIEUXUATs { get; set; }
+        public virtual ICollection<CHITIETHOADON> CHITIETHOADONs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CHITIETHOADON> CHITIETHOADONs1 { get; set; }
 
         public virtual HANGSANXUAT HANGSANXUAT { get; set; }
 

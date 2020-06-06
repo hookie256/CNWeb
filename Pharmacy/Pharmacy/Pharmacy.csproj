@@ -141,13 +141,13 @@
     </Compile>
     <Compile Include="Models\DAO\Cart.cs" />
     <Compile Include="Models\DAO\ProductDAO.cs" />
-    <Compile Include="Models\EF\CHITIETPHIEUXUAT.cs" />
+    <Compile Include="Models\EF\CHITIETHOADON.cs" />
     <Compile Include="Models\EF\HANGSANXUAT.cs" />
+    <Compile Include="Models\EF\HOADON.cs" />
     <Compile Include="Models\EF\KHACHHANG.cs" />
     <Compile Include="Models\EF\LOAITHUOC.cs" />
     <Compile Include="Models\EF\MyDBContext.cs" />
     <Compile Include="Models\EF\NHACUNGCAP.cs" />
-    <Compile Include="Models\EF\PHIEUXUAT.cs" />
     <Compile Include="Models\EF\THUOC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

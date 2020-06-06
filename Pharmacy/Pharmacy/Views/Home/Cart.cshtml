@@ -75,7 +75,10 @@
 
                                     </td>
                                     <td>@Model.ThanhTien(it.SanPham.DonGia, it.SoLuong)₫</td>
-                                    <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
+                                    <td class="product-remove">
+                                        <a href="/Home/XoaSP/@it.SanPham.MaThuoc" class="btn btn-primary height-auto btn-sm">X</a>
+                                    
+                                    </td>
 
                                 </tr>
                                 i += 1;
@@ -103,10 +106,10 @@
                         <p>Nhập mã giảm giá nếu bạn có mã giảm giá</p>
                     </div>
                     <div class="col-md-8 mb-3 mb-md-0">
-                        <input type="text" class="form-control py-3" id="coupon" placeholder="Nhập mã giảm giá...">
+                        <input type="text" class="form-control py-3" id="coupon" name ="coupon" placeholder="Nhập mã giảm giá...">
                     </div>
                     <div class="col-md-4">
-                        <button class="btn btn-primary btn-md px-4">Sử dụng</button>
+                        <button type="submit" class="btn btn-primary btn-md px-4">Sử dụng</button>
                     </div>
                 </div>
             </div>
@@ -137,10 +140,10 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-primary btn-lg btn-block" onclick="window.location='thanh toán.html'">
+                                <a class="btn btn-primary btn-lg btn-block" href="/Home/ThanhToan">
                                     THANH
                                     TOÁN
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -210,7 +210,6 @@ D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\EntityFramework.SqlServer.dll
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\Microsoft.Web.Infrastructure.dll
-D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\Model.dll
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\Newtonsoft.Json.dll
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\System.Web.Helpers.dll
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\System.Web.Mvc.dll
@@ -220,8 +219,6 @@ D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\System.Web.WebPages.dll
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\System.Web.WebPages.Razor.dll
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\WebGrease.dll
-D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\Model.pdb
-D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\Model.dll.config
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\EntityFramework.xml
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\EntityFramework.SqlServer.xml
 D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\System.Web.Helpers.xml
@@ -327,3 +324,7 @@ D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập nhóm\CNWeb\Pharmacy\Pharmacy\ob
 D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập nhóm\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.csproj.CopyComplete
 D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập nhóm\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.dll
 D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập nhóm\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.pdb
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\PagedList.dll
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\PagedList.Mvc.dll
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\PagedList.xml
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Pharmacy\bin\PagedList.Mvc.xml

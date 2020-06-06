@@ -9,12 +9,6 @@ namespace Pharmacy.Models.EF
     [Table("KHACHHANG")]
     public partial class KHACHHANG
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KHACHHANG()
-        {
-            PHIEUXUATs = new HashSet<PHIEUXUAT>();
-        }
-
         [Key]
         [StringLength(35)]
         public string MaKhachHang { get; set; }
@@ -24,15 +18,11 @@ namespace Pharmacy.Models.EF
         public string TenKhachHang { get; set; }
 
         [Required]
-        [StringLength(15)]
-        public string SoDienThoai { get; set; }
+        [StringLength(50)]
+        public string Email { get; set; }
 
-        [Column("CMND/TCCCD")]
         [Required]
-        [StringLength(12)]
-        public string CMND_TCCCD { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUXUAT> PHIEUXUATs { get; set; }
+        [StringLength(90)]
+        public string MatKhau { get; set; }
     }
 }
