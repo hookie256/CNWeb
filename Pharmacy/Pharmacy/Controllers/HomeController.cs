@@ -231,14 +231,24 @@ namespace Pharmacy.Controllers
         {
             return View();
         }
+
+        public ActionResult Logout()
+        {
+            Session[Common.CommonConstants.USER_SESSION] = null;
+            return View("Login");
+        }
         [HttpPost]
         public ActionResult LoginControl(string email, string password)
         {
             var user = db.KHACHHANGs.SqlQuery("SELECT * FROM KHACHHANG WHERE Email = '" + email + "' AND MatKhau='" + MaHoaMD5(password) + "'").ToList();
-            if (user.Count()!=0)
+            if (user.Count() != 0)
             {
                 foreach (KHACHHANG us in user)
                 {
+                    var userSession = new UserLogin();
+                    userSession.userID = us.Email;
+                    userSession.userName = us.TenKhachHang;
+                    Session.Add(Common.CommonConstants.USER_SESSION, userSession);
                     Response.Cookies["email"].Value = us.Email.ToString();
                     Response.Cookies["email"].Expires = DateTime.Now.AddDays(1);
                 }

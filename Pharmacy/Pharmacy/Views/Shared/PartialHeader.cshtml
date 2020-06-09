@@ -71,14 +71,32 @@
                         background-color: #3e8e41;
                     }
                 </style>
+
                 <div class="dropdown">
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Đăng nhập/Đăng ký" class="icons-btn d-inline-block bag">
-                        <span class="icon-user-circle-o"></span>
-                    </a>
-                    <div class="dropdown-content">
-                        <a href="/Home/Login">Đăng nhập</a>
-                        <a href="/Home/Register">Đăng ký</a>                        
-                    </div>
+                    @{
+                        var session = (UserLogin)Session[Pharmacy.Common.CommonConstants.USER_SESSION];
+                    }
+                    @if (session == null)
+                    {
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Đăng nhập/Đăng ký" class="icons-btn d-inline-block bag">
+                            <span class="icon-user-circle-o"></span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="/Home/Login">Đăng nhập</a>
+                            <a href="/Home/Register">Đăng ký</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="" class="icons-btn d-inline-block bag">
+                            <span class="icon-user-circle-o"></span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a>Chào @session.userName,</a>
+                            @Html.ActionLink("Thoát", "Logout")
+                        </div>
+                    }
+
                 </div>
                 <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none">
                     <span class="icon-menu"></span>
