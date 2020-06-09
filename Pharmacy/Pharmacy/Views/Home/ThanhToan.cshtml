@@ -118,16 +118,16 @@
                                         {
                                             <tr>
                                                 <td>@it.SanPham.TenThuoc <strong class="mx-2">x</strong>@it.SoLuong</td>
-                                                <td>@it.SanPham.Tien₫</td>
+                                                <td>@Model.TongTien()₫</td>
                                             </tr>
                                         }
                                         <tr>
                                             <td class="text-black font-weight-bold">Giảm giá<strong></strong></td>
-                                            <td class="text-black">0đ</td>
+                                            <td class="text-black">@Model.MaKM(Model.coupon) đ</td>
                                         </tr>
                                         <tr>
                                             <td class="text-black font-weight-bold"><strong>Thành tiền</strong></td>
-                                            <td class="text-black font-weight-bold"><strong>@Model.TongTien()</strong></td>
+                                            <td class="text-black font-weight-bold"><strong>@Model.TongTienCoupon()</strong></td>
                                         </tr>
 
                                     </tbody>

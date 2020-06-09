@@ -129,12 +129,20 @@
                                 <strong class="text-black">@Model.TongTien()₫</strong>
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <span class="text-black">Giảm giá</span>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <strong class="text-black">- @Model.MaKM(Model.coupon)₫</strong>
+                            </div>
+                        </div>
                         <div class="row mb-5">
                             <div class="col-md-6">
                                 <span class="text-black">Thanh toán</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">@Model.TongTien()₫</strong>
+                                <strong class="text-black">@Model.TongTienCoupon()₫</strong>
                             </div>
                         </div>
 

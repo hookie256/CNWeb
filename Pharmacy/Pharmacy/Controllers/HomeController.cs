@@ -70,7 +70,7 @@ namespace Pharmacy.Controllers
 
         //PHẦN LÀM CART
         public ActionResult Cart()
-        {
+        { 
             var gioHang = (Cart)Session["GioHangTam"];
             if (gioHang==null)
             {
@@ -82,7 +82,7 @@ namespace Pharmacy.Controllers
         //Thêm sản phẩm vào giỏ hàng
         public ActionResult ThemSP(string id,string soluong,string returnURL)
         {
-            var sp = db.THUOCs.Find(id);
+            var sp = db.THUOCs.Find(id);           
             if (sp.TenThuoc.Length > 30)
             {
                 sp.TenThuoc = sp.TenThuoc.Substring(0, 25) + "...";
@@ -107,10 +107,10 @@ namespace Pharmacy.Controllers
         }
 
         //Cập nhật giỏ hàng
-        public ActionResult CapNhatGH(string[] masp, int[] sl)
+        public ActionResult CapNhatGH(string[] masp, int[] sl,string coupon)
         {
             var gioHang = (Cart)Session["GioHangTam"];
-
+            gioHang.coupon = coupon;
             if (gioHang != null)
             {
                 for (int i = 0; i < masp.Count(); i++)
@@ -131,14 +131,14 @@ namespace Pharmacy.Controllers
         {
             var sp = db.THUOCs.Find(id);
             var gioHang = (Cart)Session["GioHangTam"];
-
+            
             if (gioHang != null)
             {
                 gioHang.XoaSP(sp);
                 //Gán sp vào Session
                 Session["GioHangTam"] = gioHang;
             }
-
+            
             return RedirectToAction("Cart");
         }
 
@@ -221,10 +221,14 @@ namespace Pharmacy.Controllers
         [HttpPost]
         public ActionResult LoginControl(string email, string password)
         {
-
             var user = db.KHACHHANGs.SqlQuery("SELECT * FROM KHACHHANG WHERE Email = '" + email + "' AND MatKhau='" + MaHoaMD5(password) + "'").ToList();
             if (user.Count()!=0)
             {
+                foreach (KHACHHANG us in user)
+                {
+                    Response.Cookies["email"].Value = us.Email.ToString();
+                    Response.Cookies["email"].Expires = DateTime.Now.AddDays(1);
+                }
                 return RedirectToAction("Index");
             }
             else
@@ -232,7 +236,6 @@ namespace Pharmacy.Controllers
                 return View("Login");
             }
         }
-
         public ActionResult ThankYou()
         {
             return View();

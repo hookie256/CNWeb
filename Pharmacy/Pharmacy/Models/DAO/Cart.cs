@@ -17,6 +17,7 @@ namespace Pharmacy.Models.DAO
     public class Cart
     {
         private List<CartItem> gioHang = new List<CartItem>();
+        public string coupon = "";
         public void themSP(THUOC sp, int sl)
         {
             CartItem dongSP = gioHang
@@ -70,7 +71,36 @@ namespace Pharmacy.Models.DAO
             int? value = gioHang.Sum(e => e.SanPham.DonGia * e.SoLuong);
             return string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", value);
         }
-
+        public string MaKM(string coupon)
+        {
+            MyDBContext db = new MyDBContext();
+            int? value;
+            if (coupon != "")
+            {
+                var tienKM = db.KHUYENMAIs.Where(x=>x.MaKM.Contains(coupon)).First();
+                value = tienKM.TienKM;
+            }
+            else
+            {
+                value = 0;
+            }
+            return string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", value);
+        }
+        public string TongTienCoupon()
+        {
+            MyDBContext db = new MyDBContext();
+            int? value;
+            if (coupon == "")
+            {
+                value = gioHang.Sum(e => e.SanPham.DonGia * e.SoLuong);              
+            }
+            else
+            {
+                var tienKM = db.KHUYENMAIs.Where(x => x.MaKM.Contains(coupon)).First();
+                value = gioHang.Sum(e => e.SanPham.DonGia * e.SoLuong) - tienKM.TienKM;
+            }
+            return string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", value);
+        }
         public string ThanhTien(int? a, int b)
         {
             int value = Convert.ToInt32(a) * b;
