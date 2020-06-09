@@ -235,7 +235,7 @@ namespace Pharmacy.Controllers
         public ActionResult Logout()
         {
             Session[Common.CommonConstants.USER_SESSION] = null;
-            return View("Login");
+            return RedirectToAction("Index");
         }
         [HttpPost]
         public ActionResult LoginControl(string email, string password)
