@@ -89,7 +89,7 @@ namespace Pharmacy.Models.DAO
         public string TongTienCoupon()
         {
             MyDBContext db = new MyDBContext();
-            int? value;
+            int? value; 
             if (coupon == "")
             {
                 value = gioHang.Sum(e => e.SanPham.DonGia * e.SoLuong);              
@@ -97,7 +97,15 @@ namespace Pharmacy.Models.DAO
             else
             {
                 var tienKM = db.KHUYENMAIs.Where(x => x.MaKM.Contains(coupon)).First();
-                value = gioHang.Sum(e => e.SanPham.DonGia * e.SoLuong) - tienKM.TienKM;
+                
+                if (Convert.ToInt32(gioHang.Sum(e => e.SanPham.DonGia * e.SoLuong)) <= Convert.ToInt32(tienKM.TienKM))
+                {
+                    value = 0;
+                }
+                else
+                {
+                    value = gioHang.Sum(e => e.SanPham.DonGia * e.SoLuong) - tienKM.TienKM;
+                }
             }
             return string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", value);
         }
