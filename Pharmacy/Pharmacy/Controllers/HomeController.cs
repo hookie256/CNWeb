@@ -70,11 +70,23 @@ namespace Pharmacy.Controllers
 
         //PHẦN LÀM CART
         public ActionResult Cart()
-        { 
+        {
+            //lấy dữ liệu db đổ vào cart nếu có
+            var items = db.GIOHANGs.Where(x => x.MaKhachHang == null).ToList();
             var gioHang = (Cart)Session["GioHangTam"];
-            if (gioHang==null)
+            if (items.Count()==0)
             {
                 gioHang = new Cart();
+            }
+            else
+            {
+                gioHang = new Cart();
+                foreach (GIOHANG it in items)
+                {
+                    var sp = db.THUOCs.Find(it.MaThuoc);
+                    gioHang.themSP(sp, Convert.ToInt32(it.SoLuong));
+                    Session["GioHangTam"] = gioHang;
+                }
             }
             return View(gioHang);
         }
@@ -99,6 +111,12 @@ namespace Pharmacy.Controllers
                 gioHang.themSP(sp, Convert.ToInt32(soluong));
                 Session["GioHangTam"] = gioHang;
             }
+            //thêm thuốc vào db giỏ hàng
+            GIOHANG g = new GIOHANG();
+            g.MaThuoc = sp.MaThuoc;
+            g.SoLuong = Convert.ToInt32(soluong);
+            db.GIOHANGs.Add(g);
+            db.SaveChanges();
             if (string.IsNullOrEmpty(returnURL))
             {
                 return RedirectToAction("Cart");
@@ -117,31 +135,16 @@ namespace Pharmacy.Controllers
                 {
                     var sp = db.THUOCs.Find(masp[i]);
                     gioHang.capnhatSP(sp, sl[i]);
+                    var itemcart = db.GIOHANGs.Where(x=>x.MaThuoc.Contains(sp.MaThuoc)).First();
+                    itemcart.SoLuong = sl[i];
+                    db.SaveChanges();
                 }
-
                 Session["GioHangTam"] = gioHang;
             }
-
+            //update thuốc trong db giỏ hàng
             return RedirectToAction("Cart");
 
         }
-
-        // Xóa SP khỏi giỏ hàng
-        public ActionResult XoaSP(string id)
-        {
-            var sp = db.THUOCs.Find(id);
-            var gioHang = (Cart)Session["GioHangTam"];
-            
-            if (gioHang != null)
-            {
-                gioHang.XoaSP(sp);
-                //Gán sp vào Session
-                Session["GioHangTam"] = gioHang;
-            }
-            
-            return RedirectToAction("Cart");
-        }
-
 
         //Thanh Toán
         [HttpGet]
@@ -172,11 +175,12 @@ namespace Pharmacy.Controllers
                 obj.MaThuoc = item.SanPham.MaThuoc;
                 obj.DonGia = item.SanPham.DonGia;
                 obj.SoLuong = item.SoLuong;
-
                 db.CHITIETHOADONs.Add(obj);
+                db.GIOHANGs.Remove(db.GIOHANGs.Where(x => x.MaThuoc == item.SanPham.MaThuoc).First());
                 db.SaveChanges();
             }
             gioHang.XoaToanBo();
+            //xóa cả trong db giỏ hàng
             Session["GioHangTam"] = gioHang;
             return View("ThankYou");
         }
