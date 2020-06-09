@@ -112,10 +112,19 @@ namespace Pharmacy.Controllers
                 Session["GioHangTam"] = gioHang;
             }
             //thêm thuốc vào db giỏ hàng
-            GIOHANG g = new GIOHANG();
-            g.MaThuoc = sp.MaThuoc;
-            g.SoLuong = Convert.ToInt32(soluong);
-            db.GIOHANGs.Add(g);
+            var item = db.GIOHANGs.Where(x=>x.MaThuoc.Contains(sp.MaThuoc)).ToList();
+            if (item.Count() == 0)
+            {
+                GIOHANG g = new GIOHANG();
+                g.MaThuoc = sp.MaThuoc;
+                g.SoLuong = Convert.ToInt32(soluong);
+                db.GIOHANGs.Add(g);
+            }
+            else
+            {
+                var itemcart = db.GIOHANGs.Where(x => x.MaThuoc.Contains(sp.MaThuoc)).First();
+                itemcart.SoLuong = itemcart.SoLuong + Convert.ToInt32(soluong);
+            }
             db.SaveChanges();
             if (string.IsNullOrEmpty(returnURL))
             {
