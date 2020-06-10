@@ -17,8 +17,20 @@ namespace Pharmacy.Controllers
         {
             var productDAO = new ProductDAO();
             ViewBag.TopProducts = productDAO.SanPhamBanChay();
-            ViewBag.NewProducts = productDAO.SanPhamMoi();
+            ViewBag.NewProducts = productDAO.SanPhamMoi();            
             return View();
+        }
+        public void DuyTriDangNhap()
+        {
+            if (Request.Cookies["login"]!=null)            
+            {
+                string email = Request.Cookies["login"].Value;
+                var user = db.KHACHHANGs.Where(x => x.Email.Contains(email)).First();
+                var userSession = new UserLogin();
+                userSession.userID = user.Email;
+                userSession.userName = user.TenKhachHang;
+                Session.Add(Common.CommonConstants.USER_SESSION, userSession);              
+            }
         }
         [HttpPost]
         public ActionResult TimKiem(string searchstr)
@@ -234,11 +246,12 @@ namespace Pharmacy.Controllers
 
         public ActionResult Logout()
         {
+            Response.Cookies["login"].Expires = DateTime.Now.AddDays(-1);
             Session[Common.CommonConstants.USER_SESSION] = null;
             return RedirectToAction("Index");
         }
         [HttpPost]
-        public ActionResult LoginControl(string email, string password)
+        public ActionResult LoginControl(string email, string password, string duytri)
         {
             var user = db.KHACHHANGs.SqlQuery("SELECT * FROM KHACHHANG WHERE Email = '" + email + "' AND MatKhau='" + MaHoaMD5(password) + "'").ToList();
             if (user.Count() != 0)
@@ -249,8 +262,11 @@ namespace Pharmacy.Controllers
                     userSession.userID = us.Email;
                     userSession.userName = us.TenKhachHang;
                     Session.Add(Common.CommonConstants.USER_SESSION, userSession);
-                    Response.Cookies["email"].Value = us.Email.ToString();
-                    Response.Cookies["email"].Expires = DateTime.Now.AddDays(1);
+                    if ( duytri.Equals("on"))
+                    {
+                        Response.Cookies["login"].Value = us.Email.ToString();
+                        Response.Cookies["login"].Expires = DateTime.Now.AddDays(1);
+                    }
                 }
                 return RedirectToAction("Index");
             }

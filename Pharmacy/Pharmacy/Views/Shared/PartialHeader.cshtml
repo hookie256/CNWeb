@@ -32,6 +32,7 @@
                         position: relative;
                         display: inline-block;
                     }
+
                     .dropdown-content {
                         display: none;
                         position: absolute;
@@ -40,21 +41,24 @@
                         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                         z-index: 1;
                     }
-                    .dropdown-content a {
-                        color: black;
-                        padding: 12px 16px;
-                        text-decoration: none;
-                        display: block;
-                    }
+
+                        .dropdown-content a {
+                            color: black;
+                            padding: 12px 16px;
+                            text-decoration: none;
+                            display: block;
+                        }
+
                     .dropdown1:hover .dropdown-content {
                         display: block;
                     }
                 </style>
-
                 <div class="dropdown1">
-                    @{
-                        var session = (UserLogin)Session[Pharmacy.Common.CommonConstants.USER_SESSION];
-                    }
+                    
+                    @Html.Action("DuyTriDangNhap","Home")
+                        @{
+                            var session = (UserLogin)Session[Pharmacy.Common.CommonConstants.USER_SESSION];
+                        }
                     @if (session == null)
                     {
                         <a href="#" data-toggle="tooltip" data-placement="bottom" title="Đăng nhập/Đăng ký" class="icons-btn d-inline-block bag">
@@ -71,11 +75,10 @@
                             <span class="icon-user-circle-o"></span>
                         </a>
                         <div class="dropdown-content">
-                            <a>@session.userName,</a>
-                            @Html.ActionLink("Thoát", "Logout")
+                            <a>@session.userName</a>
+                            @Html.ActionLink("Đăng xuất", "Logout")
                         </div>
                     }
-
                 </div>
                 <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none">
                     <span class="icon-menu"></span>
