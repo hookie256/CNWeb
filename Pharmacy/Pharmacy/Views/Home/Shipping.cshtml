@@ -5,10 +5,8 @@
 
 @section headlink
 {
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="~/Assets/css/treset.css">
-    <link rel="stylesheet" href="~/Assets/css/app.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="~/Assets/fonts/icomoon/style.css">
     <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/Assets/css/magnific-popup.css">
@@ -23,7 +21,7 @@
 <div class="bg-light py-3">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mb-0"><a href="Index">Trang chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Chính sách giao hàng</strong></div>
+            <div class="col-md-12 mb-0"><a href="/Home/Index">Trang chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Chính sách giao hàng</strong></div>
         </div>
     </div>
 </div>
@@ -33,176 +31,17 @@
     <div class="lc-csgh">
         <div class="container">
             <div class="lc-csgh-in">
-                <div class="csgh-title"><h1>Chính sách giao hàng</h1></div>
                 <div class="csgh-content">
-                    <div class="normal">
-                        <h3>Giao hàng trong Thành phố Hà Nội</h3>
-                        <table class="table-content tb-des">
-                            <tr>
-                                <th>Giá trị đơn hàng</th>
-                                <th>Khoảng cách</th>
-                                <th>Phí giao hàng</th>
-                                <th>Thời gian giao hàng</th>
-                            </tr>
-                            <tr valign="top">
-                                <td rowspan="2">
-                                    Đơn hàng từ <br>
-                                    300,000đ trở lên
-                                </td>
-                                <td>Dưới 5km</td>
-                                <td>Miễn phí</td>
-                                <td rowspan="2">
-                                    Từ 8h - 20h tất cả <br>
-                                    các ngày trong tuần
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Từ 5km trở lên</td>
-                                <td>20,000đ</td>
-                            </tr>
-                            <tr valign="top">
-                                <td rowspan="3">
-                                    Đơn hàng dưới <br>
-                                    300,000đ
-                                </td>
-                                <td>Dưới 5km</td>
-                                <td>20,000đ</td>
-                                <td rowspan="3">
-                                    Từ 8h - 20h tất cả <br>
-                                    các ngày trong tuần
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Từ 5km đến 10km</td>
-                                <td>25,000đ</td>
-                            </tr>
-                            <tr>
-                                <td>Từ 10km trở lên</td>
-                                <td>30,000đ</td>
-                            </tr>
-
-                        </table>
-                        <table class="table-content tb-mb">
-                            <tr>
-                                <th>
-                                    Giá trị đơn hàng <br>
-                                    Thời gian giao hàng
-                                </th>
-                                <th>
-                                    Khoảng cách <br>
-                                    Phí giao hàng
-                                </th>
-                            </tr>
-                            <tr valign="top">
-                                <td rowspan="2">
-                                    Đơn hàng từ
-                                    300,000đ trở lên
-                                    <br>
-                                    <em>
-                                        Từ 8h - 20h tất cả
-                                        các ngày trong tuần
-                                    </em>
-                                </td>
-                                <td>
-                                    Dưới 5km <br>
-                                    <em>Miễn phí</em>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Từ 5km trở lên <br>
-                                    <em>20,000đ</em>
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <td rowspan="3">
-                                    Đơn hàng dưới 300,000đ
-                                    <br>
-                                    <em>
-                                        Từ 8h - 20h tất cả
-                                        các ngày trong tuần
-                                    </em>
-                                </td>
-                                <td>
-                                    Dưới 5km
-                                    <br>
-                                    <em>20,000đ</em>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Từ 5km đến 10km
-                                    <br>
-                                    <em>25,000đ</em>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    Từ 10km trở lên
-                                    <br>
-                                    <em>30,000đ</em>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="normal">
-                        <h3>Giao hàng liên tỉnh/thành phố</h3>
-                        <p><em>(Cước phí và thời gian giao hàng được áp dụng theo chính sách của đơn vị vận chuyển Viettel Post)</em></p>
-                        <table class="table-content tb-des" id="table-tp">
-                            <tr>
-                                <th>Khoảng cách</th>
-                                <th>Thời gian giao hàng dự kiến</th>
-                            </tr>
-                            <tr valign="top">
-                                <td>Dưới 200km</td>
-                                <td>2-3 ngày làm việc</td>
-                            </tr>
-                            <tr>
-                                <td>Từ 200km trở lên</td>
-                                <td>3-5 ngày làm việc</td>
-                            </tr>
-                            <tr>
-                                <td>*Tuyến huyện/xã</td>
-                                <td>Tăng thêm 1-2 ngày</td>
-                            </tr>
-                        </table>
-                        <table class="table-content tb-mb ghlt">
-                            <tr valign="top">
-                                <th>Khoảng cách</th>
-                                <th>
-                                    Thời gian giao hàng
-                                    dự kiến
-                                </th>
-                            </tr>
-                            <tr valign="top">
-                                <td>Dưới 200km</td>
-                                <td>2-3 ngày làm việc</td>
-                            </tr>
-                            <tr valign="top">
-                                <td>Từ 200km trở lên</td>
-                                <td>3-5 ngày làm việc</td>
-                            </tr>
-                            <tr valign="top" style="font-style: italic">
-                                <td>*Tuyến huyện/xã</td>
-                                <td>Tăng thêm 1-2 ngày</td>
-                            </tr>
-                        </table>
-
-                    </div>
                     <div class="normal">
                         <h3>Hình thức thanh toán</h3>
                         <p>Giao hàng thu tiền (COD) hoặc chuyển khoản</p>
                     </div>
-
                     <div class="normal">
                         <h3>Thông tin chuyển khoản</h3>
                         <p>
                             Tài khoản   : Công ty Cổ Phần Dược Phẩm FPT Pharmacy <br>
                             Số tài khoản : 113002672043 - Ngân hàng TMCP Công Thương Việt Nam
                         </p>
-
-
                     </div>
                     <div class="normal description">
                         <span>• </span>	Mọi thông tin chi tiết, thắc mắc hoặc cần trợ giúp, Quý khách/Nhà cung cấp vui lòng liên hệ hotline: 1800 6928 (miễn phí).

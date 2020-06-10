@@ -125,6 +125,7 @@
                                             <td class="text-black font-weight-bold">Giảm giá<strong></strong></td>
                                             <td class="text-black">@Model.MaKM(Model.coupon) đ</td>
                                         </tr>
+
                                         <tr>
                                             <td class="text-black font-weight-bold"><strong>Thành tiền</strong></td>
                                             <td class="text-black font-weight-bold"><strong>@Model.TongTienCoupon()</strong></td>
@@ -132,37 +133,17 @@
 
                                     </tbody>
                                 </table>
-
+                                <input type="hidden" name="makhuyenmai" value="@Model.coupon" />
                                 <div class="border mb-3">
                                     <h3 class="h6 mb-0">
-                                        <a class="d-block" data-toggle="collapse" href="#collapsebank" role="button"
-                                           aria-expanded="false" aria-controls="collapsebank">Trả bằng TK ngân hàng</a>
+                                        <input checked="checked" name="giaohang" type="radio" value="0"> Trả bằng bằng tiền mặt
                                     </h3>
-
-                                    <div class="collapse" id="collapsebank">
-                                        <div class="py-2 px-4">
-                                            <p class="mb-0">
-                                                Đơn hàng của bạn sẽ không được giao nếu như chưa thanh toán.
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
-
                                 <div class="border mb-3">
                                     <h3 class="h6 mb-0">
-                                        <a class="d-block" data-toggle="collapse" href="#collapsecheque" role="button"
-                                           aria-expanded="false" aria-controls="collapsecheque">Trả bằng tiền mặt</a>
+                                        <input type="radio" name="giaohang" value="1">  Trả bằng tài khoản ngân hàng
                                     </h3>
-
-                                    <div class="collapse" id="collapsecheque">
-                                        <div class="py-2 px-4">
-                                            <p class="mb-0">
-                                                Đơn hàng của bạn sẽ không được giao nếu như chưa thanh toán.
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
-
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-lg btn-block">Xác nhận đặt hàng</button>
                                 </div>
