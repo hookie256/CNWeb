@@ -13,17 +13,29 @@ namespace Pharmacy.Models.EF
         }
 
         public virtual DbSet<CHITIETHOADON> CHITIETHOADONs { get; set; }
+        public virtual DbSet<GIOHANG> GIOHANGs { get; set; }
         public virtual DbSet<HANGSANXUAT> HANGSANXUATs { get; set; }
         public virtual DbSet<HOADON> HOADONs { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
         public virtual DbSet<LOAITHUOC> LOAITHUOCs { get; set; }
         public virtual DbSet<NHACUNGCAP> NHACUNGCAPs { get; set; }
         public virtual DbSet<THUOC> THUOCs { get; set; }
+        public virtual DbSet<KHUYENMAI> KHUYENMAIs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CHITIETHOADON>()
                 .Property(e => e.MaThuoc)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<GIOHANG>()
+                .Property(e => e.MaThuoc)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<GIOHANG>()
+                .Property(e => e.MaKhachHang)
                 .IsFixedLength()
                 .IsUnicode(false);
 
@@ -57,7 +69,8 @@ namespace Pharmacy.Models.EF
 
             modelBuilder.Entity<KHACHHANG>()
                 .Property(e => e.MatKhau)
-                .IsFixedLength();
+                .IsFixedLength()
+                .IsUnicode(false);
 
             modelBuilder.Entity<LOAITHUOC>()
                 .Property(e => e.MaLoaiThuoc)
@@ -123,6 +136,10 @@ namespace Pharmacy.Models.EF
                 .WithRequired(e => e.THUOC1)
                 .HasForeignKey(e => e.MaThuoc)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<KHUYENMAI>()
+                .Property(e => e.MaKM)
+                .IsFixedLength();
         }
     }
 }
