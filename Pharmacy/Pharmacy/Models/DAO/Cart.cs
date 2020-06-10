@@ -18,6 +18,7 @@ namespace Pharmacy.Models.DAO
     {
         private List<CartItem> gioHang = new List<CartItem>();
         public string coupon = "";
+        public int dem = 0;
         public void themSP(THUOC sp, int sl)
         {
             CartItem dongSP = gioHang

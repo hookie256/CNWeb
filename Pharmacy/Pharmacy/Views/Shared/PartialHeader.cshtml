@@ -54,11 +54,11 @@
                     }
                 </style>
                 <div class="dropdown1">
-                    
-                    @Html.Action("DuyTriDangNhap","Home")
-                        @{
-                            var session = (UserLogin)Session[Pharmacy.Common.CommonConstants.USER_SESSION];
-                        }
+
+                    @Html.Action("DuyTriDangNhap", "Home")               
+                    @{
+                        var session = (UserLogin)Session[Pharmacy.Common.CommonConstants.USER_SESSION];
+                    }
                     @if (session == null)
                     {
                         <a href="#" data-toggle="tooltip" data-placement="bottom" title="Đăng nhập/Đăng ký" class="icons-btn d-inline-block bag">

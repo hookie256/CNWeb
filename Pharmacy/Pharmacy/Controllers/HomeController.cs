@@ -13,33 +13,34 @@ namespace Pharmacy.Controllers
     public class HomeController : Controller
     {
         public MyDBContext db = new MyDBContext();
+
         public ActionResult Index()
         {
             var productDAO = new ProductDAO();
             ViewBag.TopProducts = productDAO.SanPhamBanChay();
-            ViewBag.NewProducts = productDAO.SanPhamMoi();            
+            ViewBag.NewProducts = productDAO.SanPhamMoi();
             return View();
         }
         public void DuyTriDangNhap()
         {
-            if (Request.Cookies["login"]!=null)            
+            if (Request.Cookies["login"] != null)
             {
                 string email = Request.Cookies["login"].Value;
                 var user = db.KHACHHANGs.Where(x => x.Email.Contains(email)).First();
                 var userSession = new UserLogin();
                 userSession.userID = user.Email;
                 userSession.userName = user.TenKhachHang;
-                Session.Add(Common.CommonConstants.USER_SESSION, userSession);              
+                Session.Add(Common.CommonConstants.USER_SESSION, userSession);
             }
         }
         [HttpPost]
         public ActionResult TimKiem(string searchstr)
         {
-            var model = db.THUOCs.SqlQuery("SELECT * FROM THUOC WHERE TenThuoc LIKE '%" + searchstr + "%' OR TimKiem LIKE '%" + searchstr + "%'").ToList();           
+            var model = db.THUOCs.SqlQuery("SELECT * FROM THUOC WHERE TenThuoc LIKE '%" + searchstr + "%' OR TimKiem LIKE '%" + searchstr + "%'").ToList();
             return View(model);
         }
-        public ActionResult DanhMuc(string id,int? page)
-        {          
+        public ActionResult DanhMuc(string id, int? page)
+        {
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             var item = db.THUOCs.Where(x => x.MaLoaiThuoc.Trim() == id.Trim()).ToList();
@@ -51,7 +52,7 @@ namespace Pharmacy.Controllers
                 }
             }
 
-            return View("Shop",item.ToPagedList(pageNumber, pageSize));
+            return View("Shop", item.ToPagedList(pageNumber, pageSize));
         }
         [HttpPost]
         public ActionResult ChiTietSanPham(string id)
@@ -81,30 +82,64 @@ namespace Pharmacy.Controllers
         }
 
         //PHẦN LÀM CART
+        public static int dem=0;
         public ActionResult Cart()
         {
             //lấy dữ liệu db đổ vào cart nếu có
-            var items = db.GIOHANGs.Where(x => x.MaKhachHang == null).ToList();
-            var gioHang = (Cart)Session["GioHangTam"];
-            if (items.Count()==0)
+            if (dem==0)          
             {
-                gioHang = new Cart();
+                if (Request.Cookies["login"] != null)
+                {
+                    string str = Request.Cookies["login"].Value;
+                    var user = db.KHACHHANGs.Where(x => x.Email.Contains(str)).First();
+                    var items = db.GIOHANGs.Where(x => x.MaKhachHang.Contains(user.MaKhachHang)).ToList();
+                    var gioHang = (Cart)Session["GioHangTam"];
+                    if (items.Count() == 0)
+                    {
+                        gioHang = new Cart();
+                    }
+                    else
+                    {
+                        gioHang = new Cart();
+                        foreach (GIOHANG it in items)
+                        {
+                            var sp = db.THUOCs.Find(it.MaThuoc);
+                            gioHang.themSP(sp, Convert.ToInt32(it.SoLuong));
+                            Session["GioHangTam"] = gioHang;
+                        }
+                    }
+                    return View(gioHang);
+                }
+                else
+                {
+                    var items = db.GIOHANGs.Where(x => x.MaKhachHang == null).ToList();
+                    var gioHang = (Cart)Session["GioHangTam"];
+                    if (items.Count() == 0)
+                    {
+                        gioHang = new Cart();
+                    }
+                    else
+                    {
+                        gioHang = new Cart();
+                        foreach (GIOHANG it in items)
+                        {
+                            var sp = db.THUOCs.Find(it.MaThuoc);
+                            gioHang.themSP(sp, Convert.ToInt32(it.SoLuong));
+                            Session["GioHangTam"] = gioHang;
+                        }
+                    }
+                    return View(gioHang);
+                }
             }
             else
             {
-                gioHang = new Cart();
-                foreach (GIOHANG it in items)
-                {
-                    var sp = db.THUOCs.Find(it.MaThuoc);
-                    gioHang.themSP(sp, Convert.ToInt32(it.SoLuong));
-                    Session["GioHangTam"] = gioHang;
-                }
+                var gioHang = (Cart)Session["GioHangTam"];
+                return View(gioHang);
             }
-            return View(gioHang);
-        }
+        } 
 
         //Thêm sản phẩm vào giỏ hàng
-        public ActionResult ThemSP(string id,string soluong,string returnURL)
+        public ActionResult ThemSP(string id,string soluong)
         {
             var sp = db.THUOCs.Find(id);           
             if (sp.TenThuoc.Length > 30)
@@ -124,28 +159,41 @@ namespace Pharmacy.Controllers
                 Session["GioHangTam"] = gioHang;
             }
             //thêm thuốc vào db giỏ hàng
-            var item = db.GIOHANGs.Where(x=>x.MaThuoc.Contains(sp.MaThuoc)).ToList();
+            var item = db.GIOHANGs.Where(x => x.MaThuoc.Contains(sp.MaThuoc)).ToList();
             if (item.Count() == 0)
             {
                 GIOHANG g = new GIOHANG();
                 g.MaThuoc = sp.MaThuoc;
                 g.SoLuong = Convert.ToInt32(soluong);
+                if (Request.Cookies["login"] != null)
+                {
+                    string str = Request.Cookies["login"].Value;
+                    var user = db.KHACHHANGs.Where(x => x.Email.Contains(str)).First();
+                    g.MaKhachHang = user.MaKhachHang;
+                }
                 db.GIOHANGs.Add(g);
             }
             else
             {
-                var itemcart = db.GIOHANGs.Where(x => x.MaThuoc.Contains(sp.MaThuoc)).First();
-                itemcart.SoLuong = itemcart.SoLuong + Convert.ToInt32(soluong);
+                if (Request.Cookies["login"] != null)
+                {
+                    string str = Request.Cookies["login"].Value;
+                    var user = db.KHACHHANGs.Where(x => x.Email.Contains(str)).First();
+                    var itemcart = db.GIOHANGs.Where(x => x.MaThuoc.Contains(sp.MaThuoc)&& x.MaKhachHang.Contains(user.MaKhachHang)).First();
+                    itemcart.SoLuong = itemcart.SoLuong + Convert.ToInt32(soluong);
+                }
+                else
+                {
+                    var itemcart = db.GIOHANGs.Where(x => x.MaThuoc.Contains(sp.MaThuoc)).First();
+                    itemcart.SoLuong = itemcart.SoLuong + Convert.ToInt32(soluong);
+                }
             }
             db.SaveChanges();
-            if (string.IsNullOrEmpty(returnURL))
-            {
-                return RedirectToAction("Cart");
-            }
-            return Redirect(returnURL);
+            return RedirectToAction("Cart");
         }
 
         //Cập nhật giỏ hàng
+        [HttpPost]
         public ActionResult CapNhatGH(string[] masp, int[] sl,string coupon)
         {
             var gioHang = (Cart)Session["GioHangTam"];
@@ -156,13 +204,28 @@ namespace Pharmacy.Controllers
                 {
                     var sp = db.THUOCs.Find(masp[i]);
                     gioHang.capnhatSP(sp, sl[i]);
-                    var itemcart = db.GIOHANGs.Where(x=>x.MaThuoc.Contains(sp.MaThuoc)).First();
-                    itemcart.SoLuong = sl[i];
+                    //update thuốc trong db giỏ hàng
+                    if (Request.Cookies["login"] != null)
+                    {
+                        string str = Request.Cookies["login"].Value;
+                        var user = db.KHACHHANGs.Where(x=>x.Email.Contains(str)).First();
+                        var itemcart = db.GIOHANGs.Where(x => x.MaThuoc.Contains(sp.MaThuoc) && x.MaKhachHang.Contains(user.MaKhachHang)).First();
+                        itemcart.SoLuong = sl[i];
+                    }
+                    else
+                    {
+                        var itemcart = db.GIOHANGs.Where(x => x.MaThuoc.Contains(sp.MaThuoc)).First();
+                        itemcart.SoLuong = sl[i];
+                    }
                     db.SaveChanges();
                 }
                 Session["GioHangTam"] = gioHang;
             }
-            //update thuốc trong db giỏ hàng
+            dem++;
+            if (dem>10)
+            {
+                dem = 1;
+            }
             return RedirectToAction("Cart");
 
         }
@@ -197,7 +260,16 @@ namespace Pharmacy.Controllers
                 obj.DonGia = item.SanPham.DonGia;
                 obj.SoLuong = item.SoLuong;
                 db.CHITIETHOADONs.Add(obj);
-                db.GIOHANGs.Remove(db.GIOHANGs.Where(x => x.MaThuoc == item.SanPham.MaThuoc).First());
+                if (Request.Cookies["login"] != null)
+                {
+                    string str = Request.Cookies["login"].Value;
+                    var user = db.KHACHHANGs.Where(x=>x.Email.Contains(str)).First();
+                    db.GIOHANGs.Remove(db.GIOHANGs.Where(x => x.MaThuoc == item.SanPham.MaThuoc && x.MaKhachHang.Contains(user.MaKhachHang)).First());
+                }
+                else
+                {
+                    db.GIOHANGs.Remove(db.GIOHANGs.Where(x => x.MaThuoc == item.SanPham.MaThuoc).First());
+                }
                 db.SaveChanges();
             }
             gioHang.XoaToanBo();
@@ -262,7 +334,7 @@ namespace Pharmacy.Controllers
                     userSession.userID = us.Email;
                     userSession.userName = us.TenKhachHang;
                     Session.Add(Common.CommonConstants.USER_SESSION, userSession);
-                    if ( duytri.Equals("on"))
+                    if ( duytri!=null)
                     {
                         Response.Cookies["login"].Value = us.Email.ToString();
                         Response.Cookies["login"].Expires = DateTime.Now.AddDays(1);
