@@ -229,6 +229,21 @@ namespace Pharmacy.Controllers
             return RedirectToAction("Cart");
 
         }
+        //Xóa Sản phẩm
+        public ActionResult XoaSP(string id)
+        {
+            var sp = db.THUOCs.Find(id);
+            var gioHang = (Cart)Session["GioHangTam"];
+            if (gioHang != null)
+            {
+                gioHang.XoaSP(sp);
+                db.GIOHANGs.Remove(db.GIOHANGs.Where(x => x.MaThuoc == sp.MaThuoc).First());
+                //Gán sp vào Session
+                Session["CartSession"] = gioHang;
+            }
+            dem = 1;
+            return RedirectToAction("Cart");
+        }
 
         //Thanh Toán
         [HttpGet]
@@ -242,13 +257,15 @@ namespace Pharmacy.Controllers
             return View(gioHang);
         }
         [HttpPost]
-        public ActionResult ThanhToan(HOADON model,string ho, string ten, string diachiduong,string sonha,string email, string sdt,string ghichu)
+        public ActionResult ThanhToan(HOADON model,string ho, string ten, string diachiduong,string sonha,string email, string sdt,string ghichu,string makhuyenmai,string giaohang)
         {
             model.TenKhachHang = ho + " " + ten;
             model.DiaChi = sonha + " " + diachiduong;
             model.Email = email;
             model.SoDienThoai = sdt;
             model.GhiChu = ghichu;
+            model.MaKhuyenMai = makhuyenmai;
+            model.HinhThucGiaoHang = giaohang;
             db.HOADONs.Add(model);
             db.SaveChanges();
             var gioHang = (Cart)Session["GioHangTam"];
@@ -277,6 +294,7 @@ namespace Pharmacy.Controllers
             Session["GioHangTam"] = gioHang;
             return View("ThankYou");
         }
+
         [HttpGet]
         public ActionResult Register()
         {
@@ -371,6 +389,30 @@ namespace Pharmacy.Controllers
                 }
             }
             return View(item.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult Question()
+        {
+            return View();
+        }
+        public ActionResult Shipping()
+        {
+            return View();
+        }
+        public ActionResult Exchange()
+        {
+            return View();
+        }
+        public ActionResult Contact()
+        {
+            return View();
+        }
+        public ActionResult Security()
+        {
+            return View();
+        }
+        public ActionResult About()
+        {
+            return View();
         }
     }
 }
