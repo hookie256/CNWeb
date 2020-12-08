@@ -1,0 +1,30 @@
+C:\Users\vietm\source\repos\Pharmacy\Model\bin\Debug\Model.dll
+C:\Users\vietm\source\repos\Pharmacy\Model\bin\Debug\Model.pdb
+C:\Users\vietm\source\repos\Pharmacy\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\vietm\source\repos\Pharmacy\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\vietm\source\repos\Pharmacy\Model\obj\Debug\Model.dll
+C:\Users\vietm\source\repos\Pharmacy\Model\obj\Debug\Model.pdb
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Model\bin\Debug\Model.dll
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Model\bin\Debug\Model.pdb
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Model\obj\Debug\Model.dll
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Model\obj\Debug\Model.pdb
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Model\bin\Debug\Model.dll.config
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Model\bin\Debug\EntityFramework.dll
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Model\bin\Debug\EntityFramework.xml
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\vietm\Desktop\CNWeb\Pharmacy\Model\obj\Debug\Model.csproj.CopyComplete
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Model\bin\Debug\Model.dll.config
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Model\bin\Debug\Model.dll
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Model\bin\Debug\Model.pdb
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Model\bin\Debug\EntityFramework.dll
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Model\bin\Debug\EntityFramework.xml
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Model\obj\Debug\Model.csprojAssemblyReference.cache
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Model\obj\Debug\Model.csproj.CopyComplete
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Model\obj\Debug\Model.dll
+D:\Study\College Stuff\Nam3\Kỳ 2\Công nghệ web\CNWeb\Pharmacy\Model\obj\Debug\Model.pdb

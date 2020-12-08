@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 15.375, 9.125" name="DBPharmacy">
+  <DataContextMoniker Name="/DBPharmacyDataContext" />
+  <nestedChildShapes>
+    <classShape Id="32372e33-42c1-4cfc-baeb-cbc702e56bd3" absoluteBounds="7, 4.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DBPharmacyDataContext/LOAITHUOC" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7e48b6e7-d982-4fcd-927d-37fc93a685ba" absoluteBounds="7.0150000000000006, 4.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="85a19a67-7882-4dc1-ad61-2f2e4b14a754" absoluteBounds="3.75, 2, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/DBPharmacyDataContext/GIAOHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="145e8b2d-2b97-43c1-8b28-4731a555e240" absoluteBounds="3.765, 2.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="51badd1d-a025-4e7e-8376-da114e80bd47" absoluteBounds="3.75, 4, 2, 1.578595377604167">
+      <DataClassMoniker Name="/DBPharmacyDataContext/GIOHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="de11395f-f873-4c86-827d-e12673924355" absoluteBounds="3.765, 4.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="38da1fd4-c271-4fd9-8bec-33a7087b47f0" absoluteBounds="0.75, 3.125, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/DBPharmacyDataContext/HANGSANXUAT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0b793288-be67-4eb0-9c3c-67951b9953e3" absoluteBounds="0.765, 3.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c04c17a7-e0c6-4590-a0b8-5e85961d5ebb" absoluteBounds="0.75, 7, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DBPharmacyDataContext/KHACHHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a8dea148-c284-4cc2-8455-0c2df8e24083" absoluteBounds="0.765, 7.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fb2503dd-7246-48d9-8ee9-dfc2b1cb658c" absoluteBounds="3.75, 7, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/DBPharmacyDataContext/KHUYENMAI" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c7996fd6-d5be-462a-9cfd-758ccfd672eb" absoluteBounds="3.765, 7.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c4052328-88de-4d01-9b6a-98b74307a248" absoluteBounds="6.5, 7.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DBPharmacyDataContext/NHACUNGCAP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="850453d6-ec85-4a41-97b4-34d2dbc730d4" absoluteBounds="6.5150000000000006, 7.7100000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2a122788-31f7-45cc-9001-98bb82a9b771" absoluteBounds="9.875, 5, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/DBPharmacyDataContext/THUOC" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3688ac9c-e7cd-48b9-ba97-cb3a811639c4" absoluteBounds="9.89, 5.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2de5ec8f-2908-4566-a2da-83ee154944ca" absoluteBounds="13.125, 5.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DBPharmacyDataContext/CHITIETHOADON" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cb5709ce-ff1f-4309-8adf-38e83ab73c66" absoluteBounds="13.14, 5.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ab79c74a-61ff-41c1-897f-971ef7ed1c13" absoluteBounds="9.625, 1.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DBPharmacyDataContext/HOADON" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a83b8869-35a7-453f-9428-518d2d387651" absoluteBounds="9.64, 2.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

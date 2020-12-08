@@ -1,0 +1,174 @@
+﻿@{
+    ViewBag.Title = "Exchange";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section headlink
+{
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/Assets/css/b.css">
+    <link rel="stylesheet" href="~/Assets/css/app.css">
+    <link rel="stylesheet" href="~/Assets/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Assets/css/aos.css">
+    <link rel="stylesheet" href="~/Assets/css/a.css">
+    <link rel="stylesheet" href="~/Assets/css/style.css">
+}
+<div class="bg-light py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0"><a href="/Home/Index">Trang chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Chính sách đổi trả</strong></div>
+        </div>
+    </div>
+</div>
+<div id="fb-root"></div>
+<main>
+    <div class="ntlc-gt-khachhang-chinhsachdoitra">
+        <div class="container">
+            <div class="row">           
+
+                <div class="col-sm-12">
+                    <h3 class="text-center" style="padding-bottom:0;">QUY ĐỊNH ĐỔI TRẢ HÀNG </h3>
+                    <div class="ntlc-table">
+                        <table>
+                            <tr>
+                                <th>
+                                    Nguyên nhân
+                                </th>
+                                <th>
+                                    Thời gian đổi trả
+                                </th>
+                                <th>
+                                    Sản phẩm được áp dụng
+                                </th>
+                                <th>
+                                    Tên tiêu chí
+                                </th>
+                                <th>
+                                    Phí trả hàng
+                                </th>
+                                <th>Ghi chú</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>1. Đổi trả do lỗi NSX</strong>
+                                </td>
+                                <td>
+                                    Trong vòng <strong>30 ngày</strong> từ ngày xuất bill
+                                </td>
+                                <td>
+                                    Tất cả sản phẩm không bao gồm hàng lạnh & hàng tiêm chích
+                                </td>
+                                <td>
+                                    - Sản phẩm lỗi NSX
+                                </td>
+                                <td>
+                                    Phí trả hàng: 0%
+                                </td>
+                                <td>
+                                    Theo Giá trị trên hóa đơn sau giảm giá / khuyến mãi
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">
+                                    <strong>2. Đổi trả theo nhu cầu khách hàng</strong>
+                                </td>
+                                <td rowspan="3">
+                                    Trong vòng <strong>30 ngày</strong> từ ngày xuất bill
+                                </td>
+                                <td rowspan="3">
+                                    <p>- Sản phẩm dạng vĩ, ống uống, gói, chai và tuýp, hộp</p>
+                                    <p><strong>- Lưu ý : </strong></p>
+                                    <p>Không áp dụng đổi trả với sản phẩm:</p>
+                                    <p>+ Hàng đặt lẻ theo yêu cầu của khách</p>
+                                    <p>
+                                        + NSX đóng gói không có garanty với sản phẩm dạng viên rời / nước / cream
+                                        (không xác định được tính nguyên vẹn của sản phẩm)
+                                    </p>
+                                    <p>+ Thuốc viên bán lẻ (không vĩ, không hộp)</p>
+                                    <p>+ Hàng lạnh, hàng tiêm chích</p>
+                                </td>
+                                <td>
+                                    <p>- Sản phẩm còn nguyên, bao gồm:</p>
+                                    <p>+ Chưa xé tem niêm phong hoặc chưa xé vỏ bọc ngoài hộp</p>
+                                    <p>
+                                        + Chưa xé lớp giấy / thiếc bên trong hộp, chưa mở garanty nắp hộp (đối với
+                                        sản phẩm không có tem niêm phong hoặc không có vỏ bọc ngoài hộp)
+                                    </p>
+                                    <p>
+                                        + Sản phẩm là <strong>
+                                            Thuốc, đóng gói dạng vĩ / dạng gói / dạng ống uống, bán
+                                            theo toa (*)
+                                        </strong>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p><strong>Miễn phí trả hàng</strong></p>
+                                    <p>Phí vỏ hộp : 5% </p>
+                                    <p>- Áp dụng khi vỏ hộp bị móp / rách</p>
+                                    <p>- Không áp dụng phí vỏ hộp với các sản phẩm ở mục (*)</p>
+
+                                </td>
+                                <td>
+                                    <p>Theo Giá trị trên hóa đơn & sau giảm giá / khuyến mãi</p>
+                                    <p>Phí vỏ hộp được áp dụng khi vỏ hộp móp / rách</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>- Sản phẩm đã mở hộp & chưa sử dụng, bao gồm:</p>
+
+                                    <p>
+                                        + Đã xé tem niêm phong hoặc xé vỏ bọc ngoài hộp, nhưng chưa xé lớp giấy /
+                                        thiếc bên trong hộp, chưa mở garanty nắp hộp
+                                    </p>
+                                </td>
+                                <td>
+                                    <p><strong>Phí trả hàng: 10% </strong></p>
+                                </td>
+                                <td>
+                                    Theo Giá trị trên hóa đơn & sau giảm giá / khuyến mãi
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>- Sản phẩm đã mở hộp & đã sử dụng:</p>
+                                    <p>+ Đã xé lớp giấy / thiếc bên trong hộp, hoặc đã mở garanty nắp hộp</p>
+                                </td>
+                                <td>
+                                    <p>Phí trả hàng: 30%</p>
+                                    <p>(áp dụng cho số lượng còn lại)</p>
+                                </td>
+                                <td>
+                                    <p>Theo Giá trị trên hóa đơn & sau giảm giá / khuyến mãi</p>
+                                    <p>
+                                        Trường hợp chưa sử dụng viên nào, vẫn tính phí 30% cho toàn bộ số viên trong
+                                        hộp
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <p style="text-align: center; font-size: 19px;"><strong>LƯU Ý</strong></p>
+                    <p>
+                        - Khách hàng có thể đổi hoặc trả sản phẩm đã mua tại các Nhà thuốc  trong 30 ngày kể
+                        từ ngày mua hàng.
+                    </p>
+                    <p>- Từ ngày thứ 31 sẽ không được áp dụng chính sách đổi trả.</p>
+                    <p>- Phí Hóa Đơn 10% áp dụng cho các trường hợp có xuất Hóa Đơn Tài Chính.</p>
+                    <p>
+                        - Đối với các đơn hàng có tặng kèm quà khuyến mãi, nếu khách đã sử dụng quà khuyến mãi, sẽ
+                        không áp dụng đổi trả.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@Html.Partial("~/Views/Home/PartialView/Comments.cshtml");

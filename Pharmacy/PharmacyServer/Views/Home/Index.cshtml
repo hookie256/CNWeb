@@ -1,0 +1,140 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listTopProducts = (List<Pharmacy.Models.EF.THUOC>)ViewBag.TopProducts;
+    var listNewProducts = (List<Pharmacy.Models.EF.THUOC>)ViewBag.NewProducts;
+}
+@section headlink
+{
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/Assets/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Assets/css/aos.css">
+    <link rel="stylesheet" href="~/Assets/css/a.css">
+    <link rel="stylesheet" href="~/Assets/css/style.css">
+}
+<div id="slider">
+    <figure>
+        <a href="/Home/Xemtatca"><img src="~/Assets/images/1.png" alt="Image"></a>
+        <a href="/Home/Xemtatca"><img src="~/Assets/images/2.png" alt="Image"></a>
+        <a href="/Home/Xemtatca"><img src="~/Assets/images/3.png" alt="Image"></a>
+        <a href="/Home/Xemtatca"><img src="~/Assets/images/4.png" alt="Image"></a>
+    </figure>
+</div>
+<div class="site-blocks-cover" style="background-image: url('../../Assets/images/hero_1.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 mx-auto order-lg-2 align-self-center">
+                <div class="site-block-cover-content text-center">
+                    <h4 class="sub-title size1of2"><i>Mang lại những giá trị và trải nghiệm vượt trội cho sức khoẻ khách hàng qua hệ thống mua sắm online của nhà thuốc Pharmacy</i></h4>
+                    <h1>Chào mừng đến với nhà thuốc Pharmacy</h1>
+                    <p>
+                        <a href="/Home/Xemtatca" class="btn btn-primary px-5 py-3"><b>Mua ngay</b></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section">
+    <div class="container">
+        <div class="row align-items-stretch section-overlap">
+            <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="banner-wrap bg-primary h-100">
+                    <a href="#" class="h-100">
+                        <h5>GIAO HÀNG <br> MIỄN PHÍ</h5>
+                        <h1>
+                            <p>
+                                <strong>Với mỗi hóa đơn trên 300.000₫</strong>
+                            </p>
+                        </h1>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="banner-wrap h-100">
+                    <a href="#" class="h-100">
+                        <h5>SALE UP TO</h5> <br><h1><font color="white">50% OFF</font></h1>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="banner-wrap bg-warning h-100">
+                    <a href="#" class="h-100">
+                        <h5>ĐĂNG KÝ <br> THÀNH VIÊN</h5>
+                        <h2>
+                            <p>
+                                THẺ ƯU ĐÃI
+                                <strong>Được chiết khấu 10% tổng giá trị đơn thuốc</strong>
+                            </p>
+                        </h2>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="title-section text-center col-12">
+                <h2 class="text-uppercase">Sản phẩm bán chạy nhất</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var pr in listTopProducts)
+            {
+                <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                    <a href="/Home/ShopSingle/@pr.MaThuoc"> <img src="~/Assets/images/@pr.UrlImage" alt="Image"></a>
+                    <h3 class="text-dark"><a href="/Home/ShopSingle/@pr.MaThuoc">@pr.TenThuoc</a></h3>
+                    <p class="price">
+                        <b>
+                            @pr.Tien₫
+                        </b>
+                    </p>
+                </div>
+            }
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <a href="/Home/Xemtatca" class="btn btn-primary px-4 py-3">Xem tất cả</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="title-section text-center col-12">
+                <h2 class="text-uppercase">Sản phẩm mới</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 block-3 products-wrap">
+                <div class="nonloop-block-3 owl-carousel">
+                    @foreach (var i in listNewProducts)
+                    {
+                        <div class="text-center item mb-4">
+                            <a href="/Home/ShopSingle/@i.MaThuoc"> <img src="~/Assets/images/@i.UrlImage" alt="Image"></a>
+                            <h3 class="text-dark"><a href="/Home/ShopSingle/@i.MaThuoc">@i.TenThuoc</a></h3>
+                            <p class="price">
+                                <b>@i.Tien₫</b> 
+                            </p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("~/Views/Home/PartialView/Comments.cshtml");

@@ -1,0 +1,160 @@
+﻿@using Pharmacy.Models.DAO;
+@model Cart
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section headlink
+{
+    <meta charset="utf-8">
+    <meta name="viewport" Assets="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/Assets/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Assets/css/aos.css">
+    <link rel="stylesheet" href="~/Assets/css/a.css">
+    <link rel="stylesheet" href="~/Assets/css/style.css">
+}
+<div class="bg-light py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0">
+                <a href="Index">Trang chủ</a> <span class="mx-2 mb-0">/</span>
+                <strong class="text-black">Thanh toán</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <div class="bg-light rounded p-3">
+                    <p class="mb-0">Bạn chưa đăng nhập? <a href="/Home/Login" class="d-inline-block">Nhấn vào đây</a> để đăng nhập vào tài khoản của bạn.</p>
+                </div>
+            </div>
+        </div>
+        <form action="/Home/ThanhToan" method="post">
+            <div class="row">
+                <div class="col-md-6 mb-5 mb-md-0">
+                    <h2 class="h3 mb-3 text-black">Chi tiết thanh toán</h2>
+                    <div class="p-3 p-lg-5 border">
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="c_lname" class="text-black">Họ: <span class="text-danger" >*</span></label>
+                                <input type="text" class="form-control" id="c_lname" name="ho" required">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="c_fname" class="text-black">Tên: <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_fname" name="ten" required ">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label for="c_address" class="text-black">Địa chỉ giao hàng: <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_address" name="diachiduong" placeholder="Địa chỉ đường" required ">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="sonha" placeholder="Số nhà, tòa,... (tùy chọn)" required ">
+                        </div>
+
+                        <div class="form-group row mb-5">
+                            <div class="col-md-6">
+                                <label for="c_email_address" class="text-black">Địa chỉ Email: <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="c_email_address" name="email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="c_phone" class="text-black">Số điện thoại: <span class="text-danger">*</span></label>
+                                <input type="text" pattern="(\+84|0)\d{9,10}" class="form-control" id="c_phone" name="sdt" placeholder="" required ">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="c_create_account" class="text-black" data-toggle="collapse" href="#create_an_account"
+                                   role="button" aria-expanded="false" aria-controls="create_an_account">
+                                <input type="checkbox" value="1"
+                                       id="c_create_account"> Bạn muốn tạo tài khoản?
+                            </label>
+                            <div class="collapse" id="create_an_account">
+                                <div class="py-2">
+                                    <p class="mb-3">Điền đầy đủ thông tin phía trên để tạo tài khoản. Nếu đã đăng ký, vui lòng đăng nhập ở đầu trang.</p>
+                                    <div class="form-group">
+                                        <label for="c_account_password" class="text-black">Mật khẩu tài khoản</label>
+                                        <input type="email" class="form-control" id="c_account_password" name="account_password"
+                                               placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="c_order_notes" class="text-black">Lưu ý cho đơn hàng:</label>
+                            <textarea name="ghichu" id="c_order_notes" cols="30" rows="5" class="form-control"
+                                      placeholder="Viết lưu ý của bạn vào đây..."></textarea>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            <h2 class="h3 mb-3 text-black">Giỏ hàng của bạn</h2>
+                            <div class="p-3 p-lg-5 border">
+                                <table class="table site-block-order-table mb-5">
+                                    <thread>
+                                        <th>Sản phẩm</th>
+                                        <th>Giá tiền</th>
+                                    </thread>
+                                    <tbody>
+                                        @foreach (CartItem it in Model.dongSP)
+                                        {
+                                            <tr>
+                                                <td>@it.SanPham.TenThuoc <strong class="mx-2">x</strong>@it.SoLuong</td>
+                                                <td>@Model.TongTien()₫</td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td class="text-black font-weight-bold">Giảm giá<strong></strong></td>
+                                            <td class="text-black">@Model.MaKM(Model.coupon) đ</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="text-black font-weight-bold"><strong>Thành tiền</strong></td>
+                                            <td class="text-black font-weight-bold"><strong>@Model.TongTienCoupon()</strong></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                <input type="hidden" name="makhuyenmai" value="@Model.coupon" />
+                                <div class="border mb-3">
+                                    <h3 class="h6 mb-0">
+                                        <input checked="checked" name="giaohang" type="radio" value="0"> Trả bằng bằng tiền mặt
+                                    </h3>
+                                </div>
+                                <div class="border mb-3">
+                                    <h3 class="h6 mb-0">
+                                        <input type="radio" name="giaohang" value="1">  Trả bằng tài khoản ngân hàng
+                                    </h3>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Xác nhận đặt hàng</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

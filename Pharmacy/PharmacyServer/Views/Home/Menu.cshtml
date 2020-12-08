@@ -1,0 +1,22 @@
+﻿@using Pharmacy.Models.EF;
+@model List<Pharmacy.Models.EF.LOAITHUOC>
+@foreach (var lt in Model.Where(x => x.ParentID.Trim() == "0"))
+{
+    var child = Model.Where(x => x.ParentID.Trim() == lt.MaLoaiThuoc.Trim());
+    if (child.Count() == 0)
+    {
+        <li><a href="/Home/DanhMuc/@lt.MaLoaiThuoc">@lt.TenLoaiThuoc</a></li>
+    }
+    else
+    {
+        <li class="has-children">
+            <a href="/Home/DanhMuc/@lt.MaLoaiThuoc">@lt.TenLoaiThuoc</a>
+            <ul class="dropdown">
+                @foreach (var itC in child)
+                {
+                    <li><a href="/Home/DanhMuc/@itC.MaLoaiThuoc">@itC.TenLoaiThuoc</a></li>
+                }
+            </ul>
+        </li>
+    }
+}

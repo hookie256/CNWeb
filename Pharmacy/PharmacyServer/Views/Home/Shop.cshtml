@@ -1,0 +1,92 @@
+﻿@using PagedList.Mvc;
+@using Pharmacy.Models.EF;
+@model PagedList.IPagedList<THUOC>
+
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section headlink
+{
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/Assets/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Assets/css/aos.css">
+    <link rel="stylesheet" href="~/Assets/css/a.css">
+    <link rel="stylesheet" href="~/Assets/css/style.css">
+}
+
+<div class="bg-light py-3">
+    <div class="container">
+        <div class="row">
+            @foreach (THUOC i in Model)
+            {
+                <div class="col-md-12 mb-0"><a href="/Home/Index">Trang chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">@i.LOAITHUOC.TenLoaiThuoc</strong></div>
+                break;
+            }
+        </div>
+    </div>
+</div>
+
+<div class="site-section">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">Bộ lọc theo giá tiền</h3>
+                <div id="slider-range" class="border-primary"></div>
+                <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
+            </div>
+            <div class="col-lg-6">
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">Bộ lọc theo yêu cầu</h3>
+                <button type="button" class="btn btn-secondary btn-md dropdown-toggle px-4" id="dropdownMenuReference"
+                        data-toggle="dropdown">
+                    Yêu cầu
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                    <a class="dropdown-item" href="#">Độ liên quan</a>
+                    <a class="dropdown-item" href="#">Tên, A đến Z</a>
+                    <a class="dropdown-item" href="#">Tên, Z đến A</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Giá tiền, thấp tới cao</a>
+                    <a class="dropdown-item" href="#">Giá tiền, cao tới thấp</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (THUOC it in Model)
+            {
+                <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                    <a href="/Home/ShopSingle/@it.MaThuoc"> <img src="~/Assets/images/@it.UrlImage" alt="Image"></a>
+                    <h3 class="text-dark">
+                        <a href="/Home/ShopSingle/@it.MaThuoc">
+                            @it.TenThuoc
+                        </a>
+                    </h3>
+                    <p class="price">
+                        <b>@it.Tien₫</b>
+                    </p>
+                </div>
+            }
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <div class="site-block-27">
+                    <ul>
+                        <li>@Html.PagedListPager(Model, page => Url.Action("DanhMuc", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

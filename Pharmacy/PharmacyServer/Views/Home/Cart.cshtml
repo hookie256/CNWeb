@@ -1,0 +1,163 @@
+﻿@using Pharmacy.Models.DAO;
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Cart
+@section headlink
+{
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/Assets/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Assets/css/aos.css">
+    <link rel="stylesheet" href="~/Assets/css/a.css">
+    <link rel="stylesheet" href="~/Assets/css/style.css">
+
+}
+
+<div class="bg-light py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0">
+                <a href="Index">Trang chủ</a> <span class="mx-2 mb-0">/</span>
+                <strong class="text-black">Giỏ hàng</strong>
+            </div>
+        </div>
+    </div>
+</div>
+@if (Model.dongSP.Count() > 0)
+{
+<div class="site-section">
+    <form class="container" method="post" action="/Home/CapNhatGH">
+        <div class="row mb-5">
+            <div class="col-md-12" >
+                <div class="site-blocks-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="product-thumbnail">Hình ảnh</th>
+                                <th class="product-name">Sản phẩm</th>
+                                <th class="product-price">Giá</th>
+                                <th class="product-quantity">Số lượng</th>
+                                <th class="product-total">Tổng</th>
+                                <th class="product-remove">Trả lại</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int i = 0; string mlt="";}
+                            @foreach (CartItem it in Model.dongSP)
+                            {
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <img src="~/Assets/images/@it.SanPham.UrlImage" alt="Image" class="img-fluid">
+                                    </td>
+                                    <td class="product-name">
+                                        <h1 class="h5 text-black">@it.SanPham.TenThuoc</h1>
+                                    </td>
+                                    <td>@it.SanPham.Tien₫</td>
+                                    <td>
+                                        <div class="input-group mb-3" style="max-width: 120px;">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                            </div>
+                                            <input type="hidden" name="masp[@i]" value="@it.SanPham.MaThuoc" />
+                                            <input type="text" name="sl[@i]" class="form-control text-center" value=@it.SoLuong placeholder=""
+                                                   aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                    <td>@Model.ThanhTien(it.SanPham.DonGia, it.SoLuong)₫</td>
+                                    <td class="product-remove">
+                                        <a href="/Home/XoaSP/@it.SanPham.MaThuoc" class="btn btn-primary height-auto btn-sm">X</a>
+                                    
+                                    </td>
+
+                                </tr>
+                                i += 1;
+                                mlt = it.SanPham.MaLoaiThuoc;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row mb-5">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <button type="submit" class="btn btn-primary btn-md btn-block">UPDATE GIỎ HÀNG</button>
+                    </div>
+                    <div class="col-md-6">                       
+                        <a href="/Home/DanhMuc/@mlt" class="btn btn-outline-primary btn-md btn-block">TIẾP TỤC MUA THUỐC</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="text-black h4" for="coupon">Mã giảm giá</label>
+                        <p>Nhập mã giảm giá nếu bạn có mã giảm giá</p>
+                    </div>
+                    <div class="col-md-8 mb-3 mb-md-0">
+                        <input type="text" class="form-control py-3" id="coupon" name ="coupon" placeholder="Nhập mã giảm giá...">
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary btn-md px-4">Sử dụng</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 pl-5">
+                <div class="row justify-content-end">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-12 text-right border-bottom mb-5">
+                                <h3 class="text-black h4 text-uppercase">Tổng cộng</h3>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <span class="text-black">Tổng</span>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <strong class="text-black">@Model.TongTien()₫</strong>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <span class="text-black">Giảm giá</span>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <strong class="text-black">- @Model.MaKM(Model.coupon)₫</strong>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-6">
+                                <span class="text-black">Thanh toán</span>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <strong class="text-black">@Model.TongTienCoupon()₫</strong>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a class="btn btn-primary btn-lg btn-block" href="/Home/ThanhToan">
+                                    THANH
+                                    TOÁN
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+}
