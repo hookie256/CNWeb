@@ -407,8 +407,8 @@ D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\CNWeb\Pharmacy\Ph
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\CNWeb\Pharmacy\Pharmacy\bin\Newtonsoft.Json.xml
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\CNWeb\Pharmacy\Pharmacy\bin\Antlr3.Runtime.pdb
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\CNWeb\Pharmacy\Pharmacy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.csprojAssemblyReference.cache
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.csproj.CoreCompileInputs.cache
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.csproj.CopyComplete
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.dll
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.pdb
+D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\CNWeb\Pharmacy\Pharmacy\obj\Debug\Pharmacy.csprojAssemblyReference.cache
