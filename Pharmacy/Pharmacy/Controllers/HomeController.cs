@@ -13,7 +13,7 @@ namespace Pharmacy.Controllers
     public class HomeController : Controller
     {
         public MyDBContext db = new MyDBContext();
-
+        public QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         public ActionResult Index()
         {
             var productDAO = new ProductDAO();
@@ -36,7 +36,8 @@ namespace Pharmacy.Controllers
         [HttpPost]
         public ActionResult TimKiem(string searchstr)
         {
-            var model = db.THUOCs.SqlQuery("SELECT * FROM THUOC WHERE TenThuoc LIKE '%" + searchstr + "%' OR TimKiem LIKE '%" + searchstr + "%'").ToList();
+            var model = client.TimKiemThuoc(searchstr);
+           // var model = db.THUOCs.SqlQuery("SELECT * FROM THUOC WHERE TenThuoc LIKE '%" + searchstr + "%' OR TimKiem LIKE '%" + searchstr + "%'").ToList();
             return View(model);
         }
         public ActionResult DanhMuc(string id, int? page)
