@@ -1777,6 +1777,9 @@
     <Content Include="Assets\vendor\jquery\jquery.min.js" />
     <Content Include="Assets\vendor\jquery\jquery.slim.js" />
     <Content Include="Assets\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Connected Services\QL_SR\Pharmacy.QL_SR.THUOC.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\QL_SR\QLBTService.disco" />
     <None Include="Connected Services\QL_SR\configuration91.svcinfo" />
     <None Include="Connected Services\QL_SR\configuration.svcinfo" />

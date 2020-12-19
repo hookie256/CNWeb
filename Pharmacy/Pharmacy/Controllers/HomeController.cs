@@ -376,13 +376,13 @@ namespace Pharmacy.Controllers
             var model = db.THUOCs.Where(x => x.MaThuoc.Trim() == id.Trim()).FirstOrDefault();
             return View(model);
         }
-
+        
         public ActionResult Shop(int? page)
         {
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            var item = db.THUOCs.ToList();
-            foreach (THUOC it in item)
+            var item = client.LayDS();
+            foreach (QL_SR.THUOC it in item)
             {
                 if (it.TenThuoc.Length > 30)
                 {

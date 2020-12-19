@@ -675,6 +675,39 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="LayDS">
+        <s:complexType />
+      </s:element>
+      <s:element name="LayDSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LayDSResult" type="tns:ArrayOfTHUOC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTHUOC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="THUOC" nillable="true" type="tns:THUOC" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="THUOC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MaThuoc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaLoThuoc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TenThuoc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CongDung" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ThanhPhan" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SoLuongTon" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DangThuoc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaLoaiThuoc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DonGia" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaHangSX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaNhaCungCap" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UrlImage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tien" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimKiem" type="s:string" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ThemMoiNCCSoapIn">
@@ -887,6 +920,12 @@
   <wsdl:message name="ThemDonThuocSoapOut">
     <wsdl:part name="parameters" element="tns:ThemDonThuocResponse" />
   </wsdl:message>
+  <wsdl:message name="LayDSSoapIn">
+    <wsdl:part name="parameters" element="tns:LayDS" />
+  </wsdl:message>
+  <wsdl:message name="LayDSSoapOut">
+    <wsdl:part name="parameters" element="tns:LayDSResponse" />
+  </wsdl:message>
   <wsdl:portType name="QLBanThuocServiceSoap">
     <wsdl:operation name="ThemMoiNCC">
       <wsdl:input message="tns:ThemMoiNCCSoapIn" />
@@ -1027,6 +1066,10 @@
     <wsdl:operation name="ThemDonThuoc">
       <wsdl:input message="tns:ThemDonThuocSoapIn" />
       <wsdl:output message="tns:ThemDonThuocSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LayDS">
+      <wsdl:input message="tns:LayDSSoapIn" />
+      <wsdl:output message="tns:LayDSSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="QLBanThuocServiceSoap" type="tns:QLBanThuocServiceSoap">
@@ -1346,6 +1389,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LayDS">
+      <soap:operation soapAction="http://tempuri.org/LayDS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="QLBanThuocServiceSoap12" type="tns:QLBanThuocServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1657,6 +1709,15 @@
     </wsdl:operation>
     <wsdl:operation name="ThemDonThuoc">
       <soap12:operation soapAction="http://tempuri.org/ThemDonThuoc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayDS">
+      <soap12:operation soapAction="http://tempuri.org/LayDS" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

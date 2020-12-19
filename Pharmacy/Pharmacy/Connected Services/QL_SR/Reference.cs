@@ -260,6 +260,227 @@ namespace Pharmacy.QL_SR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemDonThuoc", ReplyAction="*")]
         System.Threading.Tasks.Task<int> ThemDonThuocAsync(string maPX, string maT, string sl, string gia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayDS", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Pharmacy.QL_SR.THUOC[] LayDS();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayDS", ReplyAction="*")]
+        System.Threading.Tasks.Task<Pharmacy.QL_SR.THUOC[]> LayDSAsync();
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class THUOC : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string maThuocField;
+        
+        private string maLoThuocField;
+        
+        private string tenThuocField;
+        
+        private string congDungField;
+        
+        private string thanhPhanField;
+        
+        private int soLuongTonField;
+        
+        private string dangThuocField;
+        
+        private string maLoaiThuocField;
+        
+        private int donGiaField;
+        
+        private string maHangSXField;
+        
+        private string maNhaCungCapField;
+        
+        private string urlImageField;
+        
+        private string tienField;
+        
+        private string timKiemField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string MaThuoc {
+            get {
+                return this.maThuocField;
+            }
+            set {
+                this.maThuocField = value;
+                this.RaisePropertyChanged("MaThuoc");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string MaLoThuoc {
+            get {
+                return this.maLoThuocField;
+            }
+            set {
+                this.maLoThuocField = value;
+                this.RaisePropertyChanged("MaLoThuoc");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string TenThuoc {
+            get {
+                return this.tenThuocField;
+            }
+            set {
+                this.tenThuocField = value;
+                this.RaisePropertyChanged("TenThuoc");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string CongDung {
+            get {
+                return this.congDungField;
+            }
+            set {
+                this.congDungField = value;
+                this.RaisePropertyChanged("CongDung");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string ThanhPhan {
+            get {
+                return this.thanhPhanField;
+            }
+            set {
+                this.thanhPhanField = value;
+                this.RaisePropertyChanged("ThanhPhan");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public int SoLuongTon {
+            get {
+                return this.soLuongTonField;
+            }
+            set {
+                this.soLuongTonField = value;
+                this.RaisePropertyChanged("SoLuongTon");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string DangThuoc {
+            get {
+                return this.dangThuocField;
+            }
+            set {
+                this.dangThuocField = value;
+                this.RaisePropertyChanged("DangThuoc");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public string MaLoaiThuoc {
+            get {
+                return this.maLoaiThuocField;
+            }
+            set {
+                this.maLoaiThuocField = value;
+                this.RaisePropertyChanged("MaLoaiThuoc");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public int DonGia {
+            get {
+                return this.donGiaField;
+            }
+            set {
+                this.donGiaField = value;
+                this.RaisePropertyChanged("DonGia");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        public string MaHangSX {
+            get {
+                return this.maHangSXField;
+            }
+            set {
+                this.maHangSXField = value;
+                this.RaisePropertyChanged("MaHangSX");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        public string MaNhaCungCap {
+            get {
+                return this.maNhaCungCapField;
+            }
+            set {
+                this.maNhaCungCapField = value;
+                this.RaisePropertyChanged("MaNhaCungCap");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        public string UrlImage {
+            get {
+                return this.urlImageField;
+            }
+            set {
+                this.urlImageField = value;
+                this.RaisePropertyChanged("UrlImage");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        public string Tien {
+            get {
+                return this.tienField;
+            }
+            set {
+                this.tienField = value;
+                this.RaisePropertyChanged("Tien");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        public string TimKiem {
+            get {
+                return this.timKiemField;
+            }
+            set {
+                this.timKiemField = value;
+                this.RaisePropertyChanged("TimKiem");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -567,6 +788,14 @@ namespace Pharmacy.QL_SR {
         
         public System.Threading.Tasks.Task<int> ThemDonThuocAsync(string maPX, string maT, string sl, string gia) {
             return base.Channel.ThemDonThuocAsync(maPX, maT, sl, gia);
+        }
+        
+        public Pharmacy.QL_SR.THUOC[] LayDS() {
+            return base.Channel.LayDS();
+        }
+        
+        public System.Threading.Tasks.Task<Pharmacy.QL_SR.THUOC[]> LayDSAsync() {
+            return base.Channel.LayDSAsync();
         }
     }
 }
