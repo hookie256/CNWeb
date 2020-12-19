@@ -314,6 +314,7 @@ namespace Pharmacy.Controllers
             }
             return sb.ToString();
         }
+        //done
         [HttpPost]
         public ActionResult Register(string ho, string ten, string email, string pas1, string pas2)
         {
@@ -325,9 +326,15 @@ namespace Pharmacy.Controllers
             {
                 kh.MatKhau = MaHoaMD5(pas1);
             }
-            db.KHACHHANGs.Add(kh);
-            db.SaveChanges();
-            return View("Login");
+            int i = client.Register(kh.Email,kh.MatKhau,kh.TenKhachHang,kh.MaKhachHang);
+            if (i==1)
+            {
+                return View("Login");
+            }
+            else
+            {
+                return View("Register");
+            }
         }
 
         public ActionResult Login()
@@ -341,13 +348,14 @@ namespace Pharmacy.Controllers
             Session[Common.CommonConstants.USER_SESSION] = null;
             return RedirectToAction("Index");
         }
+        //dỏne
         [HttpPost]
         public ActionResult LoginControl(string email, string password, string duytri)
         {
-            var user = db.KHACHHANGs.SqlQuery("SELECT * FROM KHACHHANG WHERE Email = '" + email + "' AND MatKhau='" + MaHoaMD5(password) + "'").ToList();
+            var user = client.Login(email, MaHoaMD5(password));
             if (user.Count() != 0)
             {
-                foreach (KHACHHANG us in user)
+                foreach (QL_SR.KHACHHANG us in user)
                 {
                     var userSession = new UserLogin();
                     userSession.userID = us.Email;
@@ -370,18 +378,18 @@ namespace Pharmacy.Controllers
         {
             return View();
         }
-
+        //done
         public ActionResult ShopSingle(string id)
         {
-            var model = db.THUOCs.Where(x => x.MaThuoc.Trim() == id.Trim()).FirstOrDefault();
+            var model = client.LayDS(id);
             return View(model);
         }
-        
+        //done
         public ActionResult Shop(int? page)
         {
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            var item = client.LayDS();
+            var item = client.LayDS("");
             foreach (QL_SR.THUOC it in item)
             {
                 if (it.TenThuoc.Length > 30)

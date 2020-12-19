@@ -263,10 +263,24 @@ namespace Pharmacy.QL_SR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayDS", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Pharmacy.QL_SR.THUOC[] LayDS();
+        Pharmacy.QL_SR.THUOC[] LayDS(string str);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayDS", ReplyAction="*")]
-        System.Threading.Tasks.Task<Pharmacy.QL_SR.THUOC[]> LayDSAsync();
+        System.Threading.Tasks.Task<Pharmacy.QL_SR.THUOC[]> LayDSAsync(string str);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Login", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Pharmacy.QL_SR.KHACHHANG[] Login(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Login", ReplyAction="*")]
+        System.Threading.Tasks.Task<Pharmacy.QL_SR.KHACHHANG[]> LoginAsync(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Register", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int Register(string email, string password, string name, string makh);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Register", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> RegisterAsync(string email, string password, string name, string makh);
     }
     
     /// <remarks/>
@@ -470,6 +484,80 @@ namespace Pharmacy.QL_SR {
             set {
                 this.timKiemField = value;
                 this.RaisePropertyChanged("TimKiem");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class KHACHHANG : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string maKhachHangField;
+        
+        private string tenKhachHangField;
+        
+        private string emailField;
+        
+        private string matKhauField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string MaKhachHang {
+            get {
+                return this.maKhachHangField;
+            }
+            set {
+                this.maKhachHangField = value;
+                this.RaisePropertyChanged("MaKhachHang");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string TenKhachHang {
+            get {
+                return this.tenKhachHangField;
+            }
+            set {
+                this.tenKhachHangField = value;
+                this.RaisePropertyChanged("TenKhachHang");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+                this.RaisePropertyChanged("Email");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string MatKhau {
+            get {
+                return this.matKhauField;
+            }
+            set {
+                this.matKhauField = value;
+                this.RaisePropertyChanged("MatKhau");
             }
         }
         
@@ -790,12 +878,28 @@ namespace Pharmacy.QL_SR {
             return base.Channel.ThemDonThuocAsync(maPX, maT, sl, gia);
         }
         
-        public Pharmacy.QL_SR.THUOC[] LayDS() {
-            return base.Channel.LayDS();
+        public Pharmacy.QL_SR.THUOC[] LayDS(string str) {
+            return base.Channel.LayDS(str);
         }
         
-        public System.Threading.Tasks.Task<Pharmacy.QL_SR.THUOC[]> LayDSAsync() {
-            return base.Channel.LayDSAsync();
+        public System.Threading.Tasks.Task<Pharmacy.QL_SR.THUOC[]> LayDSAsync(string str) {
+            return base.Channel.LayDSAsync(str);
+        }
+        
+        public Pharmacy.QL_SR.KHACHHANG[] Login(string email, string password) {
+            return base.Channel.Login(email, password);
+        }
+        
+        public System.Threading.Tasks.Task<Pharmacy.QL_SR.KHACHHANG[]> LoginAsync(string email, string password) {
+            return base.Channel.LoginAsync(email, password);
+        }
+        
+        public int Register(string email, string password, string name, string makh) {
+            return base.Channel.Register(email, password, name, makh);
+        }
+        
+        public System.Threading.Tasks.Task<int> RegisterAsync(string email, string password, string name, string makh) {
+            return base.Channel.RegisterAsync(email, password, name, makh);
         }
     }
 }
