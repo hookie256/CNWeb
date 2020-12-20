@@ -247,6 +247,13 @@ namespace Pharmacy.QL_SR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemPhieuXuat", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataTable> ThemPhieuXuatAsync(string date, string makh, string manv, string tong);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemPhieuXuat1", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable ThemPhieuXuat1(string date, string makh, string manv, string tong);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemPhieuXuat1", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> ThemPhieuXuat1Async(string date, string makh, string manv, string tong);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayMaPX", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataTable LayMaPX(string date, string makh, string manv, string tong);
@@ -260,6 +267,34 @@ namespace Pharmacy.QL_SR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemDonThuoc", ReplyAction="*")]
         System.Threading.Tasks.Task<int> ThemDonThuocAsync(string maPX, string maT, string sl, string gia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayThuocDatHang", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable LayThuocDatHang();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayThuocDatHang", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> LayThuocDatHangAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayThuocDaDatHang", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable LayThuocDaDatHang(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayThuocDaDatHang", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> LayThuocDaDatHangAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayThuocDatHangChiTiet", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable LayThuocDatHangChiTiet(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayThuocDatHangChiTiet", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> LayThuocDatHangChiTietAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/XoaDon", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void XoaDon(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/XoaDon", ReplyAction="*")]
+        System.Threading.Tasks.Task XoaDonAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayDS", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -312,7 +347,7 @@ namespace Pharmacy.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -526,7 +561,7 @@ namespace Pharmacy.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -586,7 +621,7 @@ namespace Pharmacy.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -950,6 +985,14 @@ namespace Pharmacy.QL_SR {
             return base.Channel.ThemPhieuXuatAsync(date, makh, manv, tong);
         }
         
+        public System.Data.DataTable ThemPhieuXuat1(string date, string makh, string manv, string tong) {
+            return base.Channel.ThemPhieuXuat1(date, makh, manv, tong);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> ThemPhieuXuat1Async(string date, string makh, string manv, string tong) {
+            return base.Channel.ThemPhieuXuat1Async(date, makh, manv, tong);
+        }
+        
         public System.Data.DataTable LayMaPX(string date, string makh, string manv, string tong) {
             return base.Channel.LayMaPX(date, makh, manv, tong);
         }
@@ -964,6 +1007,38 @@ namespace Pharmacy.QL_SR {
         
         public System.Threading.Tasks.Task<int> ThemDonThuocAsync(string maPX, string maT, string sl, string gia) {
             return base.Channel.ThemDonThuocAsync(maPX, maT, sl, gia);
+        }
+        
+        public System.Data.DataTable LayThuocDatHang() {
+            return base.Channel.LayThuocDatHang();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> LayThuocDatHangAsync() {
+            return base.Channel.LayThuocDatHangAsync();
+        }
+        
+        public System.Data.DataTable LayThuocDaDatHang(string id) {
+            return base.Channel.LayThuocDaDatHang(id);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> LayThuocDaDatHangAsync(string id) {
+            return base.Channel.LayThuocDaDatHangAsync(id);
+        }
+        
+        public System.Data.DataTable LayThuocDatHangChiTiet(string id) {
+            return base.Channel.LayThuocDatHangChiTiet(id);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> LayThuocDatHangChiTietAsync(string id) {
+            return base.Channel.LayThuocDatHangChiTietAsync(id);
+        }
+        
+        public void XoaDon(string id) {
+            base.Channel.XoaDon(id);
+        }
+        
+        public System.Threading.Tasks.Task XoaDonAsync(string id) {
+            return base.Channel.XoaDonAsync(id);
         }
         
         public Pharmacy.QL_SR.THUOC[] LayDS(string str) {

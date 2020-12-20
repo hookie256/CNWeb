@@ -7,6 +7,7 @@ using System;
 using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Pharmacy.Controllers
 {
@@ -68,7 +69,16 @@ namespace Pharmacy.Controllers
         public ActionResult Menu()
         {
             var model = client.LayDSLoaiThuoc("");
-            return PartialView(model);
+            List<LOAITHUOC> dslt = new List<LOAITHUOC>();
+            foreach(QL_SR.LOAITHUOC m in model)
+            {
+                LOAITHUOC lt = new LOAITHUOC();
+                lt.MaLoaiThuoc = m.MaLoaiThuoc;
+                lt.ParentID = m.ParentID;
+                lt.TenLoaiThuoc = m.TenLoaiThuoc;
+                dslt.Add(lt);
+            }
+            return PartialView(dslt);
         }
         //done
         public ActionResult Xemtatca(int? page)
