@@ -70,7 +70,7 @@ namespace Pharmacy.Controllers
             var model = client.LayDSLoaiThuoc("");
             return PartialView(model);
         }
-        //
+        //done
         public ActionResult Xemtatca(int? page)
         {
             int pageSize = 6;
@@ -85,7 +85,7 @@ namespace Pharmacy.Controllers
             }
             return View(item.ToPagedList(pageNumber, pageSize));
         }
-
+        //
         //PHẦN LÀM CART
         public static int dem=0;
         public ActionResult Cart()
@@ -250,7 +250,6 @@ namespace Pharmacy.Controllers
             dem = 1;
             return RedirectToAction("Cart");
         }
-        //
         //Thanh Toán
         [HttpGet]
         public ActionResult ThanhToan()
