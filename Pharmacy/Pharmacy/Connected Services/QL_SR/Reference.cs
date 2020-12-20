@@ -338,16 +338,58 @@ namespace Pharmacy.QL_SR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayDSLoaiThuoc", ReplyAction="*")]
         System.Threading.Tasks.Task<Pharmacy.QL_SR.LOAITHUOC[]> LayDSLoaiThuocAsync(string str);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/XoaSPGH", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThongTinKH", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        int XoaSPGH(string maSP);
+        Pharmacy.QL_SR.KHACHHANG[] ThongTinKH(string str);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/XoaSPGH", ReplyAction="*")]
-        System.Threading.Tasks.Task<int> XoaSPGHAsync(string maSP);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThongTinKH", ReplyAction="*")]
+        System.Threading.Tasks.Task<Pharmacy.QL_SR.KHACHHANG[]> ThongTinKHAsync(string str);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThongTinGH", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Pharmacy.QL_SR.GIOHANG[] ThongTinGH(string maKH, string maT);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThongTinGH", ReplyAction="*")]
+        System.Threading.Tasks.Task<Pharmacy.QL_SR.GIOHANG[]> ThongTinGHAsync(string maKH, string maT);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TienKM", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Pharmacy.QL_SR.KHUYENMAI[] TienKM(string coupon);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TienKM", ReplyAction="*")]
+        System.Threading.Tasks.Task<Pharmacy.QL_SR.KHUYENMAI[]> TienKMAsync(string coupon);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemSP", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ThemSP(string maT, string maKH, int sl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemSP", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ThemSPAsync(string maT, string maKH, int sl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/XoaSP", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XoaSP(string maKH, string maT);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/XoaSP", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> XoaSPAsync(string maKH, string maT);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemHoaDon", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ThemHoaDon(int maHD, string ho, string ten, string diachiduong, string sonha, string email, string sdt, string ghichu, string makhuyenmai, string giaohang);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemHoaDon", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ThemHoaDonAsync(int maHD, string ho, string ten, string diachiduong, string sonha, string email, string sdt, string ghichu, string makhuyenmai, string giaohang);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemCCHoaDon", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ThemCCHoaDon(int maHD, string maT, int dongia, int sl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemCCHoaDon", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ThemCCHoaDonAsync(int maHD, string maT, int dongia, int sl);
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -561,7 +603,127 @@ namespace Pharmacy.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class KHUYENMAI : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string maKMField;
+        
+        private int tienKMField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string MaKM {
+            get {
+                return this.maKMField;
+            }
+            set {
+                this.maKMField = value;
+                this.RaisePropertyChanged("MaKM");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int TienKM {
+            get {
+                return this.tienKMField;
+            }
+            set {
+                this.tienKMField = value;
+                this.RaisePropertyChanged("TienKM");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class GIOHANG : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int maGHField;
+        
+        private string maThuocField;
+        
+        private string maKhachHangField;
+        
+        private int soLuongField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int MaGH {
+            get {
+                return this.maGHField;
+            }
+            set {
+                this.maGHField = value;
+                this.RaisePropertyChanged("MaGH");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string MaThuoc {
+            get {
+                return this.maThuocField;
+            }
+            set {
+                this.maThuocField = value;
+                this.RaisePropertyChanged("MaThuoc");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string MaKhachHang {
+            get {
+                return this.maKhachHangField;
+            }
+            set {
+                this.maKhachHangField = value;
+                this.RaisePropertyChanged("MaKhachHang");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int SoLuong {
+            get {
+                return this.soLuongField;
+            }
+            set {
+                this.soLuongField = value;
+                this.RaisePropertyChanged("SoLuong");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -621,7 +783,7 @@ namespace Pharmacy.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1089,12 +1251,60 @@ namespace Pharmacy.QL_SR {
             return base.Channel.LayDSLoaiThuocAsync(str);
         }
         
-        public int XoaSPGH(string maSP) {
-            return base.Channel.XoaSPGH(maSP);
+        public Pharmacy.QL_SR.KHACHHANG[] ThongTinKH(string str) {
+            return base.Channel.ThongTinKH(str);
         }
         
-        public System.Threading.Tasks.Task<int> XoaSPGHAsync(string maSP) {
-            return base.Channel.XoaSPGHAsync(maSP);
+        public System.Threading.Tasks.Task<Pharmacy.QL_SR.KHACHHANG[]> ThongTinKHAsync(string str) {
+            return base.Channel.ThongTinKHAsync(str);
+        }
+        
+        public Pharmacy.QL_SR.GIOHANG[] ThongTinGH(string maKH, string maT) {
+            return base.Channel.ThongTinGH(maKH, maT);
+        }
+        
+        public System.Threading.Tasks.Task<Pharmacy.QL_SR.GIOHANG[]> ThongTinGHAsync(string maKH, string maT) {
+            return base.Channel.ThongTinGHAsync(maKH, maT);
+        }
+        
+        public Pharmacy.QL_SR.KHUYENMAI[] TienKM(string coupon) {
+            return base.Channel.TienKM(coupon);
+        }
+        
+        public System.Threading.Tasks.Task<Pharmacy.QL_SR.KHUYENMAI[]> TienKMAsync(string coupon) {
+            return base.Channel.TienKMAsync(coupon);
+        }
+        
+        public int ThemSP(string maT, string maKH, int sl) {
+            return base.Channel.ThemSP(maT, maKH, sl);
+        }
+        
+        public System.Threading.Tasks.Task<int> ThemSPAsync(string maT, string maKH, int sl) {
+            return base.Channel.ThemSPAsync(maT, maKH, sl);
+        }
+        
+        public int XoaSP(string maKH, string maT) {
+            return base.Channel.XoaSP(maKH, maT);
+        }
+        
+        public System.Threading.Tasks.Task<int> XoaSPAsync(string maKH, string maT) {
+            return base.Channel.XoaSPAsync(maKH, maT);
+        }
+        
+        public int ThemHoaDon(int maHD, string ho, string ten, string diachiduong, string sonha, string email, string sdt, string ghichu, string makhuyenmai, string giaohang) {
+            return base.Channel.ThemHoaDon(maHD, ho, ten, diachiduong, sonha, email, sdt, ghichu, makhuyenmai, giaohang);
+        }
+        
+        public System.Threading.Tasks.Task<int> ThemHoaDonAsync(int maHD, string ho, string ten, string diachiduong, string sonha, string email, string sdt, string ghichu, string makhuyenmai, string giaohang) {
+            return base.Channel.ThemHoaDonAsync(maHD, ho, ten, diachiduong, sonha, email, sdt, ghichu, makhuyenmai, giaohang);
+        }
+        
+        public int ThemCCHoaDon(int maHD, string maT, int dongia, int sl) {
+            return base.Channel.ThemCCHoaDon(maHD, maT, dongia, sl);
+        }
+        
+        public System.Threading.Tasks.Task<int> ThemCCHoaDonAsync(int maHD, string maT, int dongia, int sl) {
+            return base.Channel.ThemCCHoaDonAsync(maHD, maT, dongia, sl);
         }
     }
 }

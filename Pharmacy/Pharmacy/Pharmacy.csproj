@@ -1786,6 +1786,12 @@
     <Content Include="Connected Services\QL_SR\Pharmacy.QL_SR.LOAITHUOC1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\QL_SR\Pharmacy.QL_SR.GIOHANG.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\QL_SR\Pharmacy.QL_SR.KHUYENMAI.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\QL_SR\QLBTService.disco" />
     <None Include="Connected Services\QL_SR\configuration91.svcinfo" />
     <None Include="Connected Services\QL_SR\configuration.svcinfo" />
