@@ -40,12 +40,13 @@ namespace Pharmacy.Controllers
            // var model = db.THUOCs.SqlQuery("SELECT * FROM THUOC WHERE TenThuoc LIKE '%" + searchstr + "%' OR TimKiem LIKE '%" + searchstr + "%'").ToList();
             return View(model);
         }
+        //done
         public ActionResult DanhMuc(string id, int? page)
         {
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            var item = db.THUOCs.Where(x => x.MaLoaiThuoc.Trim() == id.Trim()).ToList();
-            foreach (THUOC it in item)
+            var item = client.LayTenLoaiThuoc(id);
+            foreach (QL_SR.THUOC it in item)
             {
                 if (it.TenThuoc.Length > 30)
                 {
@@ -55,24 +56,27 @@ namespace Pharmacy.Controllers
 
             return View("Shop", item.ToPagedList(pageNumber, pageSize));
         }
+        //done
         [HttpPost]
         public ActionResult ChiTietSanPham(string id)
         {
-            var model = db.THUOCs.Where(x => x.MaThuoc.Trim() == id.Trim()).FirstOrDefault();
+            var model = client.ChiTietSP(id);            
             return View("ShopSingle", model);
         }
+        //done
         [ChildActionOnly]
         public ActionResult Menu()
         {
-            var model = db.LOAITHUOCs.ToList();
+            var model = client.LayDSLoaiThuoc("");
             return PartialView(model);
         }
+        //done
         public ActionResult Xemtatca(int? page)
         {
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            var item = db.THUOCs.SqlQuery("SELECT * FROM THUOC ORDER BY SoLuongTon ASC").ToList();
-            foreach (THUOC it in item)
+            var item = client.LayDS("");
+            foreach (QL_SR.THUOC it in item)
             {
                 if (it.TenThuoc.Length > 30)
                 {
@@ -81,7 +85,7 @@ namespace Pharmacy.Controllers
             }
             return View(item.ToPagedList(pageNumber, pageSize));
         }
-
+        //
         //PHẦN LÀM CART
         public static int dem=0;
         public ActionResult Cart()
@@ -138,7 +142,7 @@ namespace Pharmacy.Controllers
                 return View(gioHang);
             }
         } 
-
+        //
         //Thêm sản phẩm vào giỏ hàng
         public ActionResult ThemSP(string id,string soluong)
         {
@@ -192,7 +196,7 @@ namespace Pharmacy.Controllers
             db.SaveChanges();
             return RedirectToAction("Cart");
         }
-
+        //
         //Cập nhật giỏ hàng
         [HttpPost]
         public ActionResult CapNhatGH(string[] masp, int[] sl,string coupon)
@@ -230,6 +234,7 @@ namespace Pharmacy.Controllers
             return RedirectToAction("Cart");
 
         }
+        //
         //Xóa Sản phẩm
         public ActionResult XoaSP(string id)
         {
@@ -245,7 +250,6 @@ namespace Pharmacy.Controllers
             dem = 1;
             return RedirectToAction("Cart");
         }
-
         //Thanh Toán
         [HttpGet]
         public ActionResult ThanhToan()
@@ -257,6 +261,8 @@ namespace Pharmacy.Controllers
             }
             return View(gioHang);
         }
+        //
+        //
         [HttpPost]
         public ActionResult ThanhToan(HOADON model,string ho, string ten, string diachiduong,string sonha,string email, string sdt,string ghichu,string makhuyenmai,string giaohang)
         {
