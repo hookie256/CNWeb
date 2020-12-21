@@ -310,6 +310,13 @@ namespace Pharmacy.QL_SR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Login", ReplyAction="*")]
         System.Threading.Tasks.Task<Pharmacy.QL_SR.KHACHHANG[]> LoginAsync(string email, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiem_W", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Pharmacy.QL_SR.THUOC[] TimKiem_W(string str);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiem_W", ReplyAction="*")]
+        System.Threading.Tasks.Task<Pharmacy.QL_SR.THUOC[]> TimKiem_WAsync(string str);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Register", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         int Register(string email, string password, string name, string makh);
@@ -1231,6 +1238,14 @@ namespace Pharmacy.QL_SR {
         
         public System.Threading.Tasks.Task<Pharmacy.QL_SR.KHACHHANG[]> LoginAsync(string email, string password) {
             return base.Channel.LoginAsync(email, password);
+        }
+        
+        public Pharmacy.QL_SR.THUOC[] TimKiem_W(string str) {
+            return base.Channel.TimKiem_W(str);
+        }
+        
+        public System.Threading.Tasks.Task<Pharmacy.QL_SR.THUOC[]> TimKiem_WAsync(string str) {
+            return base.Channel.TimKiem_WAsync(str);
         }
         
         public int Register(string email, string password, string name, string makh) {

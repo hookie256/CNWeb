@@ -10,16 +10,15 @@ namespace Pharmacy.Models.DAO
     [Serializable]
     public class CartItem
     {
-        public QL_SR.THUOC SanPham { get; set; }
+        public THUOC SanPham { get; set; }
         public int SoLuong { get; set; }
     }
 
     public class Cart
     {
-        public QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         private List<CartItem> gioHang = new List<CartItem>();
         public string coupon = "";
-        public void themSP(QL_SR.THUOC sp, int sl)
+        public void themSP(THUOC sp, int sl)
         {
             CartItem dongSP = gioHang
                 .Where(p => p.SanPham.MaThuoc == sp.MaThuoc)
@@ -33,7 +32,7 @@ namespace Pharmacy.Models.DAO
                     SoLuong = sl
                 });
             }
-            else 
+            else
             {
                 dongSP.SoLuong += sl;
                 if (dongSP.SoLuong <= 0)
@@ -43,7 +42,7 @@ namespace Pharmacy.Models.DAO
             }
         }
 
-        public void capnhatSP(QL_SR.THUOC sp, int sl)
+        public void capnhatSP(THUOC sp, int sl)
         {
             CartItem dongSP = gioHang
                 .Where(p => p.SanPham.MaThuoc == sp.MaThuoc)
@@ -62,7 +61,7 @@ namespace Pharmacy.Models.DAO
             }
         }
 
-        public void XoaSP(QL_SR.THUOC sp)
+        public void XoaSP(THUOC sp)
         {
             gioHang.RemoveAll(l => l.SanPham.MaThuoc == sp.MaThuoc);
         }
@@ -90,10 +89,10 @@ namespace Pharmacy.Models.DAO
         public string TongTienCoupon()
         {
             MyDBContext db = new MyDBContext();
-            int? value; 
+            int? value;
             if (coupon == "")
             {
-                value = gioHang.Sum(e => e.SanPham.DonGia * e.SoLuong);              
+                value = gioHang.Sum(e => e.SanPham.DonGia * e.SoLuong);
             }
             else
             {

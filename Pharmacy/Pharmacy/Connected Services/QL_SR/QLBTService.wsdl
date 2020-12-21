@@ -834,6 +834,20 @@
           <s:element minOccurs="0" maxOccurs="1" name="MatKhau" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="TimKiem_W">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="str" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TimKiem_WResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TimKiem_WResult" type="tns:ArrayOfTHUOC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="Register">
         <s:complexType>
           <s:sequence>
@@ -1297,6 +1311,12 @@
   <wsdl:message name="LoginSoapOut">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
+  <wsdl:message name="TimKiem_WSoapIn">
+    <wsdl:part name="parameters" element="tns:TimKiem_W" />
+  </wsdl:message>
+  <wsdl:message name="TimKiem_WSoapOut">
+    <wsdl:part name="parameters" element="tns:TimKiem_WResponse" />
+  </wsdl:message>
   <wsdl:message name="RegisterSoapIn">
     <wsdl:part name="parameters" element="tns:Register" />
   </wsdl:message>
@@ -1531,6 +1551,10 @@
     <wsdl:operation name="Login">
       <wsdl:input message="tns:LoginSoapIn" />
       <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TimKiem_W">
+      <wsdl:input message="tns:TimKiem_WSoapIn" />
+      <wsdl:output message="tns:TimKiem_WSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Register">
       <wsdl:input message="tns:RegisterSoapIn" />
@@ -1950,6 +1974,15 @@
     </wsdl:operation>
     <wsdl:operation name="Login">
       <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimKiem_W">
+      <soap:operation soapAction="http://tempuri.org/TimKiem_W" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2430,6 +2463,15 @@
     </wsdl:operation>
     <wsdl:operation name="Login">
       <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimKiem_W">
+      <soap12:operation soapAction="http://tempuri.org/TimKiem_W" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
