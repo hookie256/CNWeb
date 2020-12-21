@@ -49,22 +49,41 @@ namespace Pharmacy.Controllers
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             var item = client.LayTenLoaiThuoc(id);
+            List<THUOC> dst = new List<THUOC>();
             foreach (QL_SR.THUOC it in item)
             {
+                THUOC thuoc = new THUOC();
                 if (it.TenThuoc.Length > 30)
                 {
-                    it.TenThuoc = it.TenThuoc.Substring(0, 29) + "...";
+                    thuoc.TenThuoc = it.TenThuoc.Substring(0, 29) + "...";
                 }
+                thuoc.MaThuoc = it.MaThuoc;
+                thuoc.UrlImage = it.UrlImage;
+                thuoc.Tien = it.Tien;
+                thuoc.MaLoaiThuoc = it.MaLoaiThuoc;
+                dst.Add(thuoc);
             }
-
-            return View("Shop", item.ToPagedList(pageNumber, pageSize));
+            return View("Shop", dst.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpPost]
         public ActionResult ChiTietSanPham(string id)
         {
-            var model = client.ChiTietSP(id);            
-            return View("ShopSingle", model);
+            var item = client.ChiTietSP(id);
+            List<THUOC> dst = new List<THUOC>();
+            foreach (QL_SR.THUOC it in item)
+            {
+                THUOC thuoc = new THUOC();                
+                thuoc.TenThuoc = it.TenThuoc;
+                thuoc.MaThuoc = it.MaThuoc;
+                thuoc.UrlImage = it.UrlImage;
+                thuoc.Tien = it.Tien;
+                thuoc.ThanhPhan = it.ThanhPhan;
+                thuoc.DangThuoc = it.DangThuoc;
+                thuoc.CongDung = it.CongDung;
+                dst.Add(thuoc);
+            }
+            return View("ShopSingle", dst);
         }
 
         [ChildActionOnly]
@@ -88,14 +107,20 @@ namespace Pharmacy.Controllers
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             var item = client.LayDS("");
+            List<THUOC> dst = new List<THUOC>();
             foreach (QL_SR.THUOC it in item)
             {
+                THUOC thuoc = new THUOC();
                 if (it.TenThuoc.Length > 30)
                 {
-                    it.TenThuoc = it.TenThuoc.Substring(0, 29) + "...";
+                    thuoc.TenThuoc = it.TenThuoc.Substring(0, 29) + "...";
                 }
+                thuoc.MaThuoc = it.MaThuoc;
+                thuoc.UrlImage = it.UrlImage;
+                thuoc.Tien = it.Tien;
+                dst.Add(thuoc);
             }
-            return View(item.ToPagedList(pageNumber, pageSize));
+            return View(dst.ToPagedList(pageNumber, pageSize));
         }
 
         public static int dem=0;
@@ -425,12 +450,25 @@ namespace Pharmacy.Controllers
         public ActionResult ThankYou()
         {
             return View();
-        }
-
+        }      
         public ActionResult ShopSingle(string id)
         {
             var model = client.LayDS(id);
-            return View(model);
+            List<THUOC> dst = new List<THUOC>();
+            foreach (QL_SR.THUOC it in model)
+            {
+                THUOC thuoc = new THUOC();
+                thuoc.TenThuoc = it.TenThuoc;
+                thuoc.MaThuoc = it.MaThuoc;
+                thuoc.UrlImage = it.UrlImage;
+                thuoc.Tien = it.Tien;
+                thuoc.ThanhPhan = it.ThanhPhan;
+                thuoc.DangThuoc = it.DangThuoc;
+                thuoc.CongDung = it.CongDung;
+                thuoc.MaLoaiThuoc = it.MaLoaiThuoc;
+                dst.Add(thuoc);
+            }
+            return View(dst[0]);
         }
 
         public ActionResult Shop(int? page)
@@ -438,12 +476,23 @@ namespace Pharmacy.Controllers
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             var item = client.LayDS("");
+            List<THUOC> dst = new List<THUOC>();
             foreach (QL_SR.THUOC it in item)
             {
                 if (it.TenThuoc.Length > 30)
                 {
                     it.TenThuoc = it.TenThuoc.Substring(0, 29) + "...";
                 }
+                THUOC thuoc = new THUOC();
+                thuoc.MaThuoc = it.MaThuoc;
+                thuoc.UrlImage = it.UrlImage;
+                thuoc.Tien = it.Tien;
+                thuoc.ThanhPhan = it.ThanhPhan;
+                thuoc.DangThuoc = it.DangThuoc;
+                thuoc.CongDung = it.CongDung;
+                thuoc.MaLoaiThuoc = it.MaLoaiThuoc;
+                
+                dst.Add(thuoc);
             }
             return View(item.ToPagedList(pageNumber, pageSize));
         }

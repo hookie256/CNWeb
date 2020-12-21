@@ -803,6 +803,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="UrlImage" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Tien" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="TimKiem" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TenLoaiThuoc" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="Login">
