@@ -159,7 +159,7 @@ namespace Pharmacy.Controllers
                 }
                 else
                 {
-                    var items = client.ThongTinGH(null, "");
+                    var items = client.ThongTinGH("", "");
                     var gioHang = (Cart)Session["GioHangTam"];
                     if (items.Count() == 0)
                     {
