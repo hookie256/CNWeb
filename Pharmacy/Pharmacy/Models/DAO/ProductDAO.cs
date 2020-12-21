@@ -8,18 +8,54 @@ namespace Pharmacy.Models.DAO
 
     public class ProductDAO
     {
-        MyDBContext db = null;
-        public ProductDAO()
-        {
-            db = new MyDBContext();
-        }
+        public QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         public List<THUOC> SanPhamBanChay()
         {
-            return db.THUOCs.SqlQuery("SELECT TOP 6 * FROM THUOC ORDER BY SoLuongTon ASC").ToList();
+            var dsSPBC = client.SanPhamBanChay();
+            List<THUOC> ds = new List<THUOC>();
+            foreach (QL_SR.THUOC t in dsSPBC)
+            {
+                THUOC lt = new THUOC();
+                lt.MaThuoc = t.MaThuoc;
+                lt.TenThuoc = t.TenThuoc;
+                lt.CongDung = t.CongDung;
+                lt.ThanhPhan = t.ThanhPhan;
+                lt.SoLuongTon = t.SoLuongTon;
+                lt.MaNhaCungCap = t.MaNhaCungCap;
+                lt.Tien = t.Tien;
+                lt.DangThuoc = t.DangThuoc;
+                lt.DonGia = t.DonGia;
+                lt.MaHangSX = t.MaHangSX;
+                lt.MaLoaiThuoc = t.MaLoaiThuoc;
+                lt.UrlImage = t.UrlImage;
+                lt.TimKiem = t.TimKiem;
+                ds.Add(lt);
+            }
+            return ds;
         }
         public List<THUOC> SanPhamMoi()
         {
-            return db.THUOCs.SqlQuery("SELECT TOP 8 * FROM THUOC ORDER BY SoLuongTon DESC").ToList();
+            var dsSPM = client.SanPhamMoi();
+            List<THUOC> ds = new List<THUOC>();
+            foreach (QL_SR.THUOC t in dsSPM)
+            {
+                THUOC lt = new THUOC();
+                lt.MaThuoc = t.MaThuoc;
+                lt.TenThuoc = t.TenThuoc;
+                lt.CongDung = t.CongDung;
+                lt.ThanhPhan = t.ThanhPhan;
+                lt.SoLuongTon = t.SoLuongTon;
+                lt.MaNhaCungCap = t.MaNhaCungCap;
+                lt.Tien = t.Tien;
+                lt.DangThuoc = t.DangThuoc;
+                lt.DonGia = t.DonGia;
+                lt.MaHangSX = t.MaHangSX;
+                lt.MaLoaiThuoc = t.MaLoaiThuoc;
+                lt.UrlImage = t.UrlImage;
+                lt.TimKiem = t.TimKiem;
+                ds.Add(lt);
+            }
+            return ds;
         }
     }
 }

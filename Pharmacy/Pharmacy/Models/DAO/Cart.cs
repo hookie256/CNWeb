@@ -10,19 +10,19 @@ namespace Pharmacy.Models.DAO
     [Serializable]
     public class CartItem
     {
-        public THUOC SanPham { get; set; }
+        public QL_SR.THUOC SanPham { get; set; }
         public int SoLuong { get; set; }
     }
 
     public class Cart
     {
+        public QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         private List<CartItem> gioHang = new List<CartItem>();
         public string coupon = "";
-        public void themSP(THUOC sp, int sl)
+
+        public void themSP(QL_SR.THUOC sp, int sl)
         {
-            CartItem dongSP = gioHang
-                .Where(p => p.SanPham.MaThuoc == sp.MaThuoc)
-                .FirstOrDefault();
+            CartItem dongSP = gioHang.Where(p => p.SanPham.MaThuoc == sp.MaThuoc).FirstOrDefault();
 
             if (dongSP == null)
             {
@@ -42,11 +42,9 @@ namespace Pharmacy.Models.DAO
             }
         }
 
-        public void capnhatSP(THUOC sp, int sl)
+        public void capnhatSP(QL_SR.THUOC sp, int sl)
         {
-            CartItem dongSP = gioHang
-                .Where(p => p.SanPham.MaThuoc == sp.MaThuoc)
-                .FirstOrDefault();
+            CartItem dongSP = gioHang.Where(p => p.SanPham.MaThuoc == sp.MaThuoc).FirstOrDefault();
 
             if (dongSP != null)
             {
@@ -61,7 +59,7 @@ namespace Pharmacy.Models.DAO
             }
         }
 
-        public void XoaSP(THUOC sp)
+        public void XoaSP(QL_SR.THUOC sp)
         {
             gioHang.RemoveAll(l => l.SanPham.MaThuoc == sp.MaThuoc);
         }

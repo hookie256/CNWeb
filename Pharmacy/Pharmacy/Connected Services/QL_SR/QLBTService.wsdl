@@ -790,7 +790,6 @@
       <s:complexType name="THUOC">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="MaThuoc" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="MaLoThuoc" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="TenThuoc" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="CongDung" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="ThanhPhan" type="s:string" />
@@ -803,7 +802,6 @@
           <s:element minOccurs="0" maxOccurs="1" name="UrlImage" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Tien" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="TimKiem" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="TenLoaiThuoc" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="Login">
@@ -1020,7 +1018,6 @@
       <s:element name="ThemHoaDon">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="maHD" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="ho" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="ten" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="diachiduong" type="s:string" />
@@ -1040,6 +1037,42 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="LayMaHD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ho" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ten" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="diachiduong" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sonha" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sdt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LayMaHDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LayMaHDResult" type="tns:ArrayOfHOADON" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfHOADON">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HOADON" nillable="true" type="tns:HOADON" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HOADON">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MaHoaDon" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TenKhachHang" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiaChi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SoDienThoai" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GhiChu" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaKhuyenMai" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HinhThucGiaoHang" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="ThemCCHoaDon">
         <s:complexType>
           <s:sequence>
@@ -1054,6 +1087,26 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="ThemCCHoaDonResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SanPhamBanChay">
+        <s:complexType />
+      </s:element>
+      <s:element name="SanPhamBanChayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SanPhamBanChayResult" type="tns:ArrayOfTHUOC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SanPhamMoi">
+        <s:complexType />
+      </s:element>
+      <s:element name="SanPhamMoiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SanPhamMoiResult" type="tns:ArrayOfTHUOC" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1377,11 +1430,29 @@
   <wsdl:message name="ThemHoaDonSoapOut">
     <wsdl:part name="parameters" element="tns:ThemHoaDonResponse" />
   </wsdl:message>
+  <wsdl:message name="LayMaHDSoapIn">
+    <wsdl:part name="parameters" element="tns:LayMaHD" />
+  </wsdl:message>
+  <wsdl:message name="LayMaHDSoapOut">
+    <wsdl:part name="parameters" element="tns:LayMaHDResponse" />
+  </wsdl:message>
   <wsdl:message name="ThemCCHoaDonSoapIn">
     <wsdl:part name="parameters" element="tns:ThemCCHoaDon" />
   </wsdl:message>
   <wsdl:message name="ThemCCHoaDonSoapOut">
     <wsdl:part name="parameters" element="tns:ThemCCHoaDonResponse" />
+  </wsdl:message>
+  <wsdl:message name="SanPhamBanChaySoapIn">
+    <wsdl:part name="parameters" element="tns:SanPhamBanChay" />
+  </wsdl:message>
+  <wsdl:message name="SanPhamBanChaySoapOut">
+    <wsdl:part name="parameters" element="tns:SanPhamBanChayResponse" />
+  </wsdl:message>
+  <wsdl:message name="SanPhamMoiSoapIn">
+    <wsdl:part name="parameters" element="tns:SanPhamMoi" />
+  </wsdl:message>
+  <wsdl:message name="SanPhamMoiSoapOut">
+    <wsdl:part name="parameters" element="tns:SanPhamMoiResponse" />
   </wsdl:message>
   <wsdl:portType name="QLBanThuocServiceSoap">
     <wsdl:operation name="ThemMoiNCC">
@@ -1596,9 +1667,21 @@
       <wsdl:input message="tns:ThemHoaDonSoapIn" />
       <wsdl:output message="tns:ThemHoaDonSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="LayMaHD">
+      <wsdl:input message="tns:LayMaHDSoapIn" />
+      <wsdl:output message="tns:LayMaHDSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ThemCCHoaDon">
       <wsdl:input message="tns:ThemCCHoaDonSoapIn" />
       <wsdl:output message="tns:ThemCCHoaDonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SanPhamBanChay">
+      <wsdl:input message="tns:SanPhamBanChaySoapIn" />
+      <wsdl:output message="tns:SanPhamBanChaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SanPhamMoi">
+      <wsdl:input message="tns:SanPhamMoiSoapIn" />
+      <wsdl:output message="tns:SanPhamMoiSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="QLBanThuocServiceSoap" type="tns:QLBanThuocServiceSoap">
@@ -2080,8 +2163,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LayMaHD">
+      <soap:operation soapAction="http://tempuri.org/LayMaHD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ThemCCHoaDon">
       <soap:operation soapAction="http://tempuri.org/ThemCCHoaDon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SanPhamBanChay">
+      <soap:operation soapAction="http://tempuri.org/SanPhamBanChay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SanPhamMoi">
+      <soap:operation soapAction="http://tempuri.org/SanPhamMoi" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2569,8 +2679,35 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LayMaHD">
+      <soap12:operation soapAction="http://tempuri.org/LayMaHD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ThemCCHoaDon">
       <soap12:operation soapAction="http://tempuri.org/ThemCCHoaDon" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SanPhamBanChay">
+      <soap12:operation soapAction="http://tempuri.org/SanPhamBanChay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SanPhamMoi">
+      <soap12:operation soapAction="http://tempuri.org/SanPhamMoi" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
